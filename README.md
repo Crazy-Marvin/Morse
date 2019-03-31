@@ -1,5 +1,5 @@
 Bitrise
-Crowdin
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/morse/localized.svg)](https://crowdin.com/project/morse)
 Codacy
 Snyk
 Dependabot
