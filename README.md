@@ -1,11 +1,17 @@
 [![Travis Build Status](https://travis-ci.org/Crazy-Marvin/Morse.svg?branch=master)](https://travis-ci.org/Crazy-Marvin/Morse)
 ![License](https://img.shields.io/github/license/Crazy-Marvin/Morse.svg)
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/morse/localized.svg)](https://crowdin.com/project/morse)
-![Downloads](https://img.shields.io/github/downloads/Crazy-Marvin/Morse/total.svg)
+[![Last commit](https://img.shields.io/github/last-commit/Crazy-Marvin/Morse.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/commits)
+[![Releases](https://img.shields.io/github/downloads/Crazy-Marvin/Morse/total.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/releases)
+[![Latest tag](https://img.shields.io/github/tag/Crazy-Marvin/Morse.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/tags)
+[![Issues](https://img.shields.io/github/issues/Crazy-Marvin/MetadataRemover.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/issues)
+[![Pull requests](https://img.shields.io/github/issues-pr/Crazy-Marvin/Morse.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/pulls)
 [![Codacy](https://api.codacy.com/project/badge/Grade/49d72132eca54aa9b68056d3dce5c019)](https://www.codacy.com/app/CrazyMarvin/Morse?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Crazy-Marvin/Morse&amp;utm_campaign=Badge_Grade)
+[![codecov](https://codecov.io/gh/Crazy-Marvin/Morse/branch/master/graph/badge.svg)](https://codecov.io/gh/Crazy-Marvin/Morse)
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/morse/localized.svg)](https://crowdin.com/project/morse)
 [![Known Vulnerabilities](https://snyk.io/test/github/Crazy-Marvin/Morse/badge.svg?targetFile=app%2Fbuild.gradle)](https://snyk.io/test/github/Crazy-Marvin/Morse?targetFile=app%2Fbuild.gradle)
 [![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat-square)](https://android-arsenal.com/api?level=19)
 ![F-Droid](https://img.shields.io/f-droid/v/rocks.poopjournal.morse.svg)
+[![Google Play](https://img.shields.io/badge/google play-install-blue.svg?style=flat&logo=google-play)](https://play.google.com/store/apps/details?id=rocks.poopjournal.morse)
 
 <p align="left">
 <a href="https://play.google.com/store/apps/details?id=rocks.poopjournal.morse">
