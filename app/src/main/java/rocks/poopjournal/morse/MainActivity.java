@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                     if (!TextUtils.isEmpty(output.getText().toString())){
                        String[] something =  TextUtils.split(output.getText().toString().trim().replaceAll("\\s+",""),"");
                        Log.d("test_string",output.getText().toString().trim().replace(" ","").replace("  ",""));
+                       Log.d("test_string",".....");
                        Log.d("test_length_string",String.valueOf(something.length))
                        ;
                        for (String s: something){
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onCompletion(MediaPlayer mp) {
                                 mp.release();
-                                if (trackcounter[0] < tracks.length) {
+                                if (trackcounter[0] < tracks.length-3) {
                                     trackcounter[0]++;
                                     mp = MediaPlayer.create(getApplicationContext(), tracks[trackcounter[0]]);
                                     mp.setOnCompletionListener(this);
