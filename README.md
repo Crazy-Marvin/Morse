@@ -11,7 +11,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/Crazy-Marvin/Morse/badge.svg?targetFile=app%2Fbuild.gradle)](https://snyk.io/test/github/Crazy-Marvin/Morse?targetFile=app%2Fbuild.gradle)
 [![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat-square)](https://android-arsenal.com/api?level=19)
 ![F-Droid](https://img.shields.io/f-droid/v/rocks.poopjournal.morse.svg)
-[![Google Play](https://img.shields.io/badge/google play-install-blue.svg?style=flat&logo=google-play)](https://play.google.com/store/apps/details?id=rocks.poopjournal.morse)
+[![Google Play](https://badgen.net/badge/icon/googleplay?icon=googleplay&label)](https://play.google.com/store/apps/details?id=rocks.poopjournal.morse)
 
 <p align="left">
 <a href="https://play.google.com/store/apps/details?id=rocks.poopjournal.morse">
