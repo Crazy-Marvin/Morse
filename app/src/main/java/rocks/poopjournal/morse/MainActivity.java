@@ -1,12 +1,23 @@
 package rocks.poopjournal.morse;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
+import android.graphics.SurfaceTexture;
+import android.hardware.Camera;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Handler;
+import android.os.PowerManager;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -24,12 +35,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class MainActivity extends AppCompatActivity {
+import static android.hardware.Camera.Parameters.FLASH_MODE_AUTO;
+import static android.hardware.Camera.Parameters.FLASH_MODE_ON;
+import static android.hardware.Camera.Parameters.FLASH_MODE_TORCH;
 
-    ImageView settings;
+public class MainActivity extends AppCompatActivity implements Camera.AutoFocusCallback {
+
+    ImageView settings, history, flash;
     TextView buttonOne;
     TextView buttonTwo;
     RelativeLayout switchImageContainer;
@@ -37,17 +53,22 @@ public class MainActivity extends AppCompatActivity {
     TextView output;
     ImageView copy;
     ImageView sound;
-    RelativeLayout container;
-
+    RelativeLayout container, mic, fullscreen;
+    int global_counter=0;
     RelativeLayout bottomNavigation;
+    RelativeLayout flare_view;
     RelativeLayout morseInputContainer;
     RelativeLayout dot;
     RelativeLayout dash;
     RelativeLayout space;
     RelativeLayout makeInputVisible;
     RelativeLayout backspace;
-
+    public static Camera camera = null;// has to be static, otherwise onDestroy() destroys it
     boolean visibilityCheck = false;
+    ArrayList<String> popularMorse = new ArrayList<>();
+    HashMap<String, String> popularMorseConversion = new HashMap<>();
+    HashMap<String, String> popularMorseConversionText = new HashMap<>();
+    String flashText = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,14 +76,88 @@ public class MainActivity extends AppCompatActivity {
 
         final AtomicBoolean textToMorse = new AtomicBoolean(true);
         settings = findViewById(R.id.settings);
+        mic = findViewById(R.id.input_mic_container);
+        fullscreen = findViewById(R.id.input_fullscreen_container);
+        history = findViewById(R.id.history);
         buttonOne = findViewById(R.id.buttonOne);
+        flare_view = findViewById(R.id.flare_view);
         buttonTwo = findViewById(R.id.buttonTwo);
         switchImageContainer = findViewById(R.id.switchImageContainer);
         input = findViewById(R.id.input);
         output = findViewById(R.id.output);
         copy = findViewById(R.id.copyText);
         sound = findViewById(R.id.playAudio);
+        flash = findViewById(R.id.flash);
 
+        popularMorse.add("...---...");
+        popularMorse.add("-.-.--.--..");
+        popularMorse.add(".--.....--.....--....--.----...--.-.---..---.....-");
+        popularMorse.add(".-..--...");
+
+        flare_view.setVisibility(View.GONE);
+        popularMorseConversion.put("...---...","... --- ...");
+        popularMorseConversion.put("-.-.--.--..","-.-. --.- -..");
+        popularMorseConversion.put(".--.....--.....--....--.----...--.-.---..---.....-",".-- .... .- -   .... .- - ....   --. --- -..   .-- .-. --- ..- --. .... -");
+        popularMorseConversion.put(".-..--...",".-. .- - ...");
+
+        popularMorseConversionText.put("...---...","SOS");
+        popularMorseConversionText.put("-.-.--.--..","CQD");
+        popularMorseConversionText.put(".--.....--.....--....--.----...--.-.---..---.....-","What hath God wrought");
+        popularMorseConversionText.put(".-..--...","rats");
+        flash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                turnOff();
+                if (textToMorse.get()){
+                    if (!TextUtils.isEmpty(output.getText().toString())){
+                        String[] something =  TextUtils.split(output.getText().toString().trim().replaceAll("\\s+",""),"");
+                        Log.d("test_string",output.getText().toString().trim().replace(" ","").replace("  ",""));
+                        Log.d("test_string",".....");
+                        Log.d("test_length_string",String.valueOf(something.length))
+                        ;
+                        for (String s: something){
+                            Log.d("skkk",s);
+                        }
+
+                        int len = something.length;
+
+
+                        int currentcounter =0;
+                        for (String s : something) {
+                            if (s.equals(".")) {
+                                turnOn();
+                                SystemClock.sleep(200);
+                                turnOff();
+                            } else if (s.equals("-")) {
+                                turnOn();
+                                SystemClock.sleep(600);
+                                turnOff();
+                            }
+                        }
+
+                    }
+                }
+            }
+        });
+
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"To be implemented in a future release", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"To be implemented in a future release", Toast.LENGTH_SHORT).show();
+            }
+        });
+        fullscreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"To be implemented in a future release", Toast.LENGTH_SHORT).show();
+            }
+        });
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +197,58 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        final ImageView flare = findViewById(R.id.flare);
+        final Runnable hide = new Runnable() {
+            @Override
+            public void run() {
+                flare_view.setVisibility(View.GONE);
+
+                Log.d("flare","set to gone");
+            }
+        };
+
+
+        flare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (textToMorse.get()){
+                    if (!TextUtils.isEmpty(output.getText().toString())){
+
+                      /*  new Thread() {
+                            public void run() {
+                                String[] something =  TextUtils.split(output.getText().toString().trim().replaceAll("\\s+",""),"");
+                                for (String s : something) {
+
+                                    try {
+
+                                        flare_view.setVisibility(View.VISIBLE);
+                                        sleep(500);
+                                        flare_view.setVisibility(View.INVISIBLE);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+
+
+                                }
+                            }
+                        }.run();
+
+
+*/
+
+                      flare_view.getViewTreeObserver().addOnGlobalLayoutListener(listener);
+                      flashText = output.getText().toString().trim().replace(" ","").replaceAll("\\s+","");
+                      global_counter=0;
+                      flash_display();
+
+
+
+
+
+                    }
+                }
+            }
+        });
         sound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -229,6 +376,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         input.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -246,6 +394,32 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 else {
+                    if (popularMorse.contains(input.getText().toString())){
+                        final Dialog confirm = DialogsUtil.showVerificationDialog(MainActivity.this);
+                        TextView original, converted, discard, yes;
+                        original = confirm.findViewById(R.id.successTV);
+                        converted = confirm.findViewById(R.id.descTV);
+                        discard = confirm.findViewById(R.id.discardBtnVerify);
+                        yes = confirm.findViewById(R.id.import_playlist);
+
+
+                        original.setText(input.getText().toString());
+                        converted.setText("Do you mean " + popularMorseConversionText.get(input.getText().toString())+ " " + popularMorseConversion.get(input.getText().toString()) +"?");
+                        discard.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                confirm.dismiss();
+                            }
+                        });
+                        yes.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                input.setText(popularMorseConversion.get(input.getText().toString()));
+                                Toast.makeText(getApplicationContext(),"Changed morse",Toast.LENGTH_SHORT).show();
+                                confirm.dismiss();
+                            }
+                        });
+                    }
                     output.setText("");
                     String text = input.getText().toString();
                     String[] letters = text.split("\\s");
@@ -267,6 +441,90 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+
+    void flash_display() {
+
+        flare_view.setVisibility(View.VISIBLE);
+        flare_view.bringToFront();
+        flare_view.setTag(flare_view.getVisibility());
+        Log.d("flare","in flash dispaly");
+
+    }
+
+
+
+    ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {
+        @Override
+        public void onGlobalLayout() {
+
+            final String[] something =  flashText.trim().replaceAll("\\s+","").split("(?!^)");
+            Log.d("flare","flash_text: " + flashText);
+            Log.d("flare","counter: " + global_counter);
+            if (global_counter==something.length){
+                flare_view.setVisibility(View.GONE);
+                flare_view.setTag(flare_view.getVisibility());
+                flare_view.getViewTreeObserver().removeOnGlobalLayoutListener(this);return;
+            }
+
+          /*  Log.d("flare","here");
+            Log.d("flare","current character: " + something[global_counter]);
+            Log.d("flare","string" + flashText);
+            for (int i=0;i <something.length; i++){
+                Log.d("flare","string_char_array " + something[i]);
+            }*/
+            if ((int) flare_view.getTag() == View.VISIBLE) {
+                Log.d("flare","here in if");
+                if (something[global_counter].equals(".")){
+                    Log.d("flare","dot");
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.d("flare","dot_post_delayed");
+                            flare_view.setVisibility(View.GONE);
+                            global_counter++;
+                            flare_view.setTag(flare_view.getVisibility());
+                            if (global_counter!=something.length){
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        flash_display();
+                                    }
+                                }, 150);
+                            }
+
+                        }
+                    }, 350);
+                }
+                else   if (something[global_counter].equals("-")) {
+                    final Handler handler = new Handler();
+                    Log.d("flare","dash");
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {   Log.d("flare","dash_post_delayed");
+                            flare_view.setVisibility(View.GONE);
+                            global_counter++;
+                            flare_view.setTag(flare_view.getVisibility());
+                            if (global_counter!=something.length){
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        flash_display();
+                                    }
+                                }, 150);
+                            }
+                        }
+                    }, 1000);
+                }
+                else {
+                    Log.d("flare","can't identifyt");
+                }
+
+            }
+        }
+    };
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.
@@ -429,6 +687,10 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
+    public void onAutoFocus(boolean b, Camera camera) {
+
+    }
 
 
     public interface KeyboardVisibilityCallback{
@@ -437,6 +699,130 @@ public class MainActivity extends AppCompatActivity {
          * @param isVisible : Make keyboard visible.
          */
         void onChange(boolean isVisible);
+    }
+
+    public void turnOn() {
+        camera = Camera.open();
+        try {
+            Camera.Parameters parameters = camera.getParameters();
+            parameters.setFlashMode(getFlashOnParameter());
+            camera.setParameters(parameters);
+
+            camera.setPreviewTexture(new SurfaceTexture(0));
+
+            camera.startPreview();
+            camera.autoFocus(this);
+
+        } catch (Exception e) {
+            // We are expecting this to happen on devices that don't support autofocus.
+        }
+    }
+    private String getFlashOnParameter() {
+        List<String> flashModes = camera.getParameters().getSupportedFlashModes();
+
+        if (flashModes.contains(FLASH_MODE_TORCH)) {
+            return FLASH_MODE_TORCH;
+        } else if (flashModes.contains(FLASH_MODE_ON)) {
+            return FLASH_MODE_ON;
+        } else if (flashModes.contains(FLASH_MODE_AUTO)) {
+            return FLASH_MODE_AUTO;
+        }
+        throw new RuntimeException();
+    }
+    public void turnOff() {
+        try {
+            camera.stopPreview();
+            camera.release();
+            camera = null;
+        } catch (Exception e) {
+            // This will happen if the camera fails to turn on.
+        }
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            int hasCameraPermission = checkSelfPermission(Manifest.permission.CAMERA);
+
+            List<String> permissions = new ArrayList<String>();
+
+            if (hasCameraPermission != PackageManager.PERMISSION_GRANTED) {
+                permissions.add(Manifest.permission.CAMERA);
+
+            }
+            if (!permissions.isEmpty()) {
+                requestPermissions(permissions.toArray(new String[permissions.size()]), 111);
+            }
+        }
+
+
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 111: {
+                for (int i = 0; i < permissions.length; i++) {
+                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                        System.out.println("Permissions --> " + "Permission Granted: " + permissions[i]);
+
+
+                    } else if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
+                        System.out.println("Permissions --> " + "Permission Denied: " + permissions[i]);
+
+                    }
+                }
+            }
+            break;
+            default: {
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
+        }
+    }
+
+    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
+
+        private String resp;
+
+        @Override
+        protected String doInBackground(String... params) {
+            publishProgress("Sleeping..."); // Calls onProgressUpdate()
+            try {
+                int time = Integer.parseInt(params[0]);
+
+                Thread.sleep(time);
+                resp = "Slept for " + params[0] + " seconds";
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                resp = e.getMessage();
+            } catch (Exception e) {
+                e.printStackTrace();
+                resp = e.getMessage();
+            }
+            return resp;
+        }
+
+
+        @Override
+        protected void onPostExecute(String result) {
+            // execution of result of Long time consuming operation
+
+            flare_view.setVisibility(View.GONE);
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+           flare_view.setVisibility(View.VISIBLE);
+        }
+
+
+        @Override
+        protected void onProgressUpdate(String... text) {
+
+
+        }
     }
 
 }
