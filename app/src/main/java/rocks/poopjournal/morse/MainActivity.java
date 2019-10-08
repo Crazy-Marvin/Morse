@@ -137,6 +137,35 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
                     }
                 }
+                else {
+                    if (!TextUtils.isEmpty(input.getText().toString())){
+                        String[] something =  TextUtils.split(input.getText().toString().trim().replaceAll("\\s+",""),"");
+                        Log.d("test_string",input.getText().toString().trim().replace(" ","").replace("  ",""));
+                        Log.d("test_string",".....");
+                        Log.d("test_length_string",String.valueOf(something.length))
+                        ;
+                        for (String s: something){
+                            Log.d("skkk",s);
+                        }
+
+                        int len = something.length;
+
+
+                        int currentcounter =0;
+                        for (String s : something) {
+                            if (s.equals(".")) {
+                                turnOn();
+                                SystemClock.sleep(200);
+                                turnOff();
+                            } else if (s.equals("-")) {
+                                turnOn();
+                                SystemClock.sleep(600);
+                                turnOff();
+                            }
+                        }
+
+                    }
+                }
             }
         });
 
@@ -247,6 +276,42 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
                     }
                 }
+                else {
+                    if (!TextUtils.isEmpty(input.getText().toString())){
+
+                      /*  new Thread() {
+                            public void run() {
+                                String[] something =  TextUtils.split(output.getText().toString().trim().replaceAll("\\s+",""),"");
+                                for (String s : something) {
+
+                                    try {
+
+                                        flare_view.setVisibility(View.VISIBLE);
+                                        sleep(500);
+                                        flare_view.setVisibility(View.INVISIBLE);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+
+
+                                }
+                            }
+                        }.run();
+
+
+*/
+
+                        flare_view.getViewTreeObserver().addOnGlobalLayoutListener(listener);
+                        flashText = input.getText().toString().trim().replace(" ","").replaceAll("\\s+","");
+                        global_counter=0;
+                        flash_display();
+
+
+
+
+
+                    }
+                }
             }
         });
         sound.setOnClickListener(new View.OnClickListener() {
@@ -280,6 +345,49 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                        Log.d("test_length",String.valueOf(tracks.length));
                         final int[] trackcounter = {0};
                        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), tracks[trackcounter[0]]);
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                mp.release();
+                                if (trackcounter[0] < tracks.length-3) {
+                                    trackcounter[0]++;
+                                    mp = MediaPlayer.create(getApplicationContext(), tracks[trackcounter[0]]);
+                                    mp.setOnCompletionListener(this);
+                                    mp.start();
+                                }
+                            }
+                        });
+                        mediaPlayer.start();
+                    }
+                }
+                else{
+                    if (!TextUtils.isEmpty(input.getText().toString())){
+                        String[] something =  TextUtils.split(input.getText().toString().trim().replaceAll("\\s+",""),"");
+                        Log.d("test_string",input.getText().toString().trim().replace(" ","").replace("  ",""));
+                        Log.d("test_string",".....");
+                        Log.d("test_length_string",String.valueOf(something.length))
+                        ;
+                        for (String s: something){
+                            Log.d("skkk",s);
+                        }
+
+                        int len = something.length;
+                        final int[] tracks = new int[len];
+                        int counter = 0;
+                        for (String s: something){
+                            if (s.equals(".")){
+                                tracks[counter] = R.raw.dot;
+                                counter++;
+                            }
+                            else if (s.equals("-")){
+                                tracks[counter] = R.raw.dash;
+                                counter++;
+                            }
+                        }
+
+                        Log.d("test_length",String.valueOf(tracks.length));
+                        final int[] trackcounter = {0};
+                        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), tracks[trackcounter[0]]);
                         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                             @Override
                             public void onCompletion(MediaPlayer mp) {
@@ -385,6 +493,10 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (TextUtils.isEmpty(s.toString())){
+                    output.setText("");
+                    return;
+                }
                 if (textToMorse.get()){
                     output.setText("");
                     String text = input.getText().toString();

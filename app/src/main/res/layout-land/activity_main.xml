@@ -155,37 +155,38 @@
             android:layout_height="42dp">
             <ImageView
                 android:layout_centerVertical="true"
-                android:id="@+id/flare"
+                android:id="@+id/flash"
                 android:layout_alignParentStart="true"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:tint="@color/colorMorse"
-                android:src="@drawable/ic_flare_24px"/>
-            <ImageView
-                android:layout_centerVertical="true"
-                android:id="@+id/flash"
-                android:layout_toEndOf="@+id/flare"
-                android:layout_marginEnd="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:src="@drawable/ic_torch"/>
             <ImageView
-                android:id="@+id/copyText"
+                android:layout_centerVertical="true"
+                android:id="@+id/flare"
                 android:layout_toEndOf="@+id/flash"
+                android:layout_marginEnd="10dp"
+                android:tint="@color/colorMorse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_flare_24px"/>
+            <ImageView
+                android:id="@+id/playAudio"
+                android:layout_toEndOf="@+id/flare"
                 android:layout_width="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_height="wrap_content"
-                android:src="@drawable/copy"/>
+                android:src="@drawable/volume"/>
             <ImageView
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/copyText"
-                android:id="@+id/playAudio"
+                android:layout_toEndOf="@+id/playAudio"
+                android:id="@+id/copyText"
                 android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/volume"/>
+                android:src="@drawable/copy"/>
         </RelativeLayout>
     </RelativeLayout>
     </RelativeLayout>
