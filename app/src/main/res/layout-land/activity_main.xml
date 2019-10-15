@@ -46,9 +46,20 @@
         android:layout_centerVertical="true"/>
     </RelativeLayout>
 
+    <ScrollView
+        android:layout_below="@id/topContainer"
+        android:layout_above="@id/bottomLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
     <RelativeLayout
         android:id="@+id/writingContainer"
-        android:layout_below="@id/topContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_bg">
@@ -178,10 +189,11 @@
                 android:src="@drawable/copy"/>
         </RelativeLayout>
     </RelativeLayout>
-
+    </RelativeLayout>
+    </ScrollView>
     <RelativeLayout
         android:id="@+id/morseInputContainer"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:background="#292C33"
         android:layout_marginBottom="1dp"
@@ -292,5 +304,4 @@
                 android:layout_height="24dp" />
         </RelativeLayout>
     </RelativeLayout>
-
 </RelativeLayout>
