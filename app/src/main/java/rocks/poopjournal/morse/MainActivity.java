@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
+import android.graphics.Typeface;
 import android.hardware.Camera;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -18,14 +19,22 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.SystemClock;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -50,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     TextView buttonTwo;
     RelativeLayout switchImageContainer;
     EditTextTouch input;
+    RelativeLayout popularMorseSuggestionContainer;
     TextView output;
     ImageView copy;
     ImageView sound;
@@ -88,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         copy = findViewById(R.id.copyText);
         sound = findViewById(R.id.playAudio);
         flash = findViewById(R.id.flash);
+        popularMorseSuggestionContainer = findViewById(R.id.bottom_suggestion_container);
 
         popularMorse.add("...---...");
         popularMorse.add("-.-.--.--..");
@@ -507,7 +518,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 }
                 else {
                     if (popularMorse.contains(input.getText().toString())){
-                        final Dialog confirm = DialogsUtil.showVerificationDialog(MainActivity.this);
+                     /*   final Dialog confirm = DialogsUtil.showVerificationDialog(MainActivity.this);
                         TextView original, converted, discard, yes;
                         original = confirm.findViewById(R.id.successTV);
                         converted = confirm.findViewById(R.id.descTV);
@@ -530,8 +541,50 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                                 Toast.makeText(getApplicationContext(),"Changed morse",Toast.LENGTH_SHORT).show();
                                 confirm.dismiss();
                             }
+                        });*/
+                     Log.d("popular_morse","true");
+                        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)input.getLayoutParams();
+                        setMargins(input,params.leftMargin,params.topMargin,params.rightMargin,2);
+                        input.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.bg_top_suggestion));
+                        popularMorseSuggestionContainer.setVisibility(View.VISIBLE);
+
+                        TextView suggestionTV = findViewById(R.id.suggestion_text_tv);
+                        TextView replace = findViewById(R.id.replace_suggestion);
+                        TextView ignore = findViewById(R.id.ignore_suggestion);
+
+                        suggestionTV.setText("Did you mean " + popularMorseConversion.get(input.getText().toString())+  " (" + popularMorseConversionText.get(input.getText().toString())  +")?");
+                        change(suggestionTV.getText().toString(),popularMorseConversion.get(input.getText().toString()), suggestionTV);
+
+                        replace.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                input.setText(popularMorseConversion.get(input.getText().toString()));
+                                input.setSelection(input.getText().length());
+                                Toast.makeText(getApplicationContext(),"Changed morse",Toast.LENGTH_SHORT).show();
+                                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)input.getLayoutParams();
+                                setMargins(input,params.leftMargin,params.topMargin,params.rightMargin,20);
+                                input.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.et_morse));
+                                popularMorseSuggestionContainer.setVisibility(View.GONE);
+                            }
+                        });
+
+                        ignore.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)input.getLayoutParams();
+                                setMargins(input,params.leftMargin,params.topMargin,params.rightMargin,20);
+                                input.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.et_morse));
+                                popularMorseSuggestionContainer.setVisibility(View.GONE);
+                            }
                         });
                     }
+                    else {
+                        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)input.getLayoutParams();
+                        setMargins(input,params.leftMargin,params.topMargin,params.rightMargin,20);
+                        input.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.et_morse));
+                        popularMorseSuggestionContainer.setVisibility(View.GONE);
+                    }
+
                     output.setText("");
                     String text = input.getText().toString();
                     String[] letters = text.split("\\s");
@@ -563,7 +616,13 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
     }
 
-
+    public static void setMargins (View v, int l, int t, int r, int b) {
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
+    }
 
     ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {
         @Override
@@ -936,5 +995,13 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
         }
     }
-
+    void change(String s, String newSuggestion, TextView t){
+        int i = s.indexOf(newSuggestion);
+        SpannableStringBuilder sb = new SpannableStringBuilder(s);
+        sb.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(),R.color.colorMorse)), i, i+newSuggestion.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        int k = s.indexOf("(");
+        sb.setSpan(new StyleSpan(Typeface.ITALIC), k+1,  k+popularMorseConversionText.get(input.getText().toString()).length()+1, 0);
+        sb.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(),R.color.colorMorse)), k+1,  k+popularMorseConversionText.get(input.getText().toString()).length() +1, 0);
+        t.setText(sb);
+    }
 }

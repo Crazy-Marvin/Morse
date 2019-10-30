@@ -125,6 +125,63 @@
             android:paddingBottom="10dp"
             android:paddingEnd="20dp"
             android:paddingStart="20dp"/>
+        <RelativeLayout
+            android:id="@+id/bottom_suggestion_container"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:visibility="gone"
+            android:textColor="@color/colorSecondaryText"
+            android:background="@drawable/bg_bottom_suggestion"
+            android:layout_below="@+id/input"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="15sp"
+            android:gravity="top"
+            android:fontFamily="@font/overpass_regular"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="20dp">
+            <TextView
+                android:id="@+id/suggestion_text_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="14sp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="10dp"
+                android:scrollbars = "vertical"
+                android:layout_above="@id/replace_suggestion"
+                android:fontFamily="@font/overpassmono_regular"/>
+            <TextView
+                android:id="@+id/ignore_suggestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="IGNORE"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="14sp"
+                android:layout_toStartOf="@id/replace_suggestion"
+                android:layout_alignParentBottom="true"
+
+                android:fontFamily="@font/overpassmono_regular"/>
+            <TextView
+                android:id="@+id/replace_suggestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="REPLACE"
+                android:textColor="@color/colorMorse"
+                android:textSize="14sp"
+                android:paddingEnd="-3dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/overpassmono_regular"/>
+        </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
