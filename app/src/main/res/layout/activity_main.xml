@@ -118,7 +118,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:gravity="top"
             android:fontFamily="@font/overpass_regular"
             android:paddingTop="10dp"
@@ -198,7 +198,7 @@
             android:id="@+id/output"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:scrollbars="vertical"
             android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
@@ -253,7 +253,7 @@
 
     <RelativeLayout
         android:id="@+id/morseInputContainer"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:background="#292C33"
         android:layout_marginBottom="1dp"
@@ -270,8 +270,8 @@
             android:layout_centerVertical="true"
             android:id="@+id/input_dot"
             android:src="@drawable/input_dot"
-            android:layout_width="12dp"
-            android:layout_height="12dp" />
+            android:layout_width="36dp"
+            android:layout_height="36dp" />
         </RelativeLayout>
         <RelativeLayout
             android:padding="45dp"
@@ -283,9 +283,9 @@
         <ImageView
             android:layout_centerVertical="true"
             android:id="@+id/input_dash"
-            android:layout_width="18dp"
+            android:layout_width="30dp"
             android:src="@drawable/input_dash"
-            android:layout_height="6dp" />
+            android:layout_height="8dp" />
         </RelativeLayout>
     </RelativeLayout>
     <RelativeLayout
