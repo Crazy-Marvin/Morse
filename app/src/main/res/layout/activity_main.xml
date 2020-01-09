@@ -24,7 +24,8 @@
             android:src="@drawable/ic_history"
             android:layout_marginStart="20dp"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:contentDescription="Open Phrasebook" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,7 +44,8 @@
         android:src="@drawable/ic_settings"
         android:layout_marginEnd="20dp"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:contentDescription="Settings" />
     </RelativeLayout>
     <ScrollView
         android:layout_width="wrap_content"
@@ -92,7 +94,8 @@
                     android:id="@+id/switchId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_switch"/>
+                    android:src="@drawable/ic_switch"
+                    android:contentDescription="Switch Input" />
             </RelativeLayout>
             <TextView
                 android:id="@+id/buttonTwo"
@@ -204,49 +207,70 @@
             android:layout_marginStart="40dp"
             android:textColor="@color/colorAccent"
             android:fontFamily="@font/overpass_regular"/>
-        <RelativeLayout
-            android:layout_below="@id/output"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/container_audio_copy"
-            android:layout_width="wrap_content"
-            android:layout_height="42dp">
-            <ImageView
-                android:layout_centerVertical="true"
-                android:id="@+id/flash"
-                android:layout_alignParentStart="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:tint="@color/colorMorse"
-                android:src="@drawable/ic_torch"/>
-            <ImageView
-                android:layout_centerVertical="true"
-                android:id="@+id/flare"
-                android:layout_toEndOf="@+id/flash"
-                android:layout_marginEnd="10dp"
-                android:tint="@color/colorMorse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_flare_24px"/>
-            <ImageView
-                android:id="@+id/playAudio"
-                android:layout_toEndOf="@+id/flare"
-                android:layout_width="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_height="wrap_content"
-                android:src="@drawable/volume"/>
-            <ImageView
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/playAudio"
-                android:id="@+id/copyText"
-                android:layout_marginStart="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/copy"/>
-        </RelativeLayout>
+
+   <RelativeLayout
+       android:layout_width="wrap_content"
+       android:layout_below="@id/output"
+       android:layout_alignParentEnd="true"
+       android:layout_marginTop="10dp"
+       android:layout_marginEnd="20dp"
+       android:layout_height="wrap_content">
+       <ImageView
+           android:layout_centerVertical="true"
+           android:id="@+id/star"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginEnd="10dp"
+           android:tint="@color/colorMorse"
+           android:src="@drawable/ic_star_border_black_24dp"
+           android:contentDescription="Save to phrasebook" />
+
+       <RelativeLayout
+           android:id="@+id/containerIcons"
+           android:background="@drawable/container_audio_copy"
+           android:layout_width="wrap_content"
+           android:layout_toRightOf="@id/star"
+           android:layout_height="42dp">
+           <ImageView
+               android:layout_centerVertical="true"
+               android:id="@+id/flash"
+               android:layout_alignParentStart="true"
+               android:layout_marginEnd="10dp"
+               android:layout_marginStart="10dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:tint="@color/colorMorse"
+               android:src="@drawable/ic_torch"
+               android:contentDescription="Use flash as morse code" />
+           <ImageView
+               android:layout_centerVertical="true"
+               android:id="@+id/flare"
+               android:layout_toEndOf="@+id/flash"
+               android:layout_marginEnd="10dp"
+               android:tint="@color/colorMorse"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_flare_24px"
+               android:contentDescription="Use screen as morse code" />
+           <ImageView
+               android:id="@+id/playAudio"
+               android:layout_toEndOf="@+id/flare"
+               android:layout_width="wrap_content"
+               android:contentDescription="Play Morse Code"
+               android:layout_centerVertical="true"
+               android:layout_height="wrap_content"
+               android:src="@drawable/volume"/>
+           <ImageView
+               android:layout_centerVertical="true"
+               android:layout_toEndOf="@+id/playAudio"
+               android:id="@+id/copyText"
+               android:layout_marginStart="10dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/copy"
+               android:contentDescription="Copy text" />
+       </RelativeLayout>
+   </RelativeLayout>
     </RelativeLayout>
     </RelativeLayout>
     </ScrollView>
@@ -271,7 +295,8 @@
             android:id="@+id/input_dot"
             android:src="@drawable/input_dot"
             android:layout_width="36dp"
-            android:layout_height="36dp" />
+            android:layout_height="36dp"
+            android:contentDescription="dot" />
         </RelativeLayout>
         <RelativeLayout
             android:padding="45dp"
@@ -285,7 +310,8 @@
             android:id="@+id/input_dash"
             android:layout_width="30dp"
             android:src="@drawable/input_dash"
-            android:layout_height="8dp" />
+            android:layout_height="8dp"
+            android:contentDescription="dash" />
         </RelativeLayout>
     </RelativeLayout>
     <RelativeLayout
@@ -308,7 +334,8 @@
                 android:id="@+id/input_fullscreen"
                 android:src="@drawable/fullscreen"
                 android:layout_width="24dp"
-                android:layout_height="24dp" />
+                android:layout_height="24dp"
+                android:contentDescription="full screen" />
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/input_visible_container"
@@ -323,7 +350,8 @@
                 android:id="@+id/input_visible"
                 android:src="@drawable/ic_baseline_arrow_upward_24px"
                 android:layout_width="24dp"
-                android:layout_height="24dp" />
+                android:layout_height="24dp"
+                android:contentDescription="Make keyboard for morse input visible" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -346,7 +374,8 @@
                 android:id="@+id/input_clear"
                 android:src="@drawable/backspace"
                 android:layout_width="24dp"
-                android:layout_height="24dp" />
+                android:layout_height="24dp"
+                android:contentDescription="Clear input" />
         </RelativeLayout>
         <RelativeLayout
             android:layout_toEndOf="@id/input_clear_container"
@@ -361,7 +390,8 @@
                 android:id="@+id/input_mic"
                 android:src="@drawable/mic"
                 android:layout_width="24dp"
-                android:layout_height="24dp" />
+                android:layout_height="24dp"
+                android:contentDescription="Mic" />
         </RelativeLayout>
     </RelativeLayout>
 

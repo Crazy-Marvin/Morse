@@ -2,42 +2,39 @@ package rocks.poopjournal.morse;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.graphics.Typeface;
 import android.hardware.Camera;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
-import android.os.PowerManager;
 import android.os.SystemClock;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
-import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -79,12 +76,16 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     HashMap<String, String> popularMorseConversion = new HashMap<>();
     HashMap<String, String> popularMorseConversionText = new HashMap<>();
     String flashText = null;
+    DBHelper helper;
+    ImageView star;
+    ArrayList<PhrasebookModel> arrayList;
+    final AtomicBoolean textToMorse = new AtomicBoolean(true);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final AtomicBoolean textToMorse = new AtomicBoolean(true);
+
         settings = findViewById(R.id.settings);
         mic = findViewById(R.id.input_mic_container);
         fullscreen = findViewById(R.id.input_fullscreen_container);
@@ -100,6 +101,9 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         flash = findViewById(R.id.flash);
         popularMorseSuggestionContainer = findViewById(R.id.bottom_suggestion_container);
 
+        helper = new DBHelper(getApplicationContext());
+
+        star = findViewById(R.id.star);
         popularMorse.add("...---...");
         popularMorse.add("-.-.--.--..");
         popularMorse.add(".--.....--.....--....--.----...--.-.---..---.....-");
@@ -118,6 +122,13 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         flash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                   int hasCameraPermission = checkSelfPermission(Manifest.permission.CAMERA);
+
+        if (hasCameraPermission != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getApplicationContext(),"Please give camera permission to use flash",Toast.LENGTH_SHORT).show();
+            return;
+        }
                 turnOff();
                 if (textToMorse.get()){
                     if (!TextUtils.isEmpty(output.getText().toString())){
@@ -183,7 +194,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"To be implemented in a future release", Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(MainActivity.this, PhraseBookActivity.class));
             }
         });
         mic.setOnClickListener(new View.OnClickListener() {
@@ -248,6 +260,21 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         };
 
 
+        star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!TextUtils.isEmpty(output.getText().toString().trim()) && !TextUtils.isEmpty(input.getText().toString().trim())){
+                    if (textToMorse.get())
+                        helper.addPhrase(input.getText().toString(),output.getText().toString());
+                    else {
+                        helper.addPhrase(output.getText().toString(),input.getText().toString());
+                    }
+                }
+
+                arrayList = helper.getAllPhrases();
+                checkForStarColor();
+            }
+        });
         flare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -508,6 +535,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                     output.setText("");
                     return;
                 }
+
                 if (textToMorse.get()){
                     output.setText("");
                     String text = input.getText().toString();
@@ -515,6 +543,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                     for (String letter : letters) {
                         output.append(morseEncode(letter)+" ");
                     }
+
+
                 }
                 else {
                     if (popularMorse.contains(input.getText().toString())){
@@ -592,14 +622,68 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                         output.append(morseDecode(morse));
                     }
                 }
+
+
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                checkForStarColor();
             }
         });
     }
+
+    private void checkForStarColor() {
+        boolean isTrue = false;
+        if (arrayList==null || arrayList.size()==0){
+            star.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_star_border_black_24dp));
+            star.setColorFilter(Color.parseColor("#7DD3D8"));
+            Log.d("debug_star","did not match new text: " + input.getText().toString() + ", setting star to off");
+            return;
+        }
+        if (textToMorse.get()){
+            for (PhrasebookModel model: arrayList){
+                if (model.text.trim().equals(input.getText().toString().trim())){
+                    star.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_star_black_24dp));
+                    star.setColorFilter(Color.parseColor("#F9A825"));
+                    Log.d("debug_star","matched new text: " + input.getText().toString() + ", setting star to on");
+                    return;
+                }
+                else {
+
+                    isTrue = true;
+                }
+
+            }
+            if (isTrue){
+                star.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_star_border_black_24dp));
+                star.setColorFilter(Color.parseColor("#7DD3D8"));
+                Log.d("debug_star","did not match new text: " + input.getText().toString() + ", setting star to on");
+            }
+        }
+        else {
+            for (PhrasebookModel model: arrayList){
+                if (model.text.trim().equals(output.getText().toString().trim())){
+                    star.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_star_black_24dp));
+                    star.setColorFilter(Color.parseColor("#F9A825"));
+                    Log.d("debug_star","matched new text: " + output.getText().toString() + ", setting star to on");
+                    return;
+                }
+                else {
+
+                    isTrue = true;
+                }
+
+            }
+            if (isTrue){
+                star.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_star_border_black_24dp));
+                star.setColorFilter(Color.parseColor("#7DD3D8"));
+                Log.d("debug_star","did not match new text: " + output.getText().toString() + ", setting star to on");
+            }
+        }
+
+    }
+
     private View.OnTouchListener otl = new View.OnTouchListener() {
         public boolean onTouch (View v, MotionEvent event) {
             return true; // the listener has consumed the event
@@ -873,6 +957,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     }
 
     public void turnOn() {
+
         camera = Camera.open();
         try {
             Camera.Parameters parameters = camera.getParameters();
@@ -1004,4 +1089,21 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         sb.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(),R.color.colorMorse)), k+1,  k+popularMorseConversionText.get(input.getText().toString()).length() +1, 0);
         t.setText(sb);
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        arrayList = helper.getAllPhrases();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        helper = new DBHelper(getApplicationContext());
+        arrayList = helper.getAllPhrases();
+        // Checks the orientation of the scree
+        }
+
 }
