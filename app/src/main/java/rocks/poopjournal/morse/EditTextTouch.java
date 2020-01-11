@@ -1,12 +1,14 @@
 package rocks.poopjournal.morse;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
-public class EditTextTouch extends android.support.v7.widget.AppCompatEditText {
+@SuppressLint("AppCompatCustomView")
+public class EditTextTouch extends EditText {
     public EditTextTouch(Context context) {
         super(context);
     }
