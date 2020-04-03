@@ -1,7 +1,6 @@
 package rocks.poopjournal.morse;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,12 +25,7 @@ public class PhraseBookActivity extends AppCompatActivity {
         helper = new DBHelper(getApplicationContext());
 
         back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        back.setOnClickListener(view -> finish());
         ArrayList<PhrasebookModel> arrayList = helper.getAllPhrases();
 
 

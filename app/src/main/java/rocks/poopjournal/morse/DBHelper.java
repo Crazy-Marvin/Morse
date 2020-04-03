@@ -75,7 +75,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public ArrayList<PhrasebookModel> getAllPhrases() {
         String selectQuery = "SELECT * FROM " + TABLE_PHRASEBOOK;
-        ArrayList<PhrasebookModel> mList = new ArrayList<PhrasebookModel>();
+        ArrayList<PhrasebookModel> mList = new ArrayList<>();
 
         try {
             SQLiteDatabase db = this.getWritableDatabase();

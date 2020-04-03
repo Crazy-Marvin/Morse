@@ -27,7 +27,6 @@ import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -105,44 +104,26 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 if (something[global_counter].equals(".")) {
                     Log.d("flare", "dot");
                     final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Log.d("flare", "dot_post_delayed");
-                            flare_view.setVisibility(View.GONE);
-                            global_counter++;
-                            flare_view.setTag(flare_view.getVisibility());
-                            if (global_counter != something.length) {
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-
-                                        flash_display();
-                                    }
-                                }, 150);
-                            }
-
+                    handler.postDelayed(() -> {
+                        Log.d("flare", "dot_post_delayed");
+                        flare_view.setVisibility(View.GONE);
+                        global_counter++;
+                        flare_view.setTag(flare_view.getVisibility());
+                        if (global_counter != something.length) {
+                            handler.postDelayed(MainActivity.this::flash_display, 150);
                         }
+
                     }, 350);
                 } else if (something[global_counter].equals("-")) {
                     final Handler handler = new Handler();
                     Log.d("flare", "dash");
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Log.d("flare", "dash_post_delayed");
-                            flare_view.setVisibility(View.GONE);
-                            global_counter++;
-                            flare_view.setTag(flare_view.getVisibility());
-                            if (global_counter != something.length) {
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-
-                                        flash_display();
-                                    }
-                                }, 150);
-                            }
+                    handler.postDelayed(() -> {
+                        Log.d("flare", "dash_post_delayed");
+                        flare_view.setVisibility(View.GONE);
+                        global_counter++;
+                        flare_view.setTag(flare_view.getVisibility());
+                        if (global_counter != something.length) {
+                            handler.postDelayed(MainActivity.this::flash_display, 150);
                         }
                     }, 1000);
                 } else {
@@ -152,10 +133,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
             }
         }
     };
-    private View.OnTouchListener otl = new View.OnTouchListener() {
-        public boolean onTouch(View v, MotionEvent event) {
-            return true; // the listener has consumed the event
-        }
+    private View.OnTouchListener otl = (v, event) -> {
+        return true; // the listener has consumed the event
     };
 
     public static void setMargins(View v, int l, int t, int r, int b) {
@@ -344,228 +323,183 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         popularMorseConversionText.put("-.-.--.--..", "CQD");
         popularMorseConversionText.put(".--.....--.....--....--.----...--.-.---..---.....-", "What hath God wrought");
         popularMorseConversionText.put(".-..--...", "rats");
-        flash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        flash.setOnClickListener(view -> {
 
-                int hasCameraPermission = checkSelfPermission(Manifest.permission.CAMERA);
+            int hasCameraPermission = 0;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                hasCameraPermission = checkSelfPermission(Manifest.permission.CAMERA);
+            }
 
-                if (hasCameraPermission != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getApplicationContext(), "Please give camera permission to use flash", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                turnOff();
-                if (textToMorse.get()) {
-                    if (!TextUtils.isEmpty(output.getText().toString())) {
-                        String[] something = TextUtils.split(output.getText().toString().trim().replaceAll("\\s+", ""), "");
-                        Log.d("test_string", output.getText().toString().trim().replace(" ", "").replace("  ", ""));
-                        Log.d("test_string", ".....");
-                        Log.d("test_length_string", String.valueOf(something.length))
-                        ;
-                        for (String s : something) {
-                            Log.d("skkk", s);
-                        }
-
-                        int len = something.length;
-
-
-                        int currentcounter = 0;
-                        for (String s : something) {
-                            if (s.equals(".")) {
-                                turnOn();
-                                SystemClock.sleep(200);
-                                turnOff();
-                            } else if (s.equals("-")) {
-                                turnOn();
-                                SystemClock.sleep(600);
-                                turnOff();
-                            }
-                        }
-
+            if (hasCameraPermission != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(getApplicationContext(), "Please give camera permission to use flash", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            turnOff();
+            if (textToMorse.get()) {
+                if (!TextUtils.isEmpty(output.getText().toString())) {
+                    String[] something = TextUtils.split(output.getText().toString().trim().replaceAll("\\s+", ""), "");
+                    Log.d("test_string", output.getText().toString().trim().replace(" ", "").replace("  ", ""));
+                    Log.d("test_string", ".....");
+                    Log.d("test_length_string", String.valueOf(something.length))
+                    ;
+                    for (String s : something) {
+                        Log.d("skkk", s);
                     }
-                } else {
-                    if (!TextUtils.isEmpty(input.getText().toString())) {
-                        String[] something = TextUtils.split(input.getText().toString().trim().replaceAll("\\s+", ""), "");
-                        Log.d("test_string", input.getText().toString().trim().replace(" ", "").replace("  ", ""));
-                        Log.d("test_string", ".....");
-                        Log.d("test_length_string", String.valueOf(something.length))
-                        ;
-                        for (String s : something) {
-                            Log.d("skkk", s);
+
+                    int len = something.length;
+
+
+                    int currentcounter = 0;
+                    for (String s : something) {
+                        if (s.equals(".")) {
+                            turnOn();
+                            SystemClock.sleep(200);
+                            turnOff();
+                        } else if (s.equals("-")) {
+                            turnOn();
+                            SystemClock.sleep(600);
+                            turnOff();
                         }
-
-                        int len = something.length;
-
-
-                        int currentcounter = 0;
-                        for (String s : something) {
-                            if (s.equals(".")) {
-                                turnOn();
-                                SystemClock.sleep(200);
-                                turnOff();
-                            } else if (s.equals("-")) {
-                                turnOn();
-                                SystemClock.sleep(600);
-                                turnOff();
-                            }
-                        }
-
                     }
+
+                }
+            } else {
+                if (!TextUtils.isEmpty(input.getText().toString())) {
+                    String[] something = TextUtils.split(input.getText().toString().trim().replaceAll("\\s+", ""), "");
+                    Log.d("test_string", input.getText().toString().trim().replace(" ", "").replace("  ", ""));
+                    Log.d("test_string", ".....");
+                    Log.d("test_length_string", String.valueOf(something.length))
+                    ;
+                    for (String s : something) {
+                        Log.d("skkk", s);
+                    }
+
+                    int len = something.length;
+
+
+                    int currentcounter = 0;
+                    for (String s : something) {
+                        if (s.equals(".")) {
+                            turnOn();
+                            SystemClock.sleep(200);
+                            turnOff();
+                        } else if (s.equals("-")) {
+                            turnOn();
+                            SystemClock.sleep(600);
+                            turnOff();
+                        }
+                    }
+
                 }
             }
         });
 
-        history.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                startActivity(new Intent(MainActivity.this, PhraseBookActivity.class));
-            }
-        });
-        mic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "To be implemented in a future release", Toast.LENGTH_SHORT).show();
-            }
-        });
-        fullscreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "To be implemented in a future release", Toast.LENGTH_SHORT).show();
-            }
-        });
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "To be implemented in a future release", Toast.LENGTH_SHORT).show();
-            }
-        });
+        history.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, PhraseBookActivity.class)));
+        mic.setOnClickListener(view -> Toast.makeText(getApplicationContext(), "To be implemented in a future release", Toast.LENGTH_SHORT).show());
+        fullscreen.setOnClickListener(view -> Toast.makeText(getApplicationContext(), "To be implemented in a future release", Toast.LENGTH_SHORT).show());
+        settings.setOnClickListener(v -> Toast.makeText(getApplicationContext(), "To be implemented in a future release", Toast.LENGTH_SHORT).show());
         container = findViewById(R.id.container);
         bottomNavigation = findViewById(R.id.bottomLayout);
         morseInputContainer = findViewById(R.id.morseInputContainer);
 
         makeInputVisible = findViewById(R.id.input_visible_container);
-        makeInputVisible.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (morseInputContainer.getVisibility() == View.GONE)
-                    morseInputContainer.setVisibility(View.VISIBLE);
-                else {
-                    morseInputContainer.setVisibility(View.GONE);
-                }
+        makeInputVisible.setOnClickListener(v -> {
+            if (morseInputContainer.getVisibility() == View.GONE)
+                morseInputContainer.setVisibility(View.VISIBLE);
+            else {
+                morseInputContainer.setVisibility(View.GONE);
             }
         });
-        copy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("something", output.getText().toString());
-                clipboard.setPrimaryClip(clip);
-                Toast.makeText(getApplicationContext(), "Text copied", Toast.LENGTH_SHORT).show();
-            }
+        copy.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("something", output.getText().toString());
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(getApplicationContext(), "Text copied", Toast.LENGTH_SHORT).show();
         });
 
-        addKeyboardVisibilityListener(container, new KeyboardVisibilityCallback() {
-            @Override
-            public void onChange(boolean isVisible) {
-                visibilityCheck = isVisible;
-            }
-        });
+        addKeyboardVisibilityListener(container, isVisible -> visibilityCheck = isVisible);
 
 
         final ImageView flare = findViewById(R.id.flare);
-        final Runnable hide = new Runnable() {
-            @Override
-            public void run() {
-                flare_view.setVisibility(View.GONE);
+        final Runnable hide = () -> {
+            flare_view.setVisibility(View.GONE);
 
-                Log.d("flare", "set to gone");
-            }
+            Log.d("flare", "set to gone");
         };
 
 
-        star.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!TextUtils.isEmpty(output.getText().toString().trim()) && !TextUtils.isEmpty(input.getText().toString().trim())) {
-                    if (textToMorse.get())
-                        helper.addPhrase(input.getText().toString(), output.getText().toString());
-                    else {
-                        helper.addPhrase(output.getText().toString(), input.getText().toString());
-                    }
+        star.setOnClickListener(view -> {
+            if (!TextUtils.isEmpty(output.getText().toString().trim()) && !TextUtils.isEmpty(input.getText().toString().trim())) {
+                if (textToMorse.get())
+                    helper.addPhrase(input.getText().toString(), output.getText().toString());
+                else {
+                    helper.addPhrase(output.getText().toString(), input.getText().toString());
                 }
-
-                arrayList = helper.getAllPhrases();
-                checkForStarColor();
             }
+
+            arrayList = helper.getAllPhrases();
+            checkForStarColor();
         });
-        flare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (textToMorse.get()) {
-                    if (!TextUtils.isEmpty(output.getText().toString())) {
+        flare.setOnClickListener(view -> {
+            if (textToMorse.get()) {
+                if (!TextUtils.isEmpty(output.getText().toString())) {
+/*
+                    new Thread() {
+                        public void run() {
+                            String[] something = TextUtils.split(output.getText().toString().trim().replaceAll("\\s+", ""), "");
+                            for (String s : something) {
 
-                      /*  new Thread() {
-                            public void run() {
-                                String[] something =  TextUtils.split(output.getText().toString().trim().replaceAll("\\s+",""),"");
-                                for (String s : something) {
+                                try {
 
-                                    try {
-
-                                        flare_view.setVisibility(View.VISIBLE);
-                                        sleep(500);
-                                        flare_view.setVisibility(View.INVISIBLE);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-
-
+                                    flare_view.setVisibility(View.VISIBLE);
+                                    sleep(500);
+                                    flare_view.setVisibility(View.INVISIBLE);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
                                 }
+
+
                             }
-                        }.run();
-
-
+                        }
+                    }.run();
 */
 
-                        flare_view.getViewTreeObserver().addOnGlobalLayoutListener(listener);
-                        flashText = output.getText().toString().trim().replace(" ", "").replaceAll("\\s+", "");
-                        global_counter = 0;
-                        flash_display();
+                    flare_view.getViewTreeObserver().addOnGlobalLayoutListener(listener);
+                    flashText = output.getText().toString().trim().replace(" ", "").replaceAll("\\s+", "");
+                    global_counter = 0;
+                    flash_display();
 
 
-                    }
-                } else {
-                    if (!TextUtils.isEmpty(input.getText().toString())) {
+                }
+            } else {
+                if (!TextUtils.isEmpty(input.getText().toString())) {
+/*
+                    new Thread() {
+                        public void run() {
+                            String[] something = TextUtils.split(output.getText().toString().trim().replaceAll("\\s+", ""), "");
+                            for (String s : something) {
 
-                      /*  new Thread() {
-                            public void run() {
-                                String[] something =  TextUtils.split(output.getText().toString().trim().replaceAll("\\s+",""),"");
-                                for (String s : something) {
+                                try {
 
-                                    try {
-
-                                        flare_view.setVisibility(View.VISIBLE);
-                                        sleep(500);
-                                        flare_view.setVisibility(View.INVISIBLE);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-
-
+                                    flare_view.setVisibility(View.VISIBLE);
+                                    sleep(500);
+                                    flare_view.setVisibility(View.INVISIBLE);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
                                 }
+
+
                             }
-                        }.run();
-
-
+                        }
+                    }.run();
 */
 
-                        flare_view.getViewTreeObserver().addOnGlobalLayoutListener(listener);
-                        flashText = input.getText().toString().trim().replace(" ", "").replaceAll("\\s+", "");
-                        global_counter = 0;
-                        flash_display();
+                    flare_view.getViewTreeObserver().addOnGlobalLayoutListener(listener);
+                    flashText = input.getText().toString().trim().replace(" ", "").replaceAll("\\s+", "");
+                    global_counter = 0;
+                    flash_display();
 
 
-                    }
                 }
             }
         });
@@ -657,82 +591,56 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 }
             }
         });
-        switchImageContainer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textToMorse.get()) {
-                    buttonOne.setText("MORSE");
-                    buttonTwo.setText("TEXT");
+        switchImageContainer.setOnClickListener(v -> {
+            if (textToMorse.get()) {
+                buttonOne.setText("MORSE");
+                buttonTwo.setText("TEXT");
+                input.setText("");
+                output.setText("");
+                textToMorse.set(false);
+                input.setOnTouchListener(otl);
+
+                bottomNavigation.setVisibility(View.VISIBLE);
+                morseInputContainer.setVisibility(View.VISIBLE);
+
+                if (visibilityCheck)
+                    hideKeyboard(MainActivity.this);
+                dot = findViewById(R.id.inputDotContainer);
+                dash = findViewById(R.id.inputDashContainer);
+                space = findViewById(R.id.input_space_container);
+                backspace = findViewById(R.id.input_clear_container);
+
+                dot.setOnClickListener(v1 -> {
+                    input.append(".");
+                    Log.d("test", "clicked");
+                });
+                dash.setOnClickListener(v12 -> input.append("-"));
+                space.setOnClickListener(v13 -> input.append(" "));
+                backspace.setOnClickListener(v14 -> {
+                    if (input.getText().toString().length() == 0)
+                        return;
+                    input.setText(input.getText().toString().substring(0, input.getText().toString().length() - 1));
+                    input.setSelection(input.getText().toString().length());
+
+                });
+                backspace.setOnLongClickListener(v15 -> {
                     input.setText("");
-                    output.setText("");
-                    textToMorse.set(false);
-                    input.setOnTouchListener(otl);
-
-                    bottomNavigation.setVisibility(View.VISIBLE);
-                    morseInputContainer.setVisibility(View.VISIBLE);
-
-                    if (visibilityCheck)
-                        hideKeyboard(MainActivity.this);
-                    dot = findViewById(R.id.inputDotContainer);
-                    dash = findViewById(R.id.inputDashContainer);
-                    space = findViewById(R.id.input_space_container);
-                    backspace = findViewById(R.id.input_clear_container);
-
-                    dot.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            input.append(".");
-                            Log.d("test", "clicked");
-                        }
-                    });
-                    dash.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            input.append("-");
-                        }
-                    });
-                    space.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            input.append(" ");
-                        }
-                    });
-                    backspace.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (input.getText().toString().length() == 0)
-                                return;
-                            input.setText(input.getText().toString().substring(0, input.getText().toString().length() - 1));
-                            input.setSelection(input.getText().toString().length());
-
-                        }
-                    });
-                    backspace.setOnLongClickListener(new View.OnLongClickListener() {
-                        @Override
-                        public boolean onLongClick(View v) {
-                            input.setText("");
-                            return false;
-                        }
-                    });
-                } else {
-                    input.setText("");
-                    output.setText("");
-                    buttonOne.setText("TEXT");
-                    buttonTwo.setText("MORSE");
-                    textToMorse.set(true);
-                    input.setOnTouchListener(new View.OnTouchListener() {
-
-                        @Override
-                        public boolean onTouch(View v, MotionEvent event) {
-                            v.setOnTouchListener(input.mOnTouchListener);
-                            return false;
-                        }
-                    });
-                    bottomNavigation.setVisibility(View.GONE);
-                    morseInputContainer.setVisibility(View.GONE);
+                    return false;
+                });
+            } else {
+                input.setText("");
+                output.setText("");
+                buttonOne.setText("TEXT");
+                buttonTwo.setText("MORSE");
+                textToMorse.set(true);
+                input.setOnTouchListener((v16, event) -> {
+                    v16.setOnTouchListener(input.mOnTouchListener);
+                    return false;
+                });
+                bottomNavigation.setVisibility(View.GONE);
+                morseInputContainer.setVisibility(View.GONE);
 
 
-                }
             }
         });
 
@@ -761,30 +669,23 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
                 } else {
                     if (popularMorse.contains(input.getText().toString())) {
-                     /*   final Dialog confirm = DialogsUtil.showVerificationDialog(MainActivity.this);
+/*
+                        final Dialog confirm = DialogsUtil.showVerificationDialog(MainActivity.this);
                         TextView original, converted, discard, yes;
                         original = confirm.findViewById(R.id.successTV);
                         converted = confirm.findViewById(R.id.descTV);
                         discard = confirm.findViewById(R.id.discardBtnVerify);
                         yes = confirm.findViewById(R.id.import_playlist);
 
-
                         original.setText(input.getText().toString());
-                        converted.setText("Do you mean " + popularMorseConversionText.get(input.getText().toString())+ " " + popularMorseConversion.get(input.getText().toString()) +"?");
-                        discard.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                confirm.dismiss();
-                            }
+                        converted.setText("Do you mean " + popularMorseConversionText.get(input.getText().toString()) + " " + popularMorseConversion.get(input.getText().toString()) + "?");
+                        discard.setOnClickListener(view -> confirm.dismiss());
+                        yes.setOnClickListener(view -> {
+                            input.setText(popularMorseConversion.get(input.getText().toString()));
+                            Toast.makeText(getApplicationContext(), "Changed morse", Toast.LENGTH_SHORT).show();
+                            confirm.dismiss();
                         });
-                        yes.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                input.setText(popularMorseConversion.get(input.getText().toString()));
-                                Toast.makeText(getApplicationContext(),"Changed morse",Toast.LENGTH_SHORT).show();
-                                confirm.dismiss();
-                            }
-                        });*/
+*/
                         Log.d("popular_morse", "true");
                         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) input.getLayoutParams();
                         setMargins(input, params.leftMargin, params.topMargin, params.rightMargin, 2);
@@ -798,27 +699,21 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                         suggestionTV.setText("Did you mean " + popularMorseConversion.get(input.getText().toString()) + " (" + popularMorseConversionText.get(input.getText().toString()) + ")?");
                         change(suggestionTV.getText().toString(), popularMorseConversion.get(input.getText().toString()), suggestionTV);
 
-                        replace.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                input.setText(popularMorseConversion.get(input.getText().toString()));
-                                input.setSelection(input.getText().length());
-                                Toast.makeText(getApplicationContext(), "Changed morse", Toast.LENGTH_SHORT).show();
-                                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) input.getLayoutParams();
-                                setMargins(input, params.leftMargin, params.topMargin, params.rightMargin, 20);
-                                input.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.et_morse));
-                                popularMorseSuggestionContainer.setVisibility(View.GONE);
-                            }
+                        replace.setOnClickListener(view -> {
+                            input.setText(popularMorseConversion.get(input.getText().toString()));
+                            input.setSelection(input.getText().length());
+                            Toast.makeText(getApplicationContext(), "Changed morse", Toast.LENGTH_SHORT).show();
+                            RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) input.getLayoutParams();
+                            setMargins(input, params1.leftMargin, params1.topMargin, params1.rightMargin, 20);
+                            input.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.et_morse));
+                            popularMorseSuggestionContainer.setVisibility(View.GONE);
                         });
 
-                        ignore.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) input.getLayoutParams();
-                                setMargins(input, params.leftMargin, params.topMargin, params.rightMargin, 20);
-                                input.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.et_morse));
-                                popularMorseSuggestionContainer.setVisibility(View.GONE);
-                            }
+                        ignore.setOnClickListener(view -> {
+                            RelativeLayout.LayoutParams params12 = (RelativeLayout.LayoutParams) input.getLayoutParams();
+                            setMargins(input, params12.leftMargin, params12.topMargin, params12.rightMargin, 20);
+                            input.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.et_morse));
+                            popularMorseSuggestionContainer.setVisibility(View.GONE);
                         });
                     } else {
                         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) input.getLayoutParams();
@@ -905,20 +800,17 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     public void addKeyboardVisibilityListener(
             final View rootView, final KeyboardVisibilityCallback callback) {
         rootView.getViewTreeObserver().addOnGlobalLayoutListener(
-                new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-                        Rect r = new Rect();
+                () -> {
+                    Rect r = new Rect();
 
-                        rootView.getWindowVisibleDisplayFrame(r);
-                        int screenHeight = rootView.getRootView().getHeight();
-                        int keypadHeight = screenHeight - r.bottom;
+                    rootView.getWindowVisibleDisplayFrame(r);
+                    int screenHeight = rootView.getRootView().getHeight();
+                    int keypadHeight = screenHeight - r.bottom;
 
-                        if (keypadHeight > screenHeight * 0.15) {
-                            callback.onChange(true);
-                        } else {
-                            callback.onChange(false);
-                        }
+                    if (keypadHeight > screenHeight * 0.15) {
+                        callback.onChange(true);
+                    } else {
+                        callback.onChange(false);
                     }
                 });
     }
@@ -977,14 +869,14 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
             int hasCameraPermission = checkSelfPermission(Manifest.permission.CAMERA);
 
-            List<String> permissions = new ArrayList<String>();
+            List<String> permissions = new ArrayList<>();
 
             if (hasCameraPermission != PackageManager.PERMISSION_GRANTED) {
                 permissions.add(Manifest.permission.CAMERA);
 
             }
             if (!permissions.isEmpty()) {
-                requestPermissions(permissions.toArray(new String[permissions.size()]), 111);
+                requestPermissions(permissions.toArray(new String[0]), 111);
             }
         }
 
@@ -993,23 +885,19 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case 111: {
-                for (int i = 0; i < permissions.length; i++) {
-                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                        System.out.println("Permissions --> " + "Permission Granted: " + permissions[i]);
+        if (requestCode == 111) {
+            for (int i = 0; i < permissions.length; i++) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                    System.out.println("Permissions --> " + "Permission Granted: " + permissions[i]);
 
 
-                    } else if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
-                        System.out.println("Permissions --> " + "Permission Denied: " + permissions[i]);
+                } else if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
+                    System.out.println("Permissions --> " + "Permission Denied: " + permissions[i]);
 
-                    }
                 }
             }
-            break;
-            default: {
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
@@ -1050,19 +938,15 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
     private class AsyncTaskRunner extends AsyncTask<String, String, String> {
 
-        private String resp;
-
         @Override
         protected String doInBackground(String... params) {
             publishProgress("Sleeping..."); // Calls onProgressUpdate()
+            String resp;
             try {
                 int time = Integer.parseInt(params[0]);
 
                 Thread.sleep(time);
                 resp = "Slept for " + params[0] + " seconds";
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                resp = e.getMessage();
             } catch (Exception e) {
                 e.printStackTrace();
                 resp = e.getMessage();
