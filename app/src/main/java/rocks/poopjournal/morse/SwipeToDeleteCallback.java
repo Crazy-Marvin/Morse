@@ -4,23 +4,18 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.view.View;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG;
-import static androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE;
-
 public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
+    private final ColorDrawable background;
     private PhrasebookAdapter mAdapter;
     private Drawable icon;
-    private final ColorDrawable background;
+
     public SwipeToDeleteCallback(PhrasebookAdapter adapter) {
         super(0, ItemTouchHelper.LEFT);
         mAdapter = adapter;
@@ -42,9 +37,6 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
         mAdapter.deleteItem(position);
 
     }
-
-
-
 
 
     @Override

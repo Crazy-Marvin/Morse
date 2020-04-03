@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,12 +17,13 @@ public class PhraseBookActivity extends AppCompatActivity {
     PhrasebookAdapter phrasebookAdapter;
     DBHelper helper;
     ImageView back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrasebook);
 
-        helper =new DBHelper(getApplicationContext());
+        helper = new DBHelper(getApplicationContext());
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -33,7 +33,6 @@ public class PhraseBookActivity extends AppCompatActivity {
             }
         });
         ArrayList<PhrasebookModel> arrayList = helper.getAllPhrases();
-
 
 
         phrasebookAdapter = new PhrasebookAdapter(this, helper);

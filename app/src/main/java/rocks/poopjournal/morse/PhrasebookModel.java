@@ -1,9 +1,9 @@
 package rocks.poopjournal.morse;
 
 public class PhrasebookModel {
-    int id;
     public String text;
     public String morse;
+    int id;
 
     public PhrasebookModel(int id, String text, String morse) {
         this.id = id;

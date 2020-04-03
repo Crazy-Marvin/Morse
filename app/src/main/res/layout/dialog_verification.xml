@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorBackground"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+    android:background="@color/colorBackground">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
         android:id="@+id/containerVerificationDialog"
-        android:layout_height="wrap_content">
-
-    <TextView
         android:layout_width="wrap_content"
-        android:fontFamily="@font/overpassmono_regular"
-        android:textSize="22sp"
-        android:textColor="@color/colorMorse"
-        android:text="--...--"
-        android:id="@+id/successTV"
-        android:layout_marginTop="38dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:fontFamily="@font/overpassmono_regular"
-            android:textSize="22sp"
-            android:textColor="@color/colorMorse"
-            android:text="Do you mean --...--?"
-            android:id="@+id/descTV"
-            android:layout_marginTop="38dp"
-            android:layout_below="@id/successTV"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_height="wrap_content" />
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp"
-        android:id="@+id/buttonLayoutSuccessDialog"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_below="@id/descTV"
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="0dp"
-            android:id="@+id/discardBtnVerify"
-            android:text="Discard"
-            android:background="@drawable/continue_btn_success"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:gravity="center"
-            android:layout_weight="0.6"
-            android:layout_marginEnd="10dp"
+            android:id="@+id/successTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="15dp"
             android:fontFamily="@font/overpassmono_regular"
-            android:textAllCaps="false"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp" />
+            android:text="--...--"
+            android:textColor="@color/colorMorse"
+            android:textSize="22sp" />
+
         <TextView
-            android:layout_width="0dp"
-            android:id="@+id/import_playlist"
-            android:text="Yes"
-            android:background="@drawable/continue_shopping_button"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:gravity="center"
-            android:layout_weight="0.6"
-            android:layout_marginEnd="10dp"
+            android:id="@+id/descTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/successTV"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="15dp"
             android:fontFamily="@font/overpassmono_regular"
-            android:textAllCaps="false"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp" />
+            android:gravity="center"
+            android:text="Do you mean --...--?"
+            android:textColor="@color/colorMorse"
+            android:textSize="22sp" />
 
 
-    </LinearLayout>
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/buttonLayoutSuccessDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descTV"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/discardBtnVerify"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.6"
+                android:background="@drawable/continue_btn_success"
+                android:fontFamily="@font/overpassmono_regular"
+                android:gravity="center"
+                android:paddingStart="5dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="8dp"
+                android:text="Discard"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/import_playlist"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.6"
+                android:background="@drawable/continue_shopping_button"
+                android:fontFamily="@font/overpassmono_regular"
+                android:gravity="center"
+                android:paddingStart="5dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="8dp"
+                android:text="Yes"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>

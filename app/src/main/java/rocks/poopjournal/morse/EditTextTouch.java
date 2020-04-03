@@ -9,6 +9,13 @@ import android.widget.EditText;
 
 @SuppressLint("AppCompatCustomView")
 public class EditTextTouch extends EditText {
+    public final OnTouchListener mOnTouchListener = new OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent rawEvent) {
+            return false;
+        }
+    };
+
     public EditTextTouch(Context context) {
         super(context);
     }
@@ -20,10 +27,4 @@ public class EditTextTouch extends EditText {
     public EditTextTouch(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-    public final OnTouchListener mOnTouchListener = new OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent rawEvent) {
-            return false;
-        }
-    };
 }

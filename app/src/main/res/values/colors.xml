@@ -11,8 +11,8 @@
 
     <color name="colorDialogTransclucent">#8f000000</color>
 
-    <color name="textGrey3">          #323643    </color>
+    <color name="textGrey3">#323643</color>
 
-    <color name="colorGreyLight">         #FF9B9B9B  </color>
+    <color name="colorGreyLight">#FF9B9B9B</color>
     <color name="colorMorse">#7DD3D8</color>
 </resources>

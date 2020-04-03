@@ -9,10 +9,10 @@ import android.widget.LinearLayout;
 public class DialogsUtil {
 
 
-    public static Dialog showVerificationDialog(Activity activity){
+    public static Dialog showVerificationDialog(Activity activity) {
 
         Dialog dialog;
-        dialog = new Dialog(activity,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        dialog = new Dialog(activity, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(
                 new ColorDrawable(activity.getResources().getColor(R.color.colorDialogTransclucent)));
