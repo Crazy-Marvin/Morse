@@ -8,9 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -44,49 +42,47 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
-    public void addPhrase(String text, String morse){
 
-        for (PhrasebookModel model: getAllPhrases()){
-            if (model.text.trim().equals(text.trim())){
+    public void addPhrase(String text, String morse) {
+
+        for (PhrasebookModel model : getAllPhrases()) {
+            if (model.text.trim().equals(text.trim())) {
                 deleteNote(model.id);
-                Log.d("debug_star","deleted note, now returning");
+                Log.d("debug_star", "deleted note, now returning");
                 return;
             }
         }
 
-        Log.d("debug_star","adding note, now returning");
+        Log.d("debug_star", "adding note, now returning");
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put("sentence", text);
-        values.put("morse",morse);
+        values.put("morse", morse);
 
-        db.insert(TABLE_PHRASEBOOK, null,values);
+        db.insert(TABLE_PHRASEBOOK, null, values);
         db.close(); // Closing database connection
     }
 
 
-
-
-
-    public void deleteNote(int id){
+    public void deleteNote(int id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_PHRASEBOOK,"id= " + id,null);
+        db.delete(TABLE_PHRASEBOOK, "id= " + id, null);
         db.close(); // Closing database connection
 
     }
 
     public ArrayList<PhrasebookModel> getAllPhrases() {
         String selectQuery = "SELECT * FROM " + TABLE_PHRASEBOOK;
-        ArrayList<PhrasebookModel> mList = new ArrayList<PhrasebookModel>();
+        ArrayList<PhrasebookModel> mList = new ArrayList<>();
 
         try {
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery(selectQuery, null);
             while (cursor.moveToNext()) {
-                mList.add(new PhrasebookModel(cursor.getInt(0),cursor.getString(1),cursor.getString(2)));
-               // Log.d(TAG, "title"+cursor.getString(3)+" notes="+cursor.getString(4));
+                mList.add(new PhrasebookModel(cursor.getInt(0), cursor.getString(1), cursor.getString(2)));
+                // Log.d(TAG, "title"+cursor.getString(3)+" notes="+cursor.getString(4));
             }
             db.close();
             return mList;
