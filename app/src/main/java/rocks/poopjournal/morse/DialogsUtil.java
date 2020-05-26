@@ -9,13 +9,13 @@ import android.widget.LinearLayout;
 public class DialogsUtil {
 
 
-    public static Dialog showVerificationDialog(Activity activity){
+    public static Dialog showVerificationDialog(Activity activity) {
 
         Dialog dialog;
-        dialog = new Dialog(activity,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        dialog = new Dialog(activity, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(
-                new ColorDrawable(activity.getResources().getColor(R.color.colorDialogTransclucent)));
+                new ColorDrawable(activity.getResources().getColor(R.color.colorDialogTranslucent)));
         dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         dialog.setContentView(R.layout.dialog_verification);
         dialog.setCancelable(true);

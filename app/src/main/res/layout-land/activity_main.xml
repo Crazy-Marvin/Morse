@@ -1,394 +1,425 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
-    android:background="@color/colorBackground"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
 
     <RelativeLayout
         android:id="@+id/flare_view"
-        android:background="#FFFFFF"
-        android:visibility="gone"
-        android:translationZ="1dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:translationZ="1dp"
+        android:visibility="gone" />
+
     <RelativeLayout
         android:id="@+id/topContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp">
+
         <ImageView
             android:id="@+id/history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_history"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
             android:contentDescription="Open Phrasebook"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"/>
+            android:src="@drawable/ic_history" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Morse"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorAccent"
-        android:textSize="20sp"
-        android:fontFamily="@font/overpassmono_regular"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/overpassmono_regular"
+            android:text="Morse"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
 
-       />
-    <ImageView
-        android:id="@+id/settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_settings"
-        android:layout_marginEnd="20dp"
-        android:contentDescription="Settings"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"/>
+            />
+
+        <ImageView
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="Settings"
+            android:src="@drawable/ic_settings" />
     </RelativeLayout>
 
     <ScrollView
-        android:layout_below="@id/topContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@id/bottomLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_below="@id/topContainer">
 
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-
-    <RelativeLayout
-        android:id="@+id/writingContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gradient_bg">
-        <RelativeLayout
-            android:id="@+id/switchContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
-            <TextView
-                android:id="@+id/buttonOne"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="TEXT"
-                android:textColor="@color/colorSecondaryText"
-                android:textSize="14sp"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/switchImageContainer"
-                android:fontFamily="@font/overpassmono_regular"/>
-
-            <RelativeLayout
-                android:id="@+id/switchImageContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:background="@drawable/background_ring">
-                <ImageView
-                    android:id="@+id/switchId"
-                    android:layout_width="wrap_content"
-
-                    android:contentDescription="Switch Input"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_switch"/>
-            </RelativeLayout>
-            <TextView
-                android:id="@+id/buttonTwo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="MORSE"
-                android:layout_centerVertical="true"
-                android:textColor="@color/colorSecondaryText"
-                android:textSize="14sp"
-                android:fontFamily="@font/overpassmono_regular"
-                android:layout_toEndOf="@id/switchImageContainer"/>
-        </RelativeLayout>
-
-        <rocks.poopjournal.morse.EditTextTouch
-            android:id="@+id/input"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:textColor="@color/colorSecondaryText"
-            android:background="@drawable/et_morse"
-            android:layout_below="@+id/switchContainer"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:textSize="20sp"
-            android:gravity="top"
-            android:fontFamily="@font/overpass_regular"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingEnd="20dp"
-            android:paddingStart="20dp"/>
-        <RelativeLayout
-            android:id="@+id/bottom_suggestion_container"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:visibility="gone"
-            android:textColor="@color/colorSecondaryText"
-            android:background="@drawable/bg_bottom_suggestion"
-            android:layout_below="@+id/input"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="20dp"
-            android:textSize="15sp"
-            android:gravity="top"
-            android:fontFamily="@font/overpass_regular"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingEnd="10dp"
-            android:paddingStart="20dp">
-            <TextView
-                android:id="@+id/suggestion_text_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/colorSecondaryText"
-                android:textSize="14sp"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="10dp"
-                android:scrollbars = "vertical"
-                android:layout_above="@id/replace_suggestion"
-                android:fontFamily="@font/overpassmono_regular"/>
-            <TextView
-                android:id="@+id/ignore_suggestion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="IGNORE"
-                android:textColor="@color/colorSecondaryText"
-                android:textSize="14sp"
-                android:layout_toStartOf="@id/replace_suggestion"
-                android:layout_alignParentBottom="true"
-
-                android:fontFamily="@font/overpassmono_regular"/>
-            <TextView
-                android:id="@+id/replace_suggestion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="REPLACE"
-                android:textColor="@color/colorMorse"
-                android:textSize="14sp"
-                android:paddingEnd="-3dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:fontFamily="@font/overpassmono_regular"/>
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/viewing_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:layout_below="@id/writingContainer">
-
-        <TextView
-            android:id="@+id/output"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:textSize="20sp"
-            android:scrollbars="vertical"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"
-            android:textColor="@color/colorAccent"
-            android:fontFamily="@font/overpass_regular"/>
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_below="@id/output"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
             android:layout_height="wrap_content">
-            <ImageView
-                android:layout_centerVertical="true"
-                android:id="@+id/star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:tint="@color/colorMorse"
-                android:src="@drawable/ic_star_border_black_24dp"
-                android:contentDescription="Save to phrasebook" />
+
 
             <RelativeLayout
-                android:id="@+id/containerIcons"
-                android:background="@drawable/container_audio_copy"
-                android:layout_width="wrap_content"
-                android:layout_toRightOf="@id/star"
-                android:layout_height="42dp">
-                <ImageView
-                    android:layout_centerVertical="true"
-                    android:id="@+id/flash"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
+                android:id="@+id/writingContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gradient_bg">
+
+                <RelativeLayout
+                    android:id="@+id/switchContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/buttonOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_toStartOf="@id/switchImageContainer"
+                        android:fontFamily="@font/overpassmono_regular"
+                        android:text="TEXT"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="14sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/switchImageContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/background_ring"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/switchId"
+                            android:layout_width="wrap_content"
+
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Switch Input"
+                            android:src="@drawable/ic_switch" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/buttonTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/switchImageContainer"
+                        android:fontFamily="@font/overpassmono_regular"
+                        android:text="MORSE"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <rocks.poopjournal.morse.EditTextTouch
+                    android:id="@+id/input"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_below="@+id/switchContainer"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/et_morse"
+                    android:fontFamily="@font/overpass_regular"
+                    android:gravity="top"
+                    android:paddingStart="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="20sp" />
+
+                <RelativeLayout
+                    android:id="@+id/bottom_suggestion_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_below="@+id/input"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_bottom_suggestion"
+                    android:fontFamily="@font/overpass_regular"
+                    android:gravity="top"
+                    android:paddingStart="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="15sp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/suggestion_text_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/replace_suggestion"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/overpassmono_regular"
+                        android:scrollbars="vertical"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/ignore_suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_toStartOf="@id/replace_suggestion"
+                        android:fontFamily="@font/overpassmono_regular"
+                        android:text="IGNORE"
+                        android:textColor="@color/colorSecondaryText"
+
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/replace_suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/overpassmono_regular"
+                        android:paddingEnd="-3dp"
+                        android:text="REPLACE"
+                        android:textColor="@color/colorMorse"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/viewing_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/writingContainer"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    android:id="@+id/output"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:fontFamily="@font/overpass_regular"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp" />
+
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:tint="@color/colorMorse"
-                    android:src="@drawable/ic_torch"
-                    android:contentDescription="Use flash as morse code" />
-                <ImageView
-                    android:layout_centerVertical="true"
-                    android:id="@+id/flare"
-                    android:layout_toEndOf="@+id/flash"
-                    android:layout_marginEnd="10dp"
-                    android:tint="@color/colorMorse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_flare_24px"
-                    android:contentDescription="Use screen as morse code" />
-                <ImageView
-                    android:id="@+id/playAudio"
-                    android:layout_toEndOf="@+id/flare"
-                    android:layout_width="wrap_content"
-                    android:contentDescription="Play Morse Code"
-                    android:layout_centerVertical="true"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/volume"/>
-                <ImageView
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/playAudio"
-                    android:id="@+id/copyText"
-                    android:layout_marginStart="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/copy"
-                    android:contentDescription="Copy text" />
+                    android:layout_below="@id/output"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp">
+
+                    <ImageView
+                        android:id="@+id/star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="Save to phrasebook"
+                        android:src="@drawable/ic_star_border_black_24dp"
+                        android:tint="@color/colorMorse" />
+
+                    <RelativeLayout
+                        android:id="@+id/containerIcons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="42dp"
+                        android:layout_toEndOf="@id/star"
+                        android:background="@drawable/container_audio_copy">
+
+                        <ImageView
+                            android:id="@+id/flash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="Use flash as morse code"
+                            android:src="@drawable/ic_torch"
+                            android:tint="@color/colorMorse" />
+
+                        <ImageView
+                            android:id="@+id/flare"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="10dp"
+                            android:layout_toEndOf="@+id/flash"
+                            android:contentDescription="Use screen as morse code"
+                            android:src="@drawable/ic_flare_24px"
+                            android:tint="@color/colorMorse" />
+
+                        <ImageView
+                            android:id="@+id/playAudio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@+id/flare"
+                            android:contentDescription="Play Morse Code"
+                            android:src="@drawable/volume" />
+
+                        <ImageView
+                            android:id="@+id/copyText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/playAudio"
+                            android:contentDescription="Copy text"
+                            android:src="@drawable/copy" />
+                    </RelativeLayout>
+                </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
-    </RelativeLayout>
     </ScrollView>
+
     <RelativeLayout
         android:id="@+id/morseInputContainer"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:background="#292C33"
-        android:layout_marginBottom="1dp"
+        android:layout_height="100dp"
         android:layout_above="@id/bottomLayout"
+        android:layout_marginBottom="1dp"
+        android:background="#292C33"
         android:gravity="center"
-        android:layout_height="100dp">
+        android:visibility="gone">
+
         <RelativeLayout
             android:id="@+id/inputDotContainer"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="45dp"
-            android:layout_height="wrap_content">
-        <ImageView
-            android:layout_centerVertical="true"
-            android:id="@+id/input_dot"
-            android:src="@drawable/input_dot"
-            android:layout_width="36dp"
-            android:contentDescription="dot"
-            android:layout_height="36dp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:padding="45dp"
-            android:layout_marginStart="80dp"
-            android:layout_toEndOf="@id/inputDotContainer"
-            android:id="@+id/inputDashContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        <ImageView
-            android:layout_centerVertical="true"
-            android:id="@+id/input_dash"
-            android:layout_width="30dp"
-            android:contentDescription="dash"
-            android:src="@drawable/input_dash"
-            android:layout_height="8dp" />
-        </RelativeLayout>
-    </RelativeLayout>
-    <RelativeLayout
-        android:visibility="visible"
-        android:background="#292C33"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/bottomLayout"
-        android:layout_width="match_parent"
-        android:layout_height="80dp">
-        <RelativeLayout
-            android:layout_toStartOf="@id/input_visible_container"
-            android:id="@+id/input_fullscreen_container"
-            android:layout_centerVertical="true"
-            android:padding="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/background_icons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:padding="45dp">
+
             <ImageView
-                android:id="@+id/input_fullscreen"
-                android:src="@drawable/fullscreen"
-                android:layout_width="24dp"
-                android:contentDescription="full screen"
-                android:layout_height="24dp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/input_visible_container"
-            android:padding="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/input_space_container"
-            android:background="@drawable/background_icons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/input_visible"
-                android:contentDescription="Make keyboard for morse input visible"
-                android:src="@drawable/ic_baseline_arrow_upward_24px"
-                android:layout_width="24dp"
-                android:layout_height="24dp" />
+                android:id="@+id/input_dot"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:contentDescription="dot"
+                android:src="@drawable/input_dot" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_centerInParent="true"
-            android:id="@+id/input_space_container"
-            android:background="@drawable/background_icons"
-            android:layout_width="120dp"
-            android:layout_height="40dp">
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_toEndOf="@id/input_space_container"
-            android:id="@+id/input_clear_container"
-            android:layout_centerVertical="true"
-            android:padding="8dp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/background_icons"
+            android:id="@+id/inputDashContainer"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_toEndOf="@id/inputDotContainer"
+            android:padding="45dp">
+
+            <ImageView
+                android:id="@+id/input_dash"
+                android:layout_width="30dp"
+                android:layout_height="8dp"
+                android:layout_centerVertical="true"
+                android:contentDescription="dash"
+                android:src="@drawable/input_dash" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="#292C33"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/input_fullscreen_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@id/input_visible_container"
+            android:background="@drawable/background_icons"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/input_fullscreen"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="full screen"
+                android:src="@drawable/fullscreen" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/input_visible_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@id/input_space_container"
+            android:background="@drawable/background_icons"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/input_visible"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="Make keyboard for morse input visible"
+                android:src="@drawable/ic_baseline_arrow_upward_24px" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/input_space_container"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/background_icons" />
+
+        <RelativeLayout
+            android:id="@+id/input_clear_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/input_space_container"
+            android:background="@drawable/background_icons"
+            android:padding="8dp">
+
             <ImageView
                 android:id="@+id/input_clear"
-                android:src="@drawable/backspace"
                 android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:contentDescription="Clear input"
-                android:layout_height="24dp" />
+                android:src="@drawable/backspace" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_toEndOf="@id/input_clear_container"
             android:id="@+id/input_mic_container"
-            android:layout_centerVertical="true"
-            android:padding="8dp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/background_icons"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/input_clear_container"
+            android:background="@drawable/background_icons"
+            android:padding="8dp">
+
             <ImageView
                 android:id="@+id/input_mic"
-                android:src="@drawable/mic"
                 android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:contentDescription="Mic"
-                android:layout_height="24dp" />
+                android:src="@drawable/mic" />
         </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

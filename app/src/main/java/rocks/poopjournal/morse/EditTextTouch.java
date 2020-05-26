@@ -3,12 +3,12 @@ package rocks.poopjournal.morse;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.EditText;
 
 @SuppressLint("AppCompatCustomView")
 public class EditTextTouch extends EditText {
+    public final OnTouchListener mOnTouchListener = (v, rawEvent) -> false;
+
     public EditTextTouch(Context context) {
         super(context);
     }
@@ -20,10 +20,4 @@ public class EditTextTouch extends EditText {
     public EditTextTouch(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-    public final OnTouchListener mOnTouchListener = new OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent rawEvent) {
-            return false;
-        }
-    };
 }

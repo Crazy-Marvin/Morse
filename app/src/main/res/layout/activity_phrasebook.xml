@@ -1,43 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorBackground"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
 
     <RelativeLayout
         android:id="@+id/topcontainer"
         android:layout_width="match_parent"
-        android:layout_marginTop="25dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
 
 
-    <ImageView
-        android:id="@+id/back"
-        android:src="@drawable/ic_baseline_arrow_upward_24px"
-        android:rotation="270"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="20dp"
-        android:tint="#FFFFFF"
-        android:layout_width="wrap_content"
-        android:contentDescription="Go Back"
-        android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:contentDescription="Go Back"
+            android:rotation="270"
+            android:src="@drawable/ic_baseline_arrow_upward_24px"
+            android:tint="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/phrasebook"
-        android:layout_width="wrap_content"
-        android:text="Phrasebook"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/overpassmono_regular"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/phrasebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/overpassmono_regular"
+            android:text="Phrasebook"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_phrasebook"
-        android:layout_marginTop="25dp"
-        android:layout_below="@id/topcontainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/topcontainer"
+        android:layout_marginTop="25dp" />
 </RelativeLayout>
