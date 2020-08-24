@@ -1,0 +1,6 @@
+Add phrasebook
+Migrate to AndroidX
+Update SDK
+Improve accessability
+Update dependencies
+

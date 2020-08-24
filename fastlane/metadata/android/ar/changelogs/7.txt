@@ -1,0 +1,3 @@
+Add option to modify the audio output speed (Standard, Farnsworth or custom)
+Fix Bugs & Crashes
+Target Android 11
