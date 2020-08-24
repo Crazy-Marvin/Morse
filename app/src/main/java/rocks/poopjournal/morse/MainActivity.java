@@ -391,6 +391,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
 
                     int currentcounter = 0;
+
+                    camera = Camera.open();
                     for (String s : something) {
                         if (s.equals(".")) {
                             turnOn();
@@ -402,7 +404,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                             turnOff();
                         }
                     }
-
+                    camera.release();
+                    camera = null;
                 }
             } else {
                 if (!TextUtils.isEmpty(input.getText().toString())) {
@@ -419,6 +422,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
 
                     int currentcounter = 0;
+
+                    camera = Camera.open();
                     for (String s : something) {
                         if (s.equals(".")) {
                             turnOn();
@@ -430,7 +435,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                             turnOff();
                         }
                     }
-
+                    camera.release();
+                    camera = null;
                 }
             }
         });
@@ -861,8 +867,6 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     }
 
     public void turnOn() {
-
-        camera = Camera.open();
         try {
             Camera.Parameters parameters = camera.getParameters();
             parameters.setFlashMode(getFlashOnParameter());
@@ -894,8 +898,6 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     public void turnOff() {
         try {
             camera.stopPreview();
-            camera.release();
-            camera = null;
         } catch (Exception e) {
             // This will happen if the camera fails to turn on.
         }
