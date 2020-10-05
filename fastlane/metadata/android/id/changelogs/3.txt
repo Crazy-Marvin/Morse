@@ -1,0 +1,2 @@
+The app now offers intelligent suggestions
+It is now possible to use the flashlight for Morse signals
