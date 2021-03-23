@@ -3,7 +3,7 @@
 [![Last commit](https://img.shields.io/github/last-commit/Crazy-Marvin/Morse.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/commits)
 [![Releases](https://img.shields.io/github/downloads/Crazy-Marvin/Morse/total.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/releases)
 [![Latest tag](https://img.shields.io/github/tag/Crazy-Marvin/Morse.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/tags)
-[![Issues](https://img.shields.io/github/issues/Crazy-Marvin/MetadataRemover.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/issues)
+[![Issues](https://img.shields.io/github/issues/Crazy-Marvin/Morse.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/issues)
 [![Pull requests](https://img.shields.io/github/issues-pr/Crazy-Marvin/Morse.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/pulls)
 [![Codacy](https://api.codacy.com/project/badge/Grade/49d72132eca54aa9b68056d3dce5c019)](https://www.codacy.com/app/CrazyMarvin/Morse?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Crazy-Marvin/Morse&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/Crazy-Marvin/Morse/branch/master/graph/badge.svg)](https://codecov.io/gh/Crazy-Marvin/Morse)

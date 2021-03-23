@@ -1,0 +1,2 @@
+- Add option to modify the audio output speed (Standard, Farnsworth or custom)
+- Under the hood improvements

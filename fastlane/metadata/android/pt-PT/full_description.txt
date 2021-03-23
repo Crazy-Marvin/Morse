@@ -1,0 +1,58 @@
+
+Traduzir texto para código Morse ou decifrar código Morse, traduzindo-o para texto!
+É um aplicativo simples, fácil de usar, porém útil, que pode ajudá-lo de muitas maneiras.
+Você pode decifrar ou decodificar códigos Morse, pode criar um número secreto ou aprender a ser um criptógrafo ou aprender criptografia, e muito mais!
+Se você se vê como um decifrador de códigos, baixe e experimente nossa ferramenta de código Morse!
+Não deixe que os caracteres especiais ou pontos e traços te confundem.
+
+
+CARACTERÍSTICAS DE FERRAMENTA CÓDIGO MORSE:
+
+• Design e interface de aplicativo organizado e moderno.
+• Super fácil de usar.
+• Tradução em tempo real: digite a palavra ou código e imediatamente o traduziremos para você.
+• Decodifique de Código Morse para texto ou texto para o Morse.
+• Pressione o botão do alto-falante para ouvir o código como som.
+• Copie o texto pressionando o botão de copiar.
+• Digite ponto e traço usando nosso teclado Morse embutido.
+• Código Aberto (https://github.com/Crazy-Marvin/Morse)
+• Mais recursos estão por vir!
+
+
+O que é código Morse?
+Código Morse é um sistema para codificar letras e números para traços e pontos.
+O período de duração de traço é três vezes de duração de um ponto.
+Cada ponto ou traço é seguido por um período de ausência de sinal, chamado de espaço, igual à duração do ponto.
+O código Morse foi usado pela primeira vez para a comunicação via telégrafo.
+O código Morse mais reconhecido é o SOS, que é usado para sinalizar uma emergência.
+Além de digitar pontos e traços, você também pode sinalizar código Morse ligando e desligando a luz, soando uma buzina ou batendo entre outros.
+Você pode usar o código Morse para transmitir mensagens facilmente através de vários meios se o destinatário entender o código Morse.
+Caso contrário, eles podem usar nossa ferramenta decifradora para descobrir a senha, número secreto ou qualquer informação que você deseja transmitir.
+
+Como as pessoas raramente se comunicam via telégrafo, hoje em dia há muito poucas pessoas que conseguem memorizar códigos Morse.
+Em vez disso, tornou-se uma forma de codificar caracteres especiais ou outra coisa para fins especiais.
+É claro que estes caracteres especiais ainda são amplamente utilizados em muitas situações, você não sabe quando realmente vai precisar deles.
+É uma linguagem útil para saber mesmo que você só queira aprender criptografia ou criptograma para se divertir.
+
+
+Como Morse é útil para você:
+1. Diga aos outros quando você estiver numa situação perigosa (SOS).
+2. Oculte seu número secreto ou senha através de pontos e traços.
+3. Cifrar/ Decifrar pistas ocultas nos jogos.
+4. Aprenda criptografia ou criptograma por meio da aprendizagem de códigos Morse.
+5. Torne-se um decodificador quebrando os códigos secretos em tempo real.
+6. E muito mais!
+
+
+Então, o que você está esperando?
+Use nossa ferramenta para decifrar código Morse para texto ou transformar texto para código Morse agora!
+Como um decodificador & entusiasta de criptogramas, nossa ferramenta de criptografia é imprescindível!
+É útil para todos vocês.
+Basta experimentar.
+
+Esperamos que você goste de usar nossa ferramenta cifradora para decodificar, aprender criptografia ou outros fins.
+Se você gosta, favor apoiar nosso aplicativo de código Morse dando uma classificação e avaliação na nossa página da loja Google Play e/ou uma estrela no GitHub.
+Levará apenas um minuto e significará o muito para nós!
+
+Se você tiver problemas com uso do aplicativo Morse, escreva-nos um e-mail ou abra um Issue no GitHub.
+Responderemos imediatamente e consertaremos o bug o mais rápido possível.
