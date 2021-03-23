@@ -1,6 +1,7 @@
 package rocks.poopjournal.morse;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -9,15 +10,19 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.hardware.Camera;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.text.Editable;
 import android.text.SpannableStringBuilder;
@@ -27,6 +32,7 @@ import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -71,6 +77,12 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     RelativeLayout space;
     RelativeLayout makeInputVisible;
     RelativeLayout backspace;
+    RelativeLayout containerTools;
+    RelativeLayout telegraphContainer;
+    RelativeLayout telegraphAudio;
+    RelativeLayout telegraphFlash;
+    RelativeLayout telegraphKey;
+    ImageView telegraphKeyboard,telegraphFlashIV, telegraphAudioIV;
     boolean visibilityCheck = false;
     ArrayList<String> popularMorse = new ArrayList<>();
     HashMap<String, String> popularMorseConversion = new HashMap<>();
@@ -79,6 +91,9 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     DBHelper helper;
     ImageView star;
     ArrayList<PhrasebookModel> arrayList;
+    private int telegraphSelected = 1;
+    MediaPlayer telegraphPlayer = null;
+    long time =0;
     ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {
         @Override
         public void onGlobalLayout() {
@@ -325,6 +340,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         return "";
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -345,6 +361,14 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         sound = findViewById(R.id.playAudio);
         flash = findViewById(R.id.flash);
         popularMorseSuggestionContainer = findViewById(R.id.bottom_suggestion_container);
+        telegraphAudio = findViewById(R.id.rl_audio_telegraph);
+        telegraphContainer = findViewById(R.id.morseTelegraphContainer);
+        telegraphFlash = findViewById(R.id.rl_flash_telegraph);
+        telegraphFlashIV = findViewById(R.id.flash_telegraph);
+        telegraphAudioIV = findViewById(R.id.audio_telegraph);
+        telegraphKey = findViewById(R.id.container_dits_dah);
+        telegraphKeyboard = findViewById(R.id.keyboard_telegraph);
+        containerTools = findViewById(R.id.container_tools);
 
         helper = new DBHelper(getApplicationContext());
 
@@ -364,6 +388,71 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         popularMorseConversionText.put("-.-.--.--..", "CQD");
         popularMorseConversionText.put(".--.....--.....--....--.----...--.-.---..---.....-", "What hath God wrought");
         popularMorseConversionText.put(".-..--...", "rats");
+
+        telegraphKeyboard.setOnClickListener(view -> hideTelegraphKey());
+        fullscreen.setOnClickListener(view -> showTelegraphKey());
+        telegraphFlash.setOnClickListener(v -> setFlashSelectedForTelegraph());
+        telegraphAudio.setOnClickListener(v -> setAudioSelectedForTelegraph());
+        telegraphPlayer= MediaPlayer.create(MainActivity.this,R.raw.beepflac);
+
+        telegraphKey.setOnTouchListener((v, event) -> {
+            if(event.getAction() == MotionEvent.ACTION_DOWN){
+                if (telegraphSelected==1){
+                    time = System.currentTimeMillis();
+                    telegraphPlayer.start();
+                }
+                else {   time = System.currentTimeMillis();
+                    camera = Camera.open();
+                    turnOn();
+                }
+
+
+                return true;
+            }
+            if(event.getAction() == MotionEvent.ACTION_UP){
+                if (telegraphSelected ==1){
+                    if (System.currentTimeMillis()-time>=200){
+                        telegraphPlayer.pause();
+                        telegraphPlayer.seekTo(0);
+                    }
+                    else {
+                        final Handler handler = new Handler(Looper.getMainLooper());
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                telegraphPlayer.pause();
+                                telegraphPlayer.seekTo(0);
+                            }
+                        }, 100);
+                    }
+                }
+                else {
+
+                    if (System.currentTimeMillis()-time>=200){
+                        turnOff();
+                        camera.release();
+                        camera = null;
+                    }
+                    else {
+                        final Handler handler = new Handler(Looper.getMainLooper());
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                turnOff();
+                                camera.release();
+                                camera = null;
+                            }
+                        }, 100);
+                    }
+                }
+
+
+                return true;
+            }
+            return false;
+        });
+
+
         flash.setOnClickListener(view -> {
 
             int hasCameraPermission = 0;
@@ -443,7 +532,6 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
         history.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, PhraseBookActivity.class)));
         mic.setOnClickListener(view -> Toast.makeText(getApplicationContext(), "To be implemented in a future release", Toast.LENGTH_SHORT).show());
-        fullscreen.setOnClickListener(view -> Toast.makeText(getApplicationContext(), "To be implemented in a future release", Toast.LENGTH_SHORT).show());
         settings.setOnClickListener(v -> Toast.makeText(getApplicationContext(), "To be implemented in a future release", Toast.LENGTH_SHORT).show());
         container = findViewById(R.id.container);
         bottomNavigation = findViewById(R.id.bottomLayout);
@@ -1019,4 +1107,44 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     }
 
 
+    private void showTelegraphKey(){
+        bottomNavigation.setVisibility(View.GONE);
+        containerTools.setVisibility(View.GONE);
+        telegraphContainer.setVisibility(View.VISIBLE);
+
+       // telegraphAudio.setBackgroundColor(Color.parseColor("#AA7DD3D8"));
+
+        setAudioSelectedForTelegraph();
+    }
+
+    private void hideTelegraphKey(){
+        bottomNavigation.setVisibility(View.VISIBLE);
+        containerTools.setVisibility(View.VISIBLE);
+        telegraphContainer.setVisibility(View.GONE);
+
+    }
+
+    private void setAudioSelectedForTelegraph(){
+        Drawable d = (GradientDrawable)telegraphAudio.getBackground();
+        d.setTint(Color.parseColor("#227DD3D8"));
+
+        Drawable d2 = (GradientDrawable)telegraphFlash.getBackground();
+        d2.setTint(Color.parseColor("#373945"));
+
+        telegraphFlashIV.setColorFilter(Color.parseColor("#9C9CA4"), PorterDuff.Mode.SRC_IN);
+        telegraphAudioIV.setColorFilter(Color.parseColor("#7DD3D8"), android.graphics.PorterDuff.Mode.SRC_IN);
+        telegraphSelected =1;
+    }
+    private void setFlashSelectedForTelegraph(){
+        Log.d("flashselected","yes");
+        Drawable d = (GradientDrawable)telegraphFlash.getBackground();
+        d.setTint(Color.parseColor("#227DD3D8"));
+
+        Drawable d2 = (GradientDrawable)telegraphAudio.getBackground();
+        d2.setTint(Color.parseColor("#373945"));
+
+        telegraphAudioIV.setColorFilter(Color.parseColor("#9C9CA4"), android.graphics.PorterDuff.Mode.SRC_IN);
+        telegraphFlashIV.setColorFilter(Color.parseColor("#7DD3D8"), android.graphics.PorterDuff.Mode.SRC_IN);
+        telegraphSelected =2;
+    }
 }

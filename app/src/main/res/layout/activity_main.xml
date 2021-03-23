@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -217,6 +218,7 @@
                     android:textSize="20sp" />
 
                 <RelativeLayout
+                    android:id="@+id/container_tools"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/output"
@@ -232,7 +234,7 @@
                         android:layout_marginEnd="10dp"
                         android:contentDescription="Save to phrasebook"
                         android:src="@drawable/ic_star_border_black_24dp"
-                        android:tint="@color/colorMorse" />
+                        app:tint="@color/colorMorse" />
 
                     <RelativeLayout
                         android:id="@+id/containerIcons"
@@ -251,7 +253,7 @@
                             android:layout_marginEnd="10dp"
                             android:contentDescription="Use flash as morse code"
                             android:src="@drawable/ic_torch"
-                            android:tint="@color/colorMorse" />
+                            app:tint="@color/colorMorse" />
 
                         <ImageView
                             android:id="@+id/flare"
@@ -262,7 +264,7 @@
                             android:layout_toEndOf="@+id/flash"
                             android:contentDescription="Use screen as morse code"
                             android:src="@drawable/ic_flare_24px"
-                            android:tint="@color/colorMorse" />
+                            app:tint="@color/colorMorse" />
 
                         <ImageView
                             android:id="@+id/playAudio"
@@ -287,6 +289,110 @@
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
+
+
+    <!--<RelativeLayout
+        android:id="@+id/morseFullContainer"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="1dp"
+        android:background="#292C33"
+        android:translationZ="2dp"
+        android:visibility="visible">
+        <RelativeLayout
+            android:id="@+id/dotFull"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/background_icons" >
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:contentDescription="dot"
+                android:src="@drawable/input_dot" />
+        </RelativeLayout>
+    </RelativeLayout>-->
+    <RelativeLayout
+        android:id="@+id/morseTelegraphContainer"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="1dp"
+        android:background="#292C33"
+        android:visibility="gone">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_audio_telegraph"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_toStartOf="@id/rl_flash_telegraph"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/background_telegraph"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/audio_telegraph"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="Play Morse Code"
+                android:src="@drawable/volume" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_flash_telegraph"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/background_telegraph"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/flash_telegraph"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="Play Morse Code"
+                android:src="@drawable/ic_torch" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/container_dits_dah"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@id/rl_flash_telegraph"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/background_icons" >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/overpass_regular"
+                android:gravity="center"
+                android:text="Tap for dit, hold for dah"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/keyboard_telegraph"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="Play Morse Code"
+            app:tint="#7DD3D8"
+            android:layout_below="@id/container_dits_dah"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_baseline_keyboard_24" />
+
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/morseInputContainer"
@@ -355,7 +461,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="full screen"
-                android:src="@drawable/fullscreen" />
+                android:src="@drawable/ic_baseline_wifi_tethering_24" />
         </RelativeLayout>
 
         <RelativeLayout
