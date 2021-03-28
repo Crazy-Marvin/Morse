@@ -63,6 +63,12 @@ So, what are you waiting for? Use our Morse code cipher tool to decipher Morse c
 We hope that you enjoy using our cipher tool to decode, to learn cryptography, or other purposes. If you do, please support our Morse decoder app by giving a rating and review on our Google Play store page and/or a star on GitHub. It will only take a minute and it will mean the world for us!
 If you have problems in using Morse app, please write us an email or open an issue on GitHub. We will respond immediately and fix the bug as soon as we can. 
 
+# Screenshots
+
+Morse --> Text | Telegraph Key | Text --> Morse
+------------ | ------------- | -------------
+![Morse_1](https://user-images.githubusercontent.com/15004217/112770031-dfa09e80-9024-11eb-983a-202d5166e958.jpg) | ![Morse_2](https://user-images.githubusercontent.com/15004217/112770033-e0393500-9024-11eb-97f6-20c13323dea0.jpg) | ![Morse_3](https://user-images.githubusercontent.com/15004217/112770035-e0d1cb80-9024-11eb-9d24-62cea5d88b31.jpg)
+
 # Contributing
 
 We use [Crowdin](https://crowdin.com/project/morse) for translations.
