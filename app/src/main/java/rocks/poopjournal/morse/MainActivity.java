@@ -252,6 +252,72 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 return "---..";
             case "9":
                 return "----.";
+            case "а":
+                return ".-";
+            case "б":
+                return "-...";
+            case "в":
+                return ".--";
+            case "г":
+                return "--.";
+            case "д":
+                return "-..";
+            case "е":
+                return ".";
+            case "ё":
+                return ".";
+            case "ж":
+                return "...-";
+            case "з":
+                return "--..";
+            case "и":
+                return "..";
+            case "й":
+                return ".---";
+            case "к":
+                return "-.-";
+            case "л":
+                return ".-..";
+            case "м":
+                return "--";
+            case "н":
+                return "-.";
+            case "о":
+                return "---";
+            case "п":
+                return ".--.";
+            case "р":
+                return ".-.";
+            case "с":
+                return "...";
+            case "т":
+                return "-";
+            case "у":
+                return "..-";
+            case "ф":
+                return "..-.";
+            case "х":
+                return "....";
+            case "ц":
+                return "-.-.";
+            case "ч":
+                return "---.";
+            case "ш":
+                return "----";
+            case "щ":
+                return "--.-";
+            case "ъ":
+                return "--.--";
+            case "ы":
+                return "-.--";
+            case "ь":
+                return "-..-";
+            case "э":
+                return "..-..";
+            case "ю":
+                return "..--";
+            case "я":
+                return ".-.-";
         }
         return "";
     }
