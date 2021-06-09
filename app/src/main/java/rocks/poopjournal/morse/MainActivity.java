@@ -530,24 +530,28 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 Toast.makeText(getApplicationContext(), "Please give camera permission to use flash", Toast.LENGTH_SHORT).show();
                 return;
             }
-            turnOff();
             if (textToMorse.get()) {
                 if (!TextUtils.isEmpty(output.getText().toString())) {
                     String[] something = TextUtils.split(output.getText().toString().trim().replaceAll("\\s+", ""), "");
                     Log.d("test_string", output.getText().toString().trim().replace(" ", "").replace("  ", ""));
                     Log.d("test_string", ".....");
-                    Log.d("test_length_string", String.valueOf(something.length))
-                    ;
+                    Log.d("test_length_string", String.valueOf(something.length));
+
+
                     for (String s : something) {
                         Log.d("skkk", s);
                     }
 
+
                     int len = something.length;
+                    int currentCounter = 0;
 
 
-                    int currentcounter = 0;
+                    if (!Build.MANUFACTURER.equals("HUAWEI")) {
+                        camera = Camera.open();
+                    }
 
-                    camera = Camera.open();
+
                     for (String s : something) {
                         if (s.equals(".")) {
                             turnOn();
@@ -559,8 +563,10 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                             turnOff();
                         }
                     }
+
                     camera.release();
                     camera = null;
+
                 }
             } else {
                 if (!TextUtils.isEmpty(input.getText().toString())) {
@@ -578,7 +584,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
                     int currentcounter = 0;
 
-                    camera = Camera.open();
+
                     for (String s : something) {
                         if (s.equals(".")) {
                             turnOn();
@@ -1022,6 +1028,12 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
     public void turnOn() {
         try {
+            if (android.os.Build.MANUFACTURER.equals("HUAWEI")) {
+                camera = Camera.open();
+            }
+
+            Log.d("cameraMorseCheck","turning camera on at " + System.currentTimeMillis());
+
             Camera.Parameters parameters = camera.getParameters();
             parameters.setFlashMode(getFlashOnParameter());
             camera.setParameters(parameters);
@@ -1051,8 +1063,18 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
     public void turnOff() {
         try {
-            camera.stopPreview();
+
+            if (android.os.Build.MANUFACTURER.equals("HUAWEI")){
+                camera.release();
+                SystemClock.sleep(100);
+            }
+            else {
+                camera.stopPreview();
+            }
+            Log.d("cameraMorseCheck","turning camera off at " + System.currentTimeMillis());
+
         } catch (Exception e) {
+            Log.d("cameraMorseCheck","exception caught: " + e.getMessage());
             // This will happen if the camera fails to turn on.
         }
     }
