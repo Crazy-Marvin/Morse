@@ -1,4 +1,4 @@
-[![Travis Build Status](https://travis-ci.org/Crazy-Marvin/Morse.svg?branch=master)](https://travis-ci.org/Crazy-Marvin/Morse)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Crazy-Marvin/Morse/ci)
 ![License](https://img.shields.io/github/license/Crazy-Marvin/Morse.svg)
 [![Last commit](https://img.shields.io/github/last-commit/Crazy-Marvin/Morse.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/commits)
 [![Releases](https://img.shields.io/github/downloads/Crazy-Marvin/Morse/total.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/releases)
