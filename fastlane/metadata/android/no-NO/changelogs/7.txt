@@ -1,3 +1,4 @@
-Add option to modify the audio output speed (Standard, Farnsworth or custom)
-Fix Bugs & Crashes
-Target Android 11
+Nytt inndatamodus: Telegrafnøkkel
+Usynlige forbedringer
+Fiksede feil og krasj
+Android 11 som siktemål

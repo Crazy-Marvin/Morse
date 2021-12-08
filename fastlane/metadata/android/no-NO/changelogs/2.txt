@@ -1,1 +1,1 @@
-Fix Force Crash After Audio Playback 😎
+Fikset krasj etter lydavspilling 😎

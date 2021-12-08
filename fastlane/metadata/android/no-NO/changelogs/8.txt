@@ -1,0 +1,2 @@
+Mulighet for å enre lydavspillingshastighet (forvalg, Farnsworth, eller egendefinert)
+Usynlige forbedringer
