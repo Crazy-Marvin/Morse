@@ -1,0 +1,1 @@
+Encriptar cualquier texto en clave morse o viceversa mediante una traducción en tiempo real.
