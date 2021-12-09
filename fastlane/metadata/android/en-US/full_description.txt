@@ -1,11 +1,10 @@
 Decipher Morse code to text or text to Morse code
 
-Translate any text to Morse code, or translate Morse code to text.
-Don’t let the special characters or dots and dashes befuddle you.
+Turn any text into Morse code, or translate Morse code to text and hear the results.
 
 •	Clean, modern app design and interface.
 •	Made to be simple to use for everyone.
-•	Realtime translation: type in the word or code and it is translated immediately.
+•	Realtime translation: type in the word or code and have it translated immediately.
 •	Decode from Morse to text, or text to Morse.
 •	Press the speaker button to hear the code.
 •	Copy the text by pressing the "Copy" button.
@@ -13,17 +12,19 @@ Don’t let the special characters or dots and dashes befuddle you.
 •	Libre software (https://github.com/Crazy-Marvin/Morse)
 +	More features planned.
 
+Don’t let the special characters or dots and dashes befuddle you.
+
 Morse code is a system to encode letters and numbers to dash and dot signs.
 The duration of the dash is three times the duration of a dot.
 Each dot or dash is followed by period of signal absence, called a space, equal to the dot duration.
+
 Morse code was first used for communicating via telegraph.
 The most well-known Morse code is SOS, which is used to signal an emergency.
-Aside from typing dots and dash, you can also signal Morse code by turning light on and off, sounding a horn or tapping, and many more.
-Use Morse code to transmit messages easily via various means if the recipient understands Morse code.
+Aside from typing dots and dashed, you can also signal Morse code by turning light on and off, sounding a horn or tapping, etc.
+All means of transmitting Mores code require the recipient understands it.
 If not, our cipher tool can be used to find out the password, secret number, or any info you want to relay. 
-Since people rarely communicate via telegraph, nowadays there are very few people who have Morse codes memorized.
-Instead, it has become a way to encode something or special characters for special purposes.
-Of course, these special characters are still widely used in many situations, you don’t know when you are going to really need it.
+Since people rarely communicate via telegraph, or learn it in the military, very few people have Morse codes memorized.
+Instead, it has become a way to encode something for special purposes.
 It’s a useful language to know even if you just want to learn cryptography or solve cryptograms for fun.
 
 1.	Tell others when you are in a dangerous situation (SOS).
@@ -35,8 +36,6 @@ It’s a useful language to know even if you just want to learn cryptography or 
 +   Many more 
 
 ---
-Enjoy using the cipher tool to decode, learn cryptography, or for other purposes.
-If you do, please support our Morse decoder app by giving a rating and review on our Google Play store page and/or a star on GitHub.
-It doesn't take long, and means the world to us.
-If you have problems in using Morse app, please write an e-mail or open an issue on GitHub.
+It really helps to leave a review or to star the project in the source code repsitory, and it means the world to us.
+If you have problems using the app, please write an e-mail or open an issue on GitHub.
 Responses are most often immediate, and bugs are fixed as soon as possible. 
