@@ -1,1 +1,1 @@
-Fix Force Crash After Audio Playback 😎
+Correction d'un plantage forcé après la lecture audio 😎

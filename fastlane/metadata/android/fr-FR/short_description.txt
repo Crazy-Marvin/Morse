@@ -1,1 +1,1 @@
-Traduisez du texte en Morse ou vice versa en temps réel.
+Traduisez du texte en Morse ou vice versa en temps réel
