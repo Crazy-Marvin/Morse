@@ -1,3 +1,2 @@
-Support digits
-Under the hood improvements
-
+Support des nombres
+Améliorations internes mineures

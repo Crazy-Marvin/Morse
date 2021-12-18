@@ -26,6 +26,6 @@ L'utilité du morse pour vous:
 
 Alors, qu'attendez-vous ? Utilisez notre outil de chiffrement en Morse pour déchiffrer le code Morse et envoyer du texte en Morse dès maintenant ! En tant que passionné(e) de décryptage et de cryptogramme, notre outil de chiffrement est un must ! C'est utile pour tout le monde. Il suffit de l'essayer.
 
-Nous espérons que vous apprécierez l'utilisation de notre outil de chiffrement pour décoder, pour apprendre la cryptographie ou pour d'autres raisons. Si c'est le cas, merci de soutenir notre application de décodage en Morse en donnant une note et un avis sur notre page du Google Play Store et /ou une étoile sur GitHub. Cela ne vous prendra qu'une minute mais comptera énormément pour nous!
+Nous espérons que vous apprécierez l'utilisation de notre outil de chiffrement pour décoder, pour apprendre la cryptographie ou pour d'autres raisons. Si c'est le cas, merci de soutenir notre application de décodage en Morse en donnant une note et un avis sur notre page du Google Play Store et /ou une étoile sur GitHub. Cela ne vous prendra qu'une minute mais comptera énormément pour nous !
 
-Si vous avez des problèmes avec l'application Morse, veuillez nous écrire un email ou ouvrir un ticket sur GitHub. Nous vous répondrons au plus vite et corrigerons le bug dès que possible.
+Si vous avez des problèmes avec l'application Morse, veuillez nous écrire un e-mail ou ouvrir un ticket sur GitHub. Nous vous répondrons au plus vite et corrigerons le bug dès que possible.

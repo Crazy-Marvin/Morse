@@ -1,0 +1,2 @@
+- Ajout d'une option pour modifier la vitesse de lecture (Standard, Farnsworth ou personnalisée)
+- Améliorations internes mineurs

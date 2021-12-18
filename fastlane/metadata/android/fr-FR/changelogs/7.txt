@@ -1,3 +1,4 @@
-Add option to modify the audio output speed (Standard, Farnsworth or custom)
-Fix Bugs & Crashes
-Target Android 11
+- Nouveau mode d'entrée : Clé télégraphique
+- Améliorations internes mineures
+- Corrections des bugs et plantages
+- Supporte Android 11
