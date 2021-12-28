@@ -1,0 +1,2 @@
+- Añadida opción para modificar la velocidad de salida del audio (Estandar, Farnsworth o personalizada)
+- Mejoras por debajo del mantel
