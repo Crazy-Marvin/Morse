@@ -23,4 +23,4 @@ How Morse is useful for you:
 So, what are you waiting for? Use our Morse code cipher tool to decipher Morse code to text or text to Morse code now! As a codebreaker & cryptogram enthusiast, our cipher tool is a must have! It is useful for all of you. Just try it out.
 ---
 We hope that you enjoy using our cipher tool to decode, to learn cryptography, or other purposes. If you do, please support our Morse decoder app by giving a rating and review on our Google Play store page and/or a star on GitHub. It will only take a minute and it will mean the world for us!
-If you have problems in using Morse app, please write us an email or open an issue on GitHub. We will respond immediately and fix the bug as soon as we can. 
+If you have problems in using Morse app, please write us an email or open an issue on GitHub. We will respond immediately and fix the bug as soon as we can.
