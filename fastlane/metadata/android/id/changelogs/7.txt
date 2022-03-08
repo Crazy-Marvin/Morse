@@ -1,3 +1,4 @@
-Add option to modify the audio output speed (Standard, Farnsworth or custom)
-Fix Bugs & Crashes
-Target Android 11
+- Mode input baru: Telegaph Key
+- Memperbaiki beberapa masalah
+- Perbaikan bug & crash
+- Target Android 11

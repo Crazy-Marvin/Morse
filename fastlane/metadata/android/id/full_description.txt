@@ -1,26 +1,41 @@
-Menerjemahkan teks ke kode Morse atau memecahkan kode Morse dengan menerjemahkannya ke teks! Ini adalah sebuah aplikasi sederhana, ramah pengguna, tetapi aplikasi yang berguna ini dapat membantu Anda dalam banyak hal. Anda dapat memecahkan atau dekode kode Morse, Anda dapat membuat nomor rahasia atau belajar sandi atau belajar kriptografi, dan banyak lagi! Jika Anda menganggap diri Anda sebagai seorang pemecah kode, unduh dan cobalah alat sandi kode Morse kami! Jangan biarkan karakter atau titik dan garis khusus membingungkan Anda.
+Menguraikan kode morse ke teks atau teks ke kode morse
 
-FITUR ALAT SANDI KODE MORSE:
-•	Desain dan antarmuka aplikasi yang bersih dan modern.
-•	Sangat mudah digunakan. 
-•	Terjemahan langsung: ketik kata atau kode dan kami akan segera menerjemahkannya untuk Anda.  
-•	Dekode dari Morse ke teks atau teks ke Morse.
-•	Tekan tombol speaker untuk mendengarkan kode dalam suara.
-•	Salin teks dengan menekan tombol salin.
-•	Ketik titik dan tanda hubung menggunakan keyboard Morse bawaan kami. 
-•	Sumber Terbuka (https://github.com/Crazy-Marvin/Morse)
-•	Lebih banyak fitur akan muncul nanti! 
-Apa itu kode Morse? Kode morse adalah sistem untuk menyandikan huruf dan angka menjadi tanda hubung dan titik. Durasi tanda hubung adalah tiga kali durasi titik. Setiap titik atau tanda hubung diikuti oleh periode ketiadaan sinyal, yang disebut spasi, sama dengan durasi titik. Kode morse pertama kali digunakan untuk berkomunikasi melalui telegraf. Kode Morse yang paling terkenal adalah SOS, yang digunakan untuk menandakan keadaan darurat. Selain mengetik titik dan tanda hubung, Anda juga dapat memberi sinyal kode Morse dengan menyalakan dan mematikan lampu, membunyikan klakson atau mengetuk, dan banyak lagi.  Anda dapat menggunakan kode Morse untuk mengirimkan pesan dengan mudah melalui berbagai cara jika penerima memahami kode Morse. Jika tidak, mereka dapat menggunakan alat penyandian kami untuk menemukan sandi, nomor rahasia, atau info apa pun yang ingin Anda sampaikan. 
-Karena orang jarang berkomunikasi melalui telegraf, saat ini sangat sedikit orang yang dapat menghafal kode Morse. Sebaliknya, ini telah menjadi sebuah cara untuk menyandikan sesuatu atau karakter khusus untuk tujuan khusus. Tentu saja, karakter khusus ini masih banyak digunakan dalam banyak situasi, Anda tidak tahu kapan Anda akan benar-benar membutuhkannya. Ini adalah sebuah bahasa yang berguna untuk diketahui meskipun Anda hanya ingin belajar kriptografi atau kriptogram untuk kesenangan.
-Bagaimana Morse berguna untuk Anda:
-1.	Memberitahu orang lain saat Anda berada dalam situasi berbahaya (SOS).
-2.	Menyembunyikan nomor rahasia atau kata sandi Anda melalui titik dan tanda hubung. 
-3.	Menyandi / Memecahkan petunjuk tersembunyi dalam permainan. 
-4.	Belajar kriptografi atau kriptogram melalui pelajaran kode Morse. 
-5.	Menjadi seorang pemecah kode dengan memecahkan kode rahasia dalam terjemahan langsung. 
-6.	Dan masih banyak lagi! 
+Ubah teks apa pun menjadi kode morse atau terjemahkan kode morse menjadi teks dan dengarkan hasilnya.
 
-Jadi tunggu apalagi? Gunakan alat penyandian kode Morse kami untuk memecahkan kode Morse menjadi teks atau teks ke kode Morse sekarang! Sebagai seorang pemecah kode & penggemar kriptogram, alat penyandian kami harus dimiliki! Ini bermanfaat bagi  Anda semua. Coba saja.
+• Desain dan antarmuka aplikasi yang bersih dan modern.
+• Dibuat agar mudah digunakan untuk semua orang.
+• Terjemahan waktu nyata: ketik kata atau kode dan segera terjemahkan.
+• Dekode dari morse ke teks atau teks ke morse.
+• Tekan tombol pengeras suara untuk mendengar kodenya.
+• Salin teks dengan menekan tombol "Salin".
+• Ketik titik dan tanda hubung menggunakan papan ketik morse bawaan kami.
+• Perangkat lunak gratis (https://github.com/Crazy-Marvin/Morse)
++ Lebih banyak fitur yang sedang direncanakan.
+
+Jangan biarkan karakter khusus atau titik dan garis membingungkan Anda.
+
+Kode morse adalah sistem penyandian huruf dan angka menjadi tanda putus-putus dan titik.
+Durasi tanda hubung adalah tiga kali durasi titik.
+Setiap titik atau tanda hubung diikuti oleh periode tidak adanya sinyal yang disebut spasi, sama dengan durasi titik.
+
+Kode morse pertama kali digunakan untuk berkomunikasi melalui telegraf.
+Kode Morse yang paling terkenal adalah SOS, yang digunakan untuk menandakan keadaan darurat.
+Selain mengetik titik dan putus-putus, Anda juga dapat memberi isyarat kode morse dengan menyalakan dan mematikan lampu, membunyikan klakson atau mengetuk, dll.
+Semua cara mentransmisikan kode Morse mengharuskan penerima untuk memahaminya.
+Jika tidak, alat penyandian kami dapat digunakan untuk mengetahui kata sandi, nomor rahasia, atau info apa pun yang ingin Anda sampaikan.
+Karena orang jarang berkomunikasi melalui telegraf atau mempelajarinya di militer, sangat sedikit orang yang hafal kode morse.
+Sebaliknya, itu telah menjadi cara untuk menyandikan sesuatu untuk tujuan khusus.
+Ini adalah bahasa yang berguna untuk diketahui bahkan jika Anda hanya ingin belajar kriptografi atau memecahkan kriptogram untuk bersenang-senang.
+
+1. Beritahu orang lain ketika Anda berada dalam situasi berbahaya (SOS).
+2. Sembunyikan nomor rahasia atau kata sandi Anda melalui titik dan garis.
+3. Menyandikan atau menguraikan petunjuk tersembunyi dalam gim.
+4. Belajar kriptografi atau kriptogram melalui pembelajaran kode morse.
+5. Menjadi pemecah kode dengan memecahkan kode rahasia dalam terjemahan waktu nyata.
+6. Buat nomor rahasia.
++ Banyak lagi
+
 ---
-Kami harap Anda menikmati penggunaan alat penyandian kami untuk memecahkan kode, mempelajari kriptografi, atau tujuan lain. Jika Anda melakukannya, silakan dukung aplikasi dekoder Morse kami dengan memberikan peringkat dan ulasan di halaman toko Google Play kami dan/atau bintang di GitHub. Hanya perlu satu menit dan itu akan sangat berarti bagi kami!
-Jika Anda memiliki masalah dalam menggunakan aplikasi Morse, silakan tulis email kepada kami atau buka masalah di GitHub. Kami akan segera merespon dan memperbaiki bug secepat yang kami bisa. 
+Ulasan Anda sangat membantu atau Anda bisa membintangi proyek di repositori kode sumber, itu berarti banyak bagi kami.
+Jika Anda memiliki masalah dalam menggunakan aplikasi, silakan tulis surel atau laporkan masalah di GitHub.
+Kami biasanya memberikan tanggapan langsung dan kesalahan diperbaiki sesegera mungkin.
