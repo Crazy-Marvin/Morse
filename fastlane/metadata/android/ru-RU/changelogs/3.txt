@@ -1,2 +1,2 @@
-The app now offers intelligent suggestions
-It is now possible to use the flashlight for Morse signals
+Приложение даёт более адекватные предложения
+Можно использовать вспышку для моргания азбукой Морзе

@@ -1,1 +1,1 @@
-Fix Force Crash After Audio Playback 😎
+Исправлен вылет после проигрывания звука 😎

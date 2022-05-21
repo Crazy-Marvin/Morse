@@ -1,3 +1,4 @@
-Add option to modify the audio output speed (Standard, Farnsworth or custom)
-Fix Bugs & Crashes
-Target Android 11
+- Новый режим ввода: Телеграфный ключ
+- Улучшения кодовой базы
+- Исправления ошибок и падений
+- Поддержка Android 11

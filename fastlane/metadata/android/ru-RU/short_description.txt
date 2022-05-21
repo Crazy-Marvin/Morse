@@ -1,1 +1,1 @@
-Translate text to Morse code or vice versa in real time
+Переводит текст в морзянку и обратно в реальном времени
