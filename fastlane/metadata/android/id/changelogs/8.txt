@@ -1,2 +1,2 @@
-- Menambahkan opsi untuk mengubah kecepatan output audio (Standar, Farnsworth, atau kustom)
-- Memperbaiki beberapa masalah
+- Perbaikan dan pembaruan
+- Pembaruan terjemahan
