@@ -1,41 +1,41 @@
-Decipher Morse code to text or text to Morse code
+Desxifrar codi Morse a text o text a codi Morse
 
-Turn any text into Morse code, or translate Morse code to text and hear the results.
+Converteix qualsevol text en codi Morse o tradueix el codi Morse a text i escolta els resultats.
 
-•	Clean, modern app design and interface.
-•	Made to be simple to use for everyone.
-•	Realtime translation: type in the word or code and have it translated immediately.
-•	Decode from Morse to text, or text to Morse.
-•	Press the speaker button to hear the code.
-•	Copy the text by pressing the "Copy" button.
-•	Type in dot and dash using our built-in Morse keyboard. 
-•	Libre software (https://github.com/Crazy-Marvin/Morse)
-+	More features planned.
+• Disseny i interfície d'aplicacions nets i moderns.
+• Dissenyat per ser senzill d'utilitzar per a tothom.
+• Traducció en temps real: escriviu la paraula o el codi i feu-lo traduir immediatament.
+• Descodificar de Morse a text, o text a Morse.
+• Premeu el botó de l'altaveu per escoltar el codi.
+• Copieu el text prement el botó “Copiar”.
+• Escriu punt i guió amb el nostre teclat Morse integrat.
+• Programari lliure (https://github.com/Crazy-Marvin/Morse)
++ Més funcions previstes.
 
-Don’t let the special characters or dots and dashes befuddle you.
+No deixeu que els caràcters especials o els punts i els guions us confonguin.
 
-Morse code is a system to encode letters and numbers to dash and dot signs.
-The duration of the dash is three times the duration of a dot.
-Each dot or dash is followed by period of signal absence, called a space, equal to the dot duration.
+El codi Morse és un sistema per codificar lletres i números a guionets i signes de punts.
+La durada del guió és tres vegades la durada d'un punt.
+Cada punt o guió va seguit d'un període d'absència de senyal, anomenat espai, igual a la durada del punt.
 
-Morse code was first used for communicating via telegraph.
-The most well-known Morse code is SOS, which is used to signal an emergency.
-Aside from typing dots and dashed, you can also signal Morse code by turning light on and off, sounding a horn or tapping, etc.
-All means of transmitting Mores code require the recipient understands it.
-If not, our cipher tool can be used to find out the password, secret number, or any info you want to relay. 
-Since people rarely communicate via telegraph, or learn it in the military, very few people have Morse codes memorized.
-Instead, it has become a way to encode something for special purposes.
-It’s a useful language to know even if you just want to learn cryptography or solve cryptograms for fun.
+El codi Morse es va utilitzar per primera vegada per comunicar-se per telègraf.
+El codi Morse més conegut és SOS, que s'utilitza per senyalitzar una emergència.
+A part d'escriure punts i guionets, també podeu senyalitzar el codi Morse encenent i apagant la llum, fent sonar una botzina o tocant, etc.
+Tots els mitjans per transmetre el codi Mores requereixen que el destinatari l'entengui.
+Si no, la nostra eina de xifratge es pot utilitzar per esbrinar la contrasenya, el número secret o qualsevol informació que vulgueu transmetre.
+Atès que la gent poques vegades es comunica per telègraf, o l'aprèn a l'exèrcit, molt poques persones tenen codis Morse memoritzats.
+En canvi, s'ha convertit en una manera de codificar alguna cosa amb finalitats especials.
+És un llenguatge útil per saber fins i tot si només voleu aprendre criptografia o resoldre criptogrames per diversió.
 
-1.	Tell others when you are in a dangerous situation (SOS).
-2.	Hide your secret number or password via dots and dashes.
-3.	Cipher or decipher hidden clues in games.
-4.	Learn cryptography or cryptogram through learning Morse codes.
-5.	Become a codebreaker by breaking secret codes in real time translation.
-6.  Create a secret number.
-+   Many more 
+1. Digues als altres quan estàs en una situació perillosa (SOS).
+2. Amaga el teu número secret o contrasenya mitjançant punts i guions.
+3. Xifrar o desxifrar pistes amagades en jocs.
+4. Aprèn criptografia o criptograma mitjançant l'aprenentatge de codis Morse.
+5. Converteix-te en un trencador de codis trencant codis secrets en traducció en temps real.
+6. Creeu un número secret.
++ Molts més
 
 ---
-It really helps to leave a review or to star the project in the source code repsitory, and it means the world to us.
-If you have problems using the app, please write an e-mail or open an issue on GitHub.
-Responses are most often immediate, and bugs are fixed as soon as possible.
+Realment ajuda deixar una ressenya o destacar el projecte al repositori de codi font, i significa el món per a nosaltres.
+Si teniu problemes amb l'aplicació, escriviu un correu electrònic o obriu un problema a GitHub.
+Les respostes solen ser immediates i els errors es solucionen tan aviat com sigui possible.

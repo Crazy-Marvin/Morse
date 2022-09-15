@@ -1,3 +1,4 @@
-Add option to modify the audio output speed (Standard, Farnsworth or custom)
-Fix Bugs & Crashes
-Target Android 11
+- Nou mode d'entrada: Clau telegràfica 
+- Petites millores internes
+- Correcció d'errors i problemes
+- Suport Android 11
