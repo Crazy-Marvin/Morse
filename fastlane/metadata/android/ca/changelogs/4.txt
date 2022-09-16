@@ -1,5 +1,5 @@
-Add phrasebook
-Migrate to AndroidX
-Update SDK
-Improve accessability
-Update dependencies
+Afegir llibre de frases 
+Migrar a AndroidX 
+Sdk d'actualitzacions 
+Millorar l'accessibilitat 
+Actualitzar dependències
