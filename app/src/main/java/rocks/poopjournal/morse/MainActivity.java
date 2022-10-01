@@ -1,5 +1,9 @@
 package rocks.poopjournal.morse;
 
+import static android.hardware.Camera.Parameters.FLASH_MODE_AUTO;
+import static android.hardware.Camera.Parameters.FLASH_MODE_ON;
+import static android.hardware.Camera.Parameters.FLASH_MODE_TORCH;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -44,15 +48,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import static android.hardware.Camera.Parameters.FLASH_MODE_AUTO;
-import static android.hardware.Camera.Parameters.FLASH_MODE_ON;
-import static android.hardware.Camera.Parameters.FLASH_MODE_TORCH;
 
 public class MainActivity extends AppCompatActivity implements Camera.AutoFocusCallback {
 
@@ -174,8 +176,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     static String morseEncode(String x) {
         // refer to the Morse table
         // image attached in the article
-        x = x.toLowerCase();
-        switch (x) {
+        switch (x.toLowerCase(Locale.getDefault())) {
             case "a":
                 return ".-";
             case "b":
@@ -318,8 +319,9 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 return "..--";
             case "я":
                 return ".-.-";
+            default:
+                return "";
         }
-        return "";
     }
 
     static String morseDecode(String morse) {
@@ -1214,10 +1216,10 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
     private void setAudioSelectedForTelegraph(){
         Drawable d = (GradientDrawable)telegraphAudio.getBackground();
-        d.setTint(Color.parseColor("#227DD3D8"));
+        DrawableCompat.setTint(d, Color.parseColor("#227DD3D8"));
 
         Drawable d2 = (GradientDrawable)telegraphFlash.getBackground();
-        d2.setTint(Color.parseColor("#373945"));
+        DrawableCompat.setTint(d2, Color.parseColor("#373945"));
 
         telegraphFlashIV.setColorFilter(Color.parseColor("#9C9CA4"), PorterDuff.Mode.SRC_IN);
         telegraphAudioIV.setColorFilter(Color.parseColor("#7DD3D8"), android.graphics.PorterDuff.Mode.SRC_IN);
@@ -1226,10 +1228,10 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     private void setFlashSelectedForTelegraph(){
         Log.d("flashselected","yes");
         Drawable d = (GradientDrawable)telegraphFlash.getBackground();
-        d.setTint(Color.parseColor("#227DD3D8"));
+        DrawableCompat.setTint(d, Color.parseColor("#227DD3D8"));
 
         Drawable d2 = (GradientDrawable)telegraphAudio.getBackground();
-        d2.setTint(Color.parseColor("#373945"));
+        DrawableCompat.setTint(d2, Color.parseColor("#373945"));
 
         telegraphAudioIV.setColorFilter(Color.parseColor("#9C9CA4"), android.graphics.PorterDuff.Mode.SRC_IN);
         telegraphFlashIV.setColorFilter(Color.parseColor("#7DD3D8"), android.graphics.PorterDuff.Mode.SRC_IN);
