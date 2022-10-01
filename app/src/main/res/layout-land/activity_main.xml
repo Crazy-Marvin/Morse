@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -235,7 +236,7 @@
                         android:layout_marginEnd="10dp"
                         android:contentDescription="Save to phrasebook"
                         android:src="@drawable/ic_star_border_black_24dp"
-                        android:tint="@color/colorMorse" />
+                        app:tint="@color/colorMorse" />
 
                     <RelativeLayout
                         android:id="@+id/containerIcons"
@@ -254,7 +255,7 @@
                             android:layout_marginEnd="10dp"
                             android:contentDescription="Use flash as morse code"
                             android:src="@drawable/ic_torch"
-                            android:tint="@color/colorMorse" />
+                            app:tint="@color/colorMorse" />
 
                         <ImageView
                             android:id="@+id/flare"
@@ -265,7 +266,7 @@
                             android:layout_toEndOf="@+id/flash"
                             android:contentDescription="Use screen as morse code"
                             android:src="@drawable/ic_flare_24px"
-                            android:tint="@color/colorMorse" />
+                            app:tint="@color/colorMorse" />
 
                         <ImageView
                             android:id="@+id/playAudio"

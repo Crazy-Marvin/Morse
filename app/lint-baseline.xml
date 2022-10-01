@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="5" by="lint Flamingo | 2022.2.1 Canary 2">
+
+    <issue
+        id="JcenterRepositoryObsolete"
+        message="JCenter Maven repository is no longer receiving updates: newer library versions may be available elsewhere">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="JcenterRepositoryObsolete"
+        message="JCenter Maven repository is no longer receiving updates: newer library versions may be available elsewhere">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="InconsistentLayout"
+        message="The id &quot;container_tools&quot; in layout &quot;activity_main&quot; is missing from the following layout configurations: layout-land (present in layout)">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="221"/>
+    </issue>
+
+    <issue
+        id="InconsistentLayout"
+        message="The id &quot;morseTelegraphContainer&quot; in layout &quot;activity_main&quot; is missing from the following layout configurations: layout-land (present in layout)">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="321"/>
+    </issue>
+
+    <issue
+        id="InconsistentLayout"
+        message="The id &quot;rl_audio_telegraph&quot; in layout &quot;activity_main&quot; is missing from the following layout configurations: layout-land (present in layout)">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="331"/>
+    </issue>
+
+    <issue
+        id="InconsistentLayout"
+        message="The id &quot;audio_telegraph&quot; in layout &quot;activity_main&quot; is missing from the following layout configurations: layout-land (present in layout)">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="340"/>
+    </issue>
+
+    <issue
+        id="InconsistentLayout"
+        message="The id &quot;rl_flash_telegraph&quot; in layout &quot;activity_main&quot; is missing from the following layout configurations: layout-land (present in layout)">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="347"/>
+    </issue>
+
+    <issue
+        id="InconsistentLayout"
+        message="The id &quot;flash_telegraph&quot; in layout &quot;activity_main&quot; is missing from the following layout configurations: layout-land (present in layout)">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="356"/>
+    </issue>
+
+    <issue
+        id="InconsistentLayout"
+        message="The id &quot;container_dits_dah&quot; in layout &quot;activity_main&quot; is missing from the following layout configurations: layout-land (present in layout)">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="364"/>
+    </issue>
+
+    <issue
+        id="InconsistentLayout"
+        message="The id &quot;keyboard_telegraph&quot; in layout &quot;activity_main&quot; is missing from the following layout configurations: layout-land (present in layout)">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="384"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `translationZ` is only used in API level 21 and higher (current min is 19)">
+        <location
+            file="src/main/res/layout-land/activity_main.xml"
+            line="14"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `translationZ` is only used in API level 21 and higher (current min is 19)">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="14"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Resource references will not work correctly in images generated for this vector icon for API &lt; 21; check generated icon to make sure it looks acceptable">
+        <location
+            file="src/main/res/drawable/ic_baseline_keyboard_24.xml"
+            line="6"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Resource references will not work correctly in images generated for this vector icon for API &lt; 21; check generated icon to make sure it looks acceptable">
+        <location
+            file="src/main/res/drawable/ic_baseline_keyboard_24.xml"
+            line="8"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;app_name&quot; is not translated in &quot;zh&quot; (Chinese)">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="NotifyDataSetChanged"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
+        <location
+            file="src/main/java/rocks/poopjournal/morse/PhrasebookAdapter.java"
+            line="65"/>
+    </issue>
+
+    <issue
+        id="Recycle"
+        message="This `Cursor` should be freed up after use with `#close()`">
+        <location
+            file="src/main/java/rocks/poopjournal/morse/DBHelper.java"
+            line="82"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="This `AsyncTask` class should be static or leaks might occur (rocks.poopjournal.morse.MainActivity.AsyncTaskRunner)">
+        <location
+            file="src/main/java/rocks/poopjournal/morse/MainActivity.java"
+            line="1159"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/colorBackground` with a theme that also paints a background (inferred theme is `@style/AppTheme`)">
+        <location
+            file="src/main/res/layout-land/activity_main.xml"
+            line="7"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/colorBackground` with a theme that also paints a background (inferred theme is `@style/AppTheme`)">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="7"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/colorBackground` with a theme that also paints a background (inferred theme is `@style/AppTheme`)">
+        <location
+            file="src/main/res/layout/activity_phrasebook.xml"
+            line="6"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/colorBackground` with a theme that also paints a background (inferred theme is `@style/AppTheme`)">
+        <location
+            file="src/main/res/layout/dialog_verification.xml"
+            line="6"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.raw.beep` appears to be unused">
+        <location
+            file="src/main/res/raw/beep.mp3"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.colorTransparent` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="8"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.colorGradientFill` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="9"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.colorTest` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="10"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.textGrey3` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="14"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.colorGreyLight` appears to be unused">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="16"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.raw.dashcontainer` appears to be unused">
+        <location
+            file="src/main/res/raw/dashcontainer.ogg"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.raw.dotcontainer` appears to be unused">
+        <location
+            file="src/main/res/raw/dotcontainer.ogg"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.featured_shadow` appears to be unused">
+        <location
+            file="src/main/res/drawable-v24/featured_shadow.9.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_launcher_foreground` appears to be unused">
+        <location
+            file="src/main/res/drawable-v24/ic_launcher_foreground.xml"
+            line="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_mic` appears to be unused">
+        <location
+            file="src/main/res/drawable/ic_mic.xml"
+            line="1"/>
+    </issue>
+
+    <issue
+        id="UselessParent"
+        message="This `RelativeLayout` layout or its `RelativeLayout` parent is possibly unnecessary; transfer the `background` attribute to the other view">
+        <location
+            file="src/main/res/layout/dialog_verification.xml"
+            line="8"/>
+    </issue>
+
+    <issue
+        id="ClickableViewAccessibility"
+        message="`onTouch` lambda should call `View#performClick` when a click is detected">
+        <location
+            file="src/main/java/rocks/poopjournal/morse/EditTextTouch.java"
+            line="10"/>
+    </issue>
+
+    <issue
+        id="ClickableViewAccessibility"
+        message="`onTouch` lambda should call `View#performClick` when a click is detected">
+        <location
+            file="src/main/java/rocks/poopjournal/morse/MainActivity.java"
+            line="153"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="src/main/java/rocks/poopjournal/morse/MainActivity.java"
+            line="805"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="src/main/java/rocks/poopjournal/morse/MainActivity.java"
+            line="806"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="src/main/java/rocks/poopjournal/morse/MainActivity.java"
+            line="842"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="src/main/java/rocks/poopjournal/morse/MainActivity.java"
+            line="843"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="src/main/java/rocks/poopjournal/morse/MainActivity.java"
+            line="908"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="src/main/java/rocks/poopjournal/morse/MainActivity.java"
+            line="908"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Open Phrasebook&quot;, should use `@string` resource">
+        <location
+            file="src/main/res/layout-land/activity_main.xml"
+            line="31"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Open Phrasebook&quot;, should use `@string` resource">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="31"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Go Back&quot;, should use `@string` resource">
+        <location
+            file="src/main/res/layout/activity_phrasebook.xml"
+            line="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;--...--&quot;, should use `@string` resource">
+        <location
+            file="src/main/res/layout/dialog_verification.xml"
+            line="22"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Do you mean --...--?&quot;, should use `@string` resource">
+        <location
+            file="src/main/res/layout/dialog_verification.xml"
+            line="37"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Discard&quot;, should use `@string` resource">
+        <location
+            file="src/main/res/layout/dialog_verification.xml"
+            line="66"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Yes&quot;, should use `@string` resource">
+        <location
+            file="src/main/res/layout/dialog_verification.xml"
+            line="84"/>
+    </issue>
+
+</issues>
