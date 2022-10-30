@@ -1,0 +1,5 @@
+- Fix bug/crash in when switching to landscape mode 🐛 (#126)
+- Support Ñ ➕ (#124)
+- Add support for Themed Icons on Android 13+ 🎨 (#117)
+- Dependency updates ⚙️
+- Translation updates 🗺️
