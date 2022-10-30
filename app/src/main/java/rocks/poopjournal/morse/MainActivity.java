@@ -46,6 +46,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -79,12 +80,16 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     RelativeLayout space;
     RelativeLayout makeInputVisible;
     RelativeLayout backspace;
-    RelativeLayout containerTools;
-    RelativeLayout telegraphContainer;
-    RelativeLayout telegraphAudio;
-    RelativeLayout telegraphFlash;
-    RelativeLayout telegraphKey;
-    ImageView telegraphKeyboard,telegraphFlashIV, telegraphAudioIV;
+
+    // These views are only supported in Portrait mode for now, the corresponding variables should be nullable.
+    @Nullable RelativeLayout containerTools;
+    @Nullable  RelativeLayout telegraphContainer;
+    @Nullable RelativeLayout telegraphAudio;
+    @Nullable RelativeLayout telegraphFlash;
+    @Nullable RelativeLayout telegraphKey;
+    @Nullable ImageView telegraphKeyboard;
+    @Nullable ImageView telegraphFlashIV;
+    @Nullable ImageView telegraphAudioIV;
     boolean visibilityCheck = false;
     ArrayList<String> popularMorse = new ArrayList<>();
     HashMap<String, String> popularMorseConversion = new HashMap<>();
@@ -460,68 +465,21 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         popularMorseConversionText.put(".--.....--.....--....--.----...--.-.---..---.....-", "What hath God wrought");
         popularMorseConversionText.put(".-..--...", "rats");
 
-        telegraphKeyboard.setOnClickListener(view -> hideTelegraphKey());
+        if (telegraphKeyboard != null) {
+            telegraphKeyboard.setOnClickListener(view -> hideTelegraphKey());
+        }
         fullscreen.setOnClickListener(view -> showTelegraphKey());
-        telegraphFlash.setOnClickListener(v -> setFlashSelectedForTelegraph());
-        telegraphAudio.setOnClickListener(v -> setAudioSelectedForTelegraph());
+        if (telegraphFlash != null) {
+            telegraphFlash.setOnClickListener(v -> setFlashSelectedForTelegraph());
+        }
+        if (telegraphAudio != null) {
+            telegraphAudio.setOnClickListener(v -> setAudioSelectedForTelegraph());
+        }
         telegraphPlayer= MediaPlayer.create(MainActivity.this,R.raw.beepflac);
 
-        telegraphKey.setOnTouchListener((v, event) -> {
-            if(event.getAction() == MotionEvent.ACTION_DOWN){
-                if (telegraphSelected==1){
-                    time = System.currentTimeMillis();
-                    telegraphPlayer.start();
-                }
-                else {   time = System.currentTimeMillis();
-                    camera = Camera.open();
-                    turnOn();
-                }
-
-
-                return true;
-            }
-            if(event.getAction() == MotionEvent.ACTION_UP){
-                if (telegraphSelected ==1){
-                    if (System.currentTimeMillis()-time>=200){
-                        telegraphPlayer.pause();
-                        telegraphPlayer.seekTo(0);
-                    }
-                    else {
-                        final Handler handler = new Handler(Looper.getMainLooper());
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                telegraphPlayer.pause();
-                                telegraphPlayer.seekTo(0);
-                            }
-                        }, 100);
-                    }
-                }
-                else {
-
-                    if (System.currentTimeMillis()-time>=200){
-                        turnOff();
-                        camera.release();
-                        camera = null;
-                    }
-                    else {
-                        final Handler handler = new Handler(Looper.getMainLooper());
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                turnOff();
-                                camera.release();
-                                camera = null;
-                            }
-                        }, 100);
-                    }
-                }
-
-
-                return true;
-            }
-            return false;
-        });
+        if (telegraphKey != null) {
+            telegraphKey.setOnTouchListener((v, event) -> setKeySelectedForTelegraph(event));
+        }
 
 
         flash.setOnClickListener(view -> {
@@ -1201,6 +1159,10 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
 
     private void showTelegraphKey(){
+        if (containerTools == null || telegraphContainer == null) {
+            return;
+        }
+
         bottomNavigation.setVisibility(View.GONE);
         containerTools.setVisibility(View.GONE);
         telegraphContainer.setVisibility(View.VISIBLE);
@@ -1211,33 +1173,96 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     }
 
     private void hideTelegraphKey(){
+        if (containerTools == null || telegraphContainer == null) {
+            return;
+        }
+
         bottomNavigation.setVisibility(View.VISIBLE);
         containerTools.setVisibility(View.VISIBLE);
         telegraphContainer.setVisibility(View.GONE);
-
     }
 
     private void setAudioSelectedForTelegraph(){
-        Drawable d = (GradientDrawable)telegraphAudio.getBackground();
-        DrawableCompat.setTint(d, Color.parseColor("#227DD3D8"));
+        Drawable d;
+        if (telegraphAudio != null) {
+            d = (GradientDrawable) telegraphAudio.getBackground();
+            DrawableCompat.setTint(d, Color.parseColor("#227DD3D8"));
+        }
 
-        Drawable d2 = (GradientDrawable)telegraphFlash.getBackground();
-        DrawableCompat.setTint(d2, Color.parseColor("#373945"));
+        Drawable d2;
+        if (telegraphFlash != null) {
+            d2 = (GradientDrawable) telegraphFlash.getBackground();
+            DrawableCompat.setTint(d2, Color.parseColor("#373945"));
+        }
 
-        telegraphFlashIV.setColorFilter(Color.parseColor("#9C9CA4"), PorterDuff.Mode.SRC_IN);
-        telegraphAudioIV.setColorFilter(Color.parseColor("#7DD3D8"), android.graphics.PorterDuff.Mode.SRC_IN);
+        if (telegraphFlashIV != null && telegraphAudioIV != null) {
+            telegraphFlashIV.setColorFilter(Color.parseColor("#9C9CA4"), PorterDuff.Mode.SRC_IN);
+            telegraphAudioIV.setColorFilter(Color.parseColor("#7DD3D8"), android.graphics.PorterDuff.Mode.SRC_IN);
+        }
         telegraphSelected =1;
     }
     private void setFlashSelectedForTelegraph(){
         Log.d("flashselected","yes");
-        Drawable d = (GradientDrawable)telegraphFlash.getBackground();
-        DrawableCompat.setTint(d, Color.parseColor("#227DD3D8"));
+        Drawable d;
+        if (telegraphFlash != null) {
+            d = (GradientDrawable) telegraphFlash.getBackground();
+            DrawableCompat.setTint(d, Color.parseColor("#227DD3D8"));
+        }
 
-        Drawable d2 = (GradientDrawable)telegraphAudio.getBackground();
-        DrawableCompat.setTint(d2, Color.parseColor("#373945"));
+        Drawable d2;
+        if (telegraphAudio != null) {
+            d2 = (GradientDrawable) telegraphAudio.getBackground();
+            DrawableCompat.setTint(d2, Color.parseColor("#373945"));
+        }
 
-        telegraphAudioIV.setColorFilter(Color.parseColor("#9C9CA4"), android.graphics.PorterDuff.Mode.SRC_IN);
-        telegraphFlashIV.setColorFilter(Color.parseColor("#7DD3D8"), android.graphics.PorterDuff.Mode.SRC_IN);
+        if (telegraphFlashIV != null && telegraphAudioIV != null) {
+            telegraphAudioIV.setColorFilter(Color.parseColor("#9C9CA4"), PorterDuff.Mode.SRC_IN);
+            telegraphFlashIV.setColorFilter(Color.parseColor("#7DD3D8"), android.graphics.PorterDuff.Mode.SRC_IN);
+        }
         telegraphSelected =2;
+    }
+
+    private boolean setKeySelectedForTelegraph(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (telegraphSelected == 1) {
+                time = System.currentTimeMillis();
+                telegraphPlayer.start();
+            } else {
+                time = System.currentTimeMillis();
+                camera = Camera.open();
+                turnOn();
+            }
+            return true;
+        }
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            if (telegraphSelected == 1) {
+                if (System.currentTimeMillis() - time >= 200) {
+                    telegraphPlayer.pause();
+                    telegraphPlayer.seekTo(0);
+                } else {
+                    final Handler handler = new Handler(Looper.getMainLooper());
+                    handler.postDelayed(() -> {
+                        telegraphPlayer.pause();
+                        telegraphPlayer.seekTo(0);
+                    }, 100);
+                }
+            } else {
+
+                if (System.currentTimeMillis() - time >= 200) {
+                    turnOff();
+                    camera.release();
+                    camera = null;
+                } else {
+                    final Handler handler = new Handler(Looper.getMainLooper());
+                    handler.postDelayed(() -> {
+                        turnOff();
+                        camera.release();
+                        camera = null;
+                    }, 100);
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }
