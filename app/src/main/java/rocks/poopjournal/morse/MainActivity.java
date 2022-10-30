@@ -319,6 +319,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 return "..--";
             case "я":
                 return ".-.-";
+            case "ñ":
+                return "--.--";
             default:
                 return "";
         }
@@ -402,7 +404,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 return "8";
             case "----.":
                 return "9";
-
+            case "--.--":
+                return "ñ";
         }
 
         return "";
