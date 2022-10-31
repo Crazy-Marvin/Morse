@@ -1,2 +1,2 @@
-The app now offers intelligent suggestions
-It is now possible to use the flashlight for Morse signals
+L'aplicació ara ofereix suggeriments intel·ligents
+Ara és possible utilitzar la llanterna per als senyals Morse

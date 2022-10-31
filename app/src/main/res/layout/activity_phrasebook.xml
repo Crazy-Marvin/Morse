@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBackground">
 
     <RelativeLayout
@@ -20,7 +21,7 @@
             android:contentDescription="Go Back"
             android:rotation="270"
             android:src="@drawable/ic_baseline_arrow_upward_24px"
-            android:tint="#FFFFFF" />
+            app:tint="#FFFFFF" />
 
         <TextView
             android:id="@+id/phrasebook"
