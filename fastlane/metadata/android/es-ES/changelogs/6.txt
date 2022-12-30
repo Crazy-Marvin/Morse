@@ -1,2 +1,2 @@
-Support digits
-Under the hood improvements
+Admite dígitos
+Se corrigieron algunos problemas
