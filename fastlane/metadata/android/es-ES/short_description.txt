@@ -1,1 +1,1 @@
-Translate text to Morse code or vice versa in real time
+Traduzca texto a código Morse o viceversa en tiempo real

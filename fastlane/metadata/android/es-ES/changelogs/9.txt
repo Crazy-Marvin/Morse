@@ -1,0 +1,5 @@
+- Corregido fallo/ruptura al cambiar a modo horizontal 🐛 (#126)
+- Soporta la Ñ ➕ (#124)
+- Añadido soporte para los iconos temáticos de Android 13+ 🎨 (#117)
+- Actualizaciones en las dependencias ⚙️
+- Actualizaciones en la traducción 🗺️
