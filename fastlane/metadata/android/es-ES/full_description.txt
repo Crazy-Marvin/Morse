@@ -1,6 +1,6 @@
-Descifra código Morse a texto o texto a código Morse
+Descifra el código Morse a texto o el texto a código Morse
 
-Convierte cualquier texto en código Morse, o traduce código Morse a texto y escucha los resultados.
+Convierte cualquier texto en código Morse, o traduce el código Morse a texto y escucha los resultados.
 
 - Diseño e interfaz limpios y modernos.
 - Fácil de usar para todo el mundo.
@@ -14,7 +14,7 @@ Convierte cualquier texto en código Morse, o traduce código Morse a texto y es
 
 No dejes que los caracteres especiales o los puntos y rayas te confundan.
 
-El código Morse es un sistema de codificación de letras y números en guiones y puntos.
+El código Morse es un sistema para codificar letras y números en signos de guiones y puntos.
 La duración de la raya es tres veces la del punto.
 Cada punto o raya va seguido de un periodo de ausencia de señal, llamado espacio, igual a la duración del punto.
 
