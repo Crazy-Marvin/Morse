@@ -1,1 +1,1 @@
-Fix Force Crash After Audio Playback 😎
+Se corrigió el bloqueo forzado después de la reproducción del audio 😎

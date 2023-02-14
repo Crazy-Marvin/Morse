@@ -1,7 +1,6 @@
 <?xml version="1.1" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="rocks.poopjournal.morse">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CAMERA" />
 
@@ -15,6 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:localeConfig="@xml/locales_config">
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>

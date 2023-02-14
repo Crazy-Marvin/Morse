@@ -6,8 +6,8 @@ android {
         applicationId "rocks.poopjournal.morse"
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 9
-        versionName "1.8"
+        versionCode 10
+        versionName "1.9"
     }
 
     buildTypes {
@@ -22,18 +22,24 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     packagingOptions {
-        exclude 'META-INF/*'
+        jniLibs {
+            excludes += ['META-INF/*']
+        }
+        resources {
+            excludes += ['META-INF/*']
+        }
     }
 
-    lintOptions {
-        baseline file("lint-baseline.xml")
+    lint {
+        baseline file('lint-baseline.xml')
     }
+    namespace 'rocks.poopjournal.morse'
+
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
 }
