@@ -22,14 +22,20 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     packagingOptions {
-        exclude 'META-INF/*'
+        jniLibs {
+            excludes += ['META-INF/*']
+        }
+        resources {
+            excludes += ['META-INF/*']
+        }
     }
 
-    lintOptions {
-        baseline file("lint-baseline.xml")
+    lint {
+        baseline file('lint-baseline.xml')
     }
+    namespace 'rocks.poopjournal.morse'
+
 }
 
 dependencies {
