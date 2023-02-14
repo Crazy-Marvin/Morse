@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Morse</string>
+    <string name="future_release">To be implemented in a future release</string>
 </resources>

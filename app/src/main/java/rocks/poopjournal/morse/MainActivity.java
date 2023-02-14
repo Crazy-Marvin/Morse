@@ -566,8 +566,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         });
 
         history.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, PhraseBookActivity.class)));
-        mic.setOnClickListener(view -> Toast.makeText(getApplicationContext(), "To be implemented in a future release", Toast.LENGTH_SHORT).show());
-        settings.setOnClickListener(v -> Toast.makeText(getApplicationContext(), "To be implemented in a future release", Toast.LENGTH_SHORT).show());
+        mic.setOnClickListener(view -> Toast.makeText(getApplicationContext(), Toast.makeText(context, context.getString(R.string.future_release), Toast.LENGTH_SHORT).show());
+        settings.setOnClickListener(v -> Toast.makeText(getApplicationContext(), Toast.makeText(context, context.getString(R.string.future_release), Toast.LENGTH_SHORT).show());
         container = findViewById(R.id.container);
         bottomNavigation = findViewById(R.id.bottomLayout);
         morseInputContainer = findViewById(R.id.morseInputContainer);
