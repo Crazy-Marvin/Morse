@@ -1,0 +1,1 @@
+- Some bugs regarding Android 13 fixed hopefully 🐛
