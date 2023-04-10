@@ -1,3 +1,4 @@
-Add option to modify the audio output speed (Standard, Farnsworth or custom)
-Fix Bugs & Crashes
-Target Android 11
+Nieuwe invoer mode: Telegrafische Toets
+Onder de motorkap verbeteringen
+Bugs & crashes opgelost
+Doel Android 11
