@@ -1,0 +1,5 @@
+- Bug/crash opgelost bij het overschakelen naar landschapsmodus 🐛 (#126)
+- Ondersteuning Ñ ➕ (#124)
+- Ondersteuning toegevoegd voor thema-iconen op Android 13+ 🎨 (#117)
+- Bijwerking van afhankelijkheden ⚙️
+- Bijgewerkte Vertalingen 🗺️

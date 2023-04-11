@@ -1,0 +1,1 @@
+- Ondersteuning van Taalvoorkeuren per app (Android 13+) 🗺️
