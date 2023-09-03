@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Морзянка</string>
+    <string name="morse">Морс</string>
+    <string name="text">Текст</string>
+    <string name="phrasebook">Разговорник</string>
+    <string name="settings">Настройки</string>
+    <string name="dit_dah">Спасибо за вашу команду за этот день</string>
+    <string name="future_release">Будет реализовано в будущем выпуске</string>
 </resources>

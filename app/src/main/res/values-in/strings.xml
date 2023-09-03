@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Morse</string>
+    <string name="morse">Morse</string>
+    <string name="settings">Pengaturan</string>
+    <string name="dit_dah">Ketuk untuk dit, tahan untuk dah</string>
+    <string name="future_release">Untuk di implementasi di rilis selanjutnya</string>
+    <string name="text">Teks</string>
 </resources>
