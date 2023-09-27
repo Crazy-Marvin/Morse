@@ -1,0 +1,7 @@
+- Corregido #110: problema de ausencia de espacios
+- Corregido #95: puntuaciones
+- Actualizaciones de las dependencias
+- Actualizaciones en la traducción
+
+Un enorme agradecimiento a todos los colaboradores y traductores. 😘
+Siéntete bienvenido a reportar los problemas y enviar las correcciones a https://github.com/Crazy-Marvin/Morse/ o traducciones en https://hosted.weblate.org/engage/morse/. 🚀
