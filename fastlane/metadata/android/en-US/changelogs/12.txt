@@ -1,0 +1,6 @@
+- Fixed #110: no space issue
+- Dependency Updates
+- Translation Updates
+
+A huge thank you to all contributors and translators. 😘
+Feel welcome to report issues and submit fixes on https://github.com/Crazy-Marvin/Morse/ or translations on https://hosted.weblate.org/engage/morse/. 🚀
