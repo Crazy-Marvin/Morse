@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
             case "z":
                 return "--..";
             case " ":
-                return " ";
+                return "/ ";
             case "0":
                 return "-----";
             case "1":
@@ -388,6 +388,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
             case "--..":
                 return "z";
             case "   ":
+                return " ";
+            case "/ ":
                 return " ";
             case "-----":
                 return "0";
@@ -896,6 +898,9 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                     String text = input.getText().toString();
                     String[] letters = text.split("\\s");
                     for (String morse : letters) {
+                        if (morse.equals("/")){
+                            morse = morse + " ";
+                        }
                         output.append(morseDecode(morse));
                     }
                 }
