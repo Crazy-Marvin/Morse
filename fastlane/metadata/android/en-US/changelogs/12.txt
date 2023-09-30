@@ -1,5 +1,6 @@
 - Fixed #110: no space issue
 - Fixed #95: punctuations
+- Fixed #76: Morse code ca be pasted into the Morse input box now
 - Dependency Updates
 - Translation Updates
 
