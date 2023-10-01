@@ -513,7 +513,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
 
                     if (!Build.MANUFACTURER.equals("HUAWEI")) {
-                        camera = Camera.open();
+                        openCamera();
                     }
 
 
@@ -528,10 +528,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                             turnOff();
                         }
                     }
-
-                    camera.release();
-                    camera = null;
-
+                    releaseCamera();
                 }
             } else {
                 if (!TextUtils.isEmpty(input.getText().toString())) {
@@ -561,8 +558,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                             turnOff();
                         }
                     }
-                    camera.release();
-                    camera = null;
+                    releaseCamera();
                 }
             }
         });
@@ -997,7 +993,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     public void turnOn() {
         try {
             if (android.os.Build.MANUFACTURER.equals("HUAWEI")) {
-                camera = Camera.open();
+                openCamera();
             }
 
             Log.d("cameraMorseCheck","turning camera on at " + System.currentTimeMillis());
@@ -1234,7 +1230,7 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 telegraphPlayer.start();
             } else {
                 time = System.currentTimeMillis();
-                camera = Camera.open();
+                openCamera();
                 turnOn();
             }
             return true;
@@ -1255,19 +1251,28 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
 
                 if (System.currentTimeMillis() - time >= 200) {
                     turnOff();
-                    camera.release();
-                    camera = null;
+                    releaseCamera();
                 } else {
                     final Handler handler = new Handler(Looper.getMainLooper());
                     handler.postDelayed(() -> {
                         turnOff();
-                        camera.release();
-                        camera = null;
+                        releaseCamera();
                     }, 100);
                 }
             }
             return true;
         }
         return false;
+    }
+
+    private void openCamera() {
+        camera = Camera.open();
+    }
+
+    private void releaseCamera() {
+        if (camera != null) {
+            camera.release();
+            camera = null;
+        }
     }
 }
