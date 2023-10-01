@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="morse">Morse</string>
+    <string name="phrasebook">Lista fraz</string>
+    <string name="future_release">Zostanie dodane w następnej wersji aplikacji</string>
+    <string name="settings">Ustawienia</string>
+    <string name="text">Tekst</string>
+    <string name="dit_dah">Kliknij, aby wstawić kropkę, przytrzymaj, aby wstawić kreskę</string>
+    <string name="app_name">Morse</string>
+</resources>
