@@ -7,7 +7,6 @@ import android.widget.EditText;
 
 @SuppressLint("AppCompatCustomView")
 public class EditTextTouch extends EditText {
-    public final OnTouchListener mOnTouchListener = (v, rawEvent) -> false;
 
     public EditTextTouch(Context context) {
         super(context);
