@@ -155,9 +155,6 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
             }
         }
     };
-    private View.OnTouchListener otl = (v, event) -> {
-        return true; // the listener has consumed the event
-    };
 
     public static void setMargins(View v, int l, int t, int r, int b) {
         if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
@@ -766,7 +763,6 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 input.setText("");
                 output.setText("");
                 textToMorse.set(false);
-                input.setOnTouchListener(otl);
 
                 bottomNavigation.setVisibility(View.VISIBLE);
                 morseInputContainer.setVisibility(View.VISIBLE);
@@ -801,14 +797,8 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 buttonOne.setText("TEXT");
                 buttonTwo.setText("MORSE");
                 textToMorse.set(true);
-                input.setOnTouchListener((v16, event) -> {
-                    v16.setOnTouchListener(input.mOnTouchListener);
-                    return false;
-                });
                 bottomNavigation.setVisibility(View.GONE);
                 morseInputContainer.setVisibility(View.GONE);
-
-
             }
         });
 
