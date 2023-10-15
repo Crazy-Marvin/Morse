@@ -3,6 +3,7 @@ package rocks.poopjournal.morse;
 import static android.hardware.Camera.Parameters.FLASH_MODE_AUTO;
 import static android.hardware.Camera.Parameters.FLASH_MODE_ON;
 import static android.hardware.Camera.Parameters.FLASH_MODE_TORCH;
+import static android.os.Process.*;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -21,11 +22,14 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.hardware.Camera;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.Editable;
@@ -47,6 +51,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.WorkerThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -100,6 +105,11 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     ArrayList<PhrasebookModel> arrayList;
     private int telegraphSelected = 1;
     MediaPlayer telegraphPlayer = null;
+    private final SoundPool morseSoundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+    private final HashMap<MorseSoundType, MorseSound> morseSoundMap = new HashMap<>(2);
+    private final HandlerThread morseSoundThread = new HandlerThread("MorseSoundThread", THREAD_PRIORITY_BACKGROUND);
+    private Handler morseSoundHandler;
+
     long time =0;
     ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {
         @Override
@@ -421,7 +431,6 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         settings = findViewById(R.id.settings);
         mic = findViewById(R.id.input_mic_container);
         fullscreen = findViewById(R.id.input_fullscreen_container);
@@ -446,6 +455,9 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         containerTools = findViewById(R.id.container_tools);
 
         helper = new DBHelper(getApplicationContext());
+        initMorseSounds(getApplicationContext());
+        morseSoundThread.start();
+        morseSoundHandler = new Handler(morseSoundThread.getLooper());
 
         star = findViewById(R.id.star);
         popularMorse.add("...---...");
@@ -673,85 +685,13 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
             public void onClick(View v) {
                 if (textToMorse.get()) {
                     if (!TextUtils.isEmpty(output.getText().toString())) {
-                        String[] something = TextUtils.split(output.getText().toString().trim().replaceAll("\\s+", ""), "");
-                        Log.d("test_string", output.getText().toString().trim().replace(" ", "").replace("  ", ""));
-                        Log.d("test_string", ".....");
-                        Log.d("test_length_string", String.valueOf(something.length))
-                        ;
-                        for (String s : something) {
-                            Log.d("skkk", s);
-                        }
-
-                        int len = something.length;
-                        final int[] tracks = new int[len];
-                        int counter = 0;
-                        for (String s : something) {
-                            if (s.equals(".")) {
-                                tracks[counter] = R.raw.dot;
-                                counter++;
-                            } else if (s.equals("-")) {
-                                tracks[counter] = R.raw.dash;
-                                counter++;
-                            }
-                        }
-
-                        Log.d("test_length", String.valueOf(tracks.length));
-                        final int[] trackcounter = {0};
-                        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), tracks[trackcounter[0]]);
-                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                            @Override
-                            public void onCompletion(MediaPlayer mp) {
-                                mp.release();
-                                if (trackcounter[0] < tracks.length - 3) {
-                                    trackcounter[0]++;
-                                    mp = MediaPlayer.create(getApplicationContext(), tracks[trackcounter[0]]);
-                                    mp.setOnCompletionListener(this);
-                                    mp.start();
-                                }
-                            }
-                        });
-                        mediaPlayer.start();
+                        String[] sequence = TextUtils.split(output.getText().toString().trim().replaceAll("\\s+", ""), "");
+                        playSoundSequence(sequence);
                     }
                 } else {
                     if (!TextUtils.isEmpty(input.getText().toString())) {
-                        String[] something = TextUtils.split(input.getText().toString().trim().replaceAll("\\s+", ""), "");
-                        Log.d("test_string", input.getText().toString().trim().replace(" ", "").replace("  ", ""));
-                        Log.d("test_string", ".....");
-                        Log.d("test_length_string", String.valueOf(something.length))
-                        ;
-                        for (String s : something) {
-                            Log.d("skkk", s);
-                        }
-
-                        int len = something.length;
-                        final int[] tracks = new int[len];
-                        int counter = 0;
-                        for (String s : something) {
-                            if (s.equals(".")) {
-                                tracks[counter] = R.raw.dot;
-                                counter++;
-                            } else if (s.equals("-")) {
-                                tracks[counter] = R.raw.dash;
-                                counter++;
-                            }
-                        }
-
-                        Log.d("test_length", String.valueOf(tracks.length));
-                        final int[] trackcounter = {0};
-                        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), tracks[trackcounter[0]]);
-                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                            @Override
-                            public void onCompletion(MediaPlayer mp) {
-                                mp.release();
-                                if (trackcounter[0] < tracks.length - 3) {
-                                    trackcounter[0]++;
-                                    mp = MediaPlayer.create(getApplicationContext(), tracks[trackcounter[0]]);
-                                    mp.setOnCompletionListener(this);
-                                    mp.start();
-                                }
-                            }
-                        });
-                        mediaPlayer.start();
+                        String[] sequence = TextUtils.split(input.getText().toString().trim().replaceAll("\\s+", ""), "");
+                        playSoundSequence(sequence);
                     }
                 }
             }
@@ -899,6 +839,100 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
                 checkForStarColor();
             }
         });
+    }
+
+    private void initMorseSounds(Context context) {
+        MediaPlayer player = MediaPlayer.create(context, R.raw.dot);
+        int dotDuration = player.getDuration();
+        player.release();
+        MorseSound dot = new MorseSound(MorseSoundType.DOT, ".", R.raw.dot,
+                morseSoundPool.load(this, R.raw.dot, 1), dotDuration);
+        player = MediaPlayer.create(context, R.raw.dash);
+        int dashDuration = player.getDuration();
+        player.release();
+        MorseSound dash = new MorseSound(MorseSoundType.DASH, "-", R.raw.dash,
+                morseSoundPool.load(this, R.raw.dash, 1), dashDuration);
+        morseSoundMap.put(MorseSoundType.DOT, dot);
+        morseSoundMap.put(MorseSoundType.DASH, dash);
+    }
+
+    private void playSoundSequence(String[] sequence) {
+        int len = sequence.length;
+        ArrayList<MorseSoundType> soundSequence = new ArrayList<>(len);
+        for (String s : sequence) {
+            if (s.equals(".")) {
+                soundSequence.add(MorseSoundType.DOT);
+            } else if (s.equals("-")) {
+                soundSequence.add(MorseSoundType.DASH);
+            }
+        }
+
+        AudioManager audioManager =
+                (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+        float streamVolumeCurrent = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        float streamVolumeMax = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        float volume = streamVolumeCurrent / streamVolumeMax;
+
+        MorseSoundRunnable morseSoundRunnable =
+                new MorseSoundRunnable(morseSoundMap, soundSequence, morseSoundPool, volume);
+        // Remove pending messages to prevent long queues - only finish playing the current one
+        // and queue the last sequence
+        morseSoundHandler.removeCallbacksAndMessages(null);
+        morseSoundHandler.post(morseSoundRunnable);
+    }
+
+    /**
+     * A runnable that plays a sound sequence using a {@link SoundPool}. Should be run on a background
+     * thread since SoundPool's play method is synchronous.
+     */
+    @WorkerThread
+    private static class MorseSoundRunnable implements Runnable {
+        private final HashMap<MorseSoundType, MorseSound> soundMap;
+        private final ArrayList<MorseSoundType> soundSequence;
+        private final SoundPool soundPool;
+        private final float volume;
+
+        private static final int PAUSE_MS = 200;
+
+        private MorseSoundRunnable(HashMap<MorseSoundType, MorseSound> soundMap,
+                                   ArrayList<MorseSoundType> soundSequence,
+                                   SoundPool soundPool,
+                                   float volume) {
+            this.soundMap = soundMap;
+            this.soundSequence = soundSequence;
+            this.soundPool = soundPool;
+            this.volume = volume;
+        }
+
+        @Override
+        public void run() {
+            for (MorseSoundType soundType : soundSequence) {
+                MorseSound sound = soundMap.get(soundType);
+                soundPool.play(sound.soundPoolSoundId, volume, volume, 1, 0, 1.0f);
+                SystemClock.sleep(sound.soundLength + PAUSE_MS);
+            }
+        }
+    }
+
+    private class MorseSound {
+        final MorseSoundType soundType;
+        final String textual;
+        final int soundResId;
+        final int soundPoolSoundId;
+        final int soundLength;
+
+        MorseSound(MorseSoundType soundType, String textual, int soundResId, int soundPoolSoundId, int soundLength) {
+            this.soundType = soundType;
+            this.textual = textual;
+            this.soundResId = soundResId;
+            this.soundPoolSoundId = soundPoolSoundId;
+            this.soundLength = soundLength;
+        }
+    }
+
+    enum MorseSoundType {
+        DOT,
+        DASH
     }
 
     private void checkForStarColor() {
