@@ -1,0 +1,1 @@
+- Support des Préférences Linguistiques Par Appli (Android 13+) 🗺️
