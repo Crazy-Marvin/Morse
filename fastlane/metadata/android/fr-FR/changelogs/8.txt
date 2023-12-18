@@ -1,2 +1,2 @@
-- Ajout d'une option pour modifier la vitesse de lecture (Standard, Farnsworth ou personnalisée)
-- Améliorations internes mineurs
+- Améliorations et mises à jour sous le capot
+- Mise à jour des traductions

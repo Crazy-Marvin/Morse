@@ -1,0 +1,9 @@
+- Corrigé #110 : manque d'espace
+- Corrigé #95 : ponctuation
+- Corrigé #76 : le code Morse peut désormais être collé dans le champ de saisie du Morse
+- Corrigé #131 : NullPointerException
+- Mise à jour des Dépendances
+- Mise à jour des Traductions
+
+Un énorme merci à tous les contributeurs et traducteurs. 😘
+Vous êtes libre de signaler des problèmes et de soumettre des corrections sur https ://github.com/Crazy-Marvin/Morse/ ou des traductions sur https ://hosted.weblate.org/engage/morse/. 🚀

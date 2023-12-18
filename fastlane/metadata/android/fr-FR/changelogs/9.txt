@@ -1,0 +1,5 @@
+- Correction d'un bug/crash lors de la transition en mode paysage 🐛 (#126)
+- Support d'Ñ ➕ (#124)
+- Ajout du support des Icônes d'application à Thème sur Android 13+ 🎨 (#117)
+- Mise à jour des dépendances ⚙️
+- Mise à jour des traductions 🗺️
