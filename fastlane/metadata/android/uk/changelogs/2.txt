@@ -1,1 +1,1 @@
-Fix Force Crash After Audio Playback 😎
+Виправлено примусове падіння після відтворення аудіо 😎

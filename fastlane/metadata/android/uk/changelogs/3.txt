@@ -1,2 +1,2 @@
-The app now offers intelligent suggestions
-It is now possible to use the flashlight for Morse signals
+Додаток тепер пропонує інтелектуальні підказки
+З'явилася можливість використовувати ліхтарик для передачі сигналів азбуки Морзе
