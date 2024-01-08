@@ -1,3 +1,4 @@
-Add option to modify the audio output speed (Standard, Farnsworth or custom)
-Fix Bugs & Crashes
-Target Android 11
+- Новий режим введення: Телеграфна клавіша
+- Внутрішні покращення
+- Виправлено помилки та збої
+- Цільова збірка для Android 11
