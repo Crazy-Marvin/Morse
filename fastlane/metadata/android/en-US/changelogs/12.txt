@@ -1,6 +1,5 @@
 - Fixed #110: no space issue
-- Fixed #95: punctuations
-- Fixed #76: Morse code ca be pasted into the Morse input box now
+- Fixed #76: Morse code can be pasted into the Morse input box now
 - Fixed #131: NullPointerException
 - Dependency Updates
 - Translation Updates
