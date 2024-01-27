@@ -10,7 +10,7 @@ updates:
     schedule:
       interval: monthly
     open-pull-requests-limit: 10      
-- package-ecosystem: "devcontainers"
+- package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: monthly
