@@ -1,7 +1,8 @@
-- Corregido #110: problema de ausencia de espacios
-- Corregido #95: puntuaciones
-- Actualizaciones de las dependencias
-- Actualizaciones en la traducción
+- Corregido #110: problema de ausencia de espacio
+- Corregido #76: El código Morse puede ser pegado en la caja de entrada Morse ahora
+- Corregido #131: NullPointerException
+- Actualizaciones de dependencias
+- Actualizaciones de traducción
 
 Un enorme agradecimiento a todos los colaboradores y traductores. 😘
-Siéntete bienvenido a reportar los problemas y enviar las correcciones a https://github.com/Crazy-Marvin/Morse/ o traducciones en https://hosted.weblate.org/engage/morse/. 🚀
+Siéntase bienvenido a reportar problemas y enviar correcciones en https://github.com/Crazy-Marvin/Morse/ o traducciones en https://hosted.weblate.org/engage/morse/. 🚀
