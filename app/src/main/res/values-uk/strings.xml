@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Морзе</string>
+    <string name="morse">Морзе</string>
+    <string name="phrasebook">Розмовник</string>
+    <string name="settings">Налаштування</string>
+    <string name="dit_dah">Натисніть для крапки, утримуйте для тире</string>
+    <string name="text">Текст</string>
+    <string name="future_release">Буде реалізовано у майбутньому випуску</string>
+</resources>
