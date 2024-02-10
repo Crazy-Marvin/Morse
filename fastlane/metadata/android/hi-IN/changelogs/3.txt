@@ -1,2 +1,2 @@
-The app now offers intelligent suggestions
-It is now possible to use the flashlight for Morse signals
+ऐप अब समझदार सुझाव देता है
+मोर्स सिग्नल के लिए टॉर्च का उपयोग करना अब संभव है

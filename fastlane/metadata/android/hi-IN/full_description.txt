@@ -1,26 +1,41 @@
-Translate text to Morse code or decipher Morse code by translating them to text! It’s a simple, user friendly, but useful app that can help you in a lot of ways. You can decipher or decode Morse codes, you can create secret number or learn to be a cipher or learn cryptography, and many more! If you think of yourself as a codebreaker, download and try our Morse code cypher tool! Don’t let the special characters or dots and dashes befuddle you. 
+मोर्स कोड को टेक्स्ट में या टेक्स्ट को मोर्स कोड में समझें
 
-FEATURES OF MORSE CODE CIPHER TOOL:
-•	Clean, modern app design and interface.
-•	Super easy to use. 
-•	Realtime translation: type in the word or code and we will translate it to you immediately.  
-•	Decode from Morse to text or text to Morse.
-•	Press the speaker button to hear the code in sound.
-•	Copy the text by pressing copy button.
-•	Type in dot and dash using our built-in Morse keyboard. 
-•	Open Source (https://github.com/Crazy-Marvin/Morse)
-•	More features coming up later! 
-What is Morse code? Morse code is a system to encode letters and numbers to dash and dot signs. The duration of the dash is three times the duration of a dot. Each dot or dash is followed by period of signal absence, called a space, equal to the dot duration. Morse code was first used for communicating via telegraph. The most well-known Morse code is SOS, which is used to signal an emergency. Aside from typing dots and dash, you can also signal Morse code by turning light on and off, sounding a horn or tapping, and many more.  You can use Morse code to transmit messages easily via various means if the recipient understands Morse code. If they don’t, they can use our cipher tool to find out the password, secret number, or any info you want to relay. 
-Since people rarely communicate via telegraph, nowadays there are very few people who can memorize Morse codes. Instead, it has become a way to encode something or special characters for special purposes. Of course, these special characters are still widely used in many situations, you don’t know when you are going to really need it. It’s a useful language to know even if you just want to learn cryptography or cryptogram for fun. 
-How Morse is useful for you:
-1.	Tell others when you are in a dangerous situation (SOS).
-2.	Hide your secret number or password via dots and dashes. 
-3.	Cipher/ Decipher hidden clues in games. 
-4.	Learn cryptography or cryptogram through learning Morse codes. 
-5.	Become a codebreaker by breaking secret codes in real time translation. 
-6.	And many more! 
+किसी भी टेक्स्ट को मोर्स कोड में बदलें, या मोर्स कोड को टेक्स्ट में अनुवाद करें और परिणाम सुनें।
 
-So, what are you waiting for? Use our Morse code cipher tool to decipher Morse code to text or text to Morse code now! As a codebreaker & cryptogram enthusiast, our cipher tool is a must have! It is useful for all of you. Just try it out.
+• स्वच्छ, आधुनिक ऐप डिज़ाइन और इंटरफ़ेस।
+• इसे हर किसी के लिए उपयोग में आसान बनाया गया है।
+• रीयलटाइम अनुवाद: शब्द या कोड टाइप करें और उसका तुरंत अनुवाद कराएं।
+• मोर्स से टेक्स्ट, या टेक्स्ट से मोर्स तक डिकोड करें।
+• कोड सुनने के लिए स्पीकर बटन दबाएँ।
+• "कॉपी करें" बटन दबाकर टेक्स्ट को कॉपी करें।
+• हमारे अंतर्निर्मित मोर्स कीबोर्ड का उपयोग करके डॉट और डैश टाइप करें।
+• लिब्रे सॉफ्टवेयर (https://github.com/Crazy-Marvin/Morse)
++ अधिक सुविधाओं की योजना बनाई गई।
+
+विशेष वर्णों या बिंदुओं और डैश को आप पर हावी न होने दें।
+
+मोर्स कोड अक्षरों और संख्याओं को डैश और डॉट चिह्नों में एन्कोड करने की एक प्रणाली है।
+डैश की अवधि एक बिंदु की अवधि से तीन गुना है।
+प्रत्येक बिंदु या डैश के बाद सिग्नल अनुपस्थिति की अवधि होती है, जिसे एक स्थान कहा जाता है, जो बिंदु अवधि के बराबर है।
+
+मोर्स कोड का उपयोग सबसे पहले टेलीग्राफ के माध्यम से संचार करने के लिए किया गया था।
+सबसे प्रसिद्ध मोर्स कोड SOS है, जिसका उपयोग किसी आपात स्थिति का संकेत देने के लिए किया जाता है।
+डॉट्स और डैश्ड टाइप करने के अलावा, आप लाइट चालू और बंद करके, हॉर्न बजाकर या टैप करके भी मोर्स कोड का संकेत दे सकते हैं।
+मोरेस कोड संचारित करने के सभी माध्यमों के लिए आवश्यक है कि प्राप्तकर्ता इसे समझे।
+यदि नहीं, तो हमारे सिफर टूल का उपयोग पासवर्ड, गुप्त नंबर, या कोई भी जानकारी जिसे आप रिले करना चाहते हैं, पता लगाने के लिए किया जा सकता है।
+चूँकि लोग टेलीग्राफ के माध्यम से शायद ही कभी संवाद करते हैं, या सेना में इसे सीखते हैं, बहुत कम लोगों को मोर्स कोड याद होते हैं।
+इसके बजाय, यह विशेष उद्देश्यों के लिए किसी चीज़ को एन्कोड करने का एक तरीका बन गया है।
+यह जानने के लिए एक उपयोगी भाषा है, भले ही आप केवल क्रिप्टोग्राफी सीखना चाहते हों या मनोरंजन के लिए क्रिप्टोग्राम हल करना चाहते हों।
+
+1. जब आप किसी खतरनाक स्थिति (SOS) में हों तो दूसरों को बताएं।
+2. अपना गुप्त नंबर या पासवर्ड डॉट्स और डैश के माध्यम से छुपाएं।
+3. खेलों में छिपे हुए सुरागों को सिफ़र या समझना।
+4. मोर्स कोड सीखकर क्रिप्टोग्राफी या क्रिप्टोग्राम सीखें।
+5. वास्तविक समय अनुवाद में गुप्त कोड तोड़कर कोडब्रेकर बनें।
+6. एक गुप्त नंबर बनाएं.
++ और भी बहुत कुछ
+
 ---
-We hope that you enjoy using our cipher tool to decode, to learn cryptography, or other purposes. If you do, please support our Morse decoder app by giving a rating and review on our Google Play store page and/or a star on GitHub. It will only take a minute and it will mean the world for us!
-If you have problems in using Morse app, please write us an email or open an issue on GitHub. We will respond immediately and fix the bug as soon as we can. 
+यह वास्तव में समीक्षा छोड़ने या स्रोत कोड रिपॉजिटरी में प्रोजेक्ट को तारांकित करने में मदद करता है, और यह हमारे लिए बहुत मायने रखता है।
+यदि आपको ऐप का उपयोग करने में समस्या हो रही है, तो कृपया एक ई-मेल लिखें या GitHub पर एक समस्या खोलें।
+प्रतिक्रियाएँ अक्सर तत्काल होती हैं, और बग को यथाशीघ्र ठीक कर दिया जाता है।

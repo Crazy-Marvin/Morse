@@ -1,3 +1,4 @@
-Add option to modify the audio output speed (Standard, Farnsworth or custom)
-Fix Bugs & Crashes
-Target Android 11
+- नया इनपुट मोड: टेलीगैफ़ कुंजी
+- आंतरिक सुधार
+- बग और क्रैश ठीक करें
+- लक्ष्य Android 11
