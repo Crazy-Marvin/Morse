@@ -1,3 +1,2 @@
-Support digits
-Under the hood improvements
-
+अंकों का समर्थन
+आंतरिक सुधार

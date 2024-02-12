@@ -1,1 +1,1 @@
-Translate text to Morse code or vice versa in real time
+वास्तविक समय में टेक्स्ट का मोर्स कोड में या इसके विपरीत अनुवाद करें
