@@ -22,10 +22,8 @@ O código Morse foi usado pela primeira vez para a comunicação via telégrafo.
 O código Morse mais reconhecido é o SOS, que é usado para sinalizar uma emergência.
 Além de digitar pontos e traços, você também pode sinalizar código Morse acendendo e apagando uma luz, soando uma buzina, batendo, entre outros.
 Qualquer meio de transmissão de mensagens em Morse requer que o destinatário entenda esse código.
-Se esse não for o caso, nossa ferramenta decifradora poderá ser usada para descobrir a senha, número secreto ou qualquer que seja a informação transmitida.
-Como as pessoas raramente se comunicam via telégrafo, ou aprendem no exército, pouquíssimas memorizam códigos Morse.
-Em vez disso, tornou-se uma forma de codificar coisas para fins especiais.
-É uma linguagem útil de se saber, mesmo que você só queira aprender criptografia ou resolver criptogramas para se divertir.
+Se esse não for o caso, nosso aplicativo poderá ser usado para descobrir a mensagem, senha, número secreto ou qualquer que seja a informação transmitida.
+Hoje em dia, apesar da forma como o telégrafo foi amplamente ultrapassado por outras tecnologias de comunicação, o código Morse ainda se encontra nas vidas de muitos indivíduos. Devido à sua presença na cultura popular, o código Morse é, por vezes, utilizado em filmes, jogos e outras mídias como uma maneira simples de codificar mensagens, inspirando fãs a pesquisar e explorar a linguagem como parte de divertidos quebra-cabeças. Isso a torna útil mesmo em criptografia ou em eventos de criptograma como uma ferramenta conveniente de codificação.
 
 1.	Diga aos outros quando você estiver numa situação perigosa (SOS).
 2.	Oculte seu número secreto ou senha através de pontos e traços.
