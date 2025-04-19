@@ -13,24 +13,24 @@
 ![F-Droid](https://img.shields.io/f-droid/v/rocks.poopjournal.morse.svg)
 [![Google Play](https://badgen.net/badge/icon/googleplay?icon=googleplay&label)](https://play.google.com/store/apps/details?id=rocks.poopjournal.morse)
 
-<p align="left">
-<a href="https://play.google.com/store/apps/details?id=rocks.poopjournal.morse">
-    <img alt="Get it on Google Play"
-        height="80"
-        src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />
-</a>  
-<a href="https://f-droid.org/app/rocks.poopjournal.morse">
-    <img alt="Get it on F-Droid"
-        height="80"
-        src="https://f-droid.org/badge/get-it-on.png" />
-        </a>
-        </p>
-
 __Translator for converting text into morse code and vice-versa__
 
 # Morse
 
 Translate text to Morse code or decipher Morse code by translating them to text! It’s a simple, user friendly, but useful app that can help you in a lot of ways. You can decipher or decode Morse codes, you can create secret number or learn to be a cipher or learn cryptography, and many more! If you think of yourself as a codebreaker, download and try our Morse code cypher tool! Don’t let the special characters or dots and dashes befuddle you. 
+
+<p align="left">
+<a href="https://f-droid.org/app/rocks.poopjournal.morse">
+    <img alt="Get it on F-Droid"
+        height="80"
+        src="https://f-droid.org/badge/get-it-on.png" />
+        </a>
+<a href="https://play.google.com/store/apps/details?id=rocks.poopjournal.morse">
+    <img alt="Get it on Google Play"
+        height="80"
+        src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />
+        </a>  
+        </p>
 
 __FEATURES OF MORSE CODE CIPHER TOOL:__
 
@@ -71,11 +71,16 @@ Morse --> Text | Telegraph Key | Text --> Morse
 
 # Contributing
 
-We use [Hosted Weblate](https://hosted.weblate.org/engage/morse/) for translations.
+The ```development``` or a feature branch is used while developing the code, and pushed into the master branch ```trunk``` afterwards for releases.
+PRs to the ```trunk``` need at least one approving review before getting merged.
+
+Help translate the app at [Hosted Weblate](https://hosted.weblate.org/engage/morse/).
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+Check out the [contribution guidelines](https://github.com/Crazy-Marvin/Morseblob/trunk/.github/CONTRIBUTING.md) for details please.
 
 # License
 
