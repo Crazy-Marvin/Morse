@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Morse</string>
+    <string name="morse">Morse</string>
+    <string name="text">Texto</string>
+    <string name="phrasebook">Livro de frases</string>
+    <string name="settings">Configurações</string>
+    <string name="dit_dah">Toque para um \"dit\", segure para um \"dah\"</string>
+    <string name="future_release">Será implementado numa versão futura</string>
+</resources>
