@@ -54,7 +54,11 @@ import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
 import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -186,323 +190,263 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
     }
 
     static String morseEncode(String x) {
-        // refer to the Morse table
-        // image attached in the article
-        switch (x.toLowerCase(Locale.getDefault())) {
-            case "a":
-                return ".-";
-            case "b":
-                return "-...";
-            case "c":
-                return "-.-.";
-            case "d":
-                return "-..";
-            case "e":
-                return ".";
-            case "f":
-                return "..-.";
-            case "g":
-                return "--.";
-            case "h":
-                return "....";
-            case "i":
-                return "..";
-            case "j":
-                return ".---";
-            case "k":
-                return "-.-";
-            case "l":
-                return ".-..";
-            case "m":
-                return "--";
-            case "n":
-                return "-.";
-            case "o":
-                return "---";
-            case "p":
-                return ".--.";
-            case "q":
-                return "--.-";
-            case "r":
-                return ".-.";
-            case "s":
-                return "...";
-            case "t":
-                return "-";
-            case "u":
-                return "..-";
-            case "v":
-                return "...-";
-            case "w":
-                return ".--";
-            case "x":
-                return "-..-";
-            case "y":
-                return "-.--";
-            case "  ":
-                return " ";
-            case "z":
-                return "--..";
-            case " ":
-                return "/ ";
-            case "0":
-                return "-----";
-            case "1":
-                return ".----";
-            case "2":
-                return "..---";
-            case "3":
-                return "...--";
-            case "4":
-                return "....-";
-            case "5":
-                return ".....";
-            case "6":
-                return "-....";
-            case "7":
-                return "--...";
-            case "8":
-                return "---..";
-            case "9":
-                return "----.";
-            case "а":
-                return ".-";
-            case "б":
-                return "-...";
-            case "в":
-                return ".--";
-            case "г":
-                return "--.";
-            case "д":
-                return "-..";
-            case "е":
-                return ".";
-            case "ё":
-                return ".";
-            case "ж":
-                return "...-";
-            case "з":
-                return "--..";
-            case "и":
-                return "..";
-            case "й":
-                return ".---";
-            case "к":
-                return "-.-";
-            case "л":
-                return ".-..";
-            case "м":
-                return "--";
-            case "н":
-                return "-.";
-            case "о":
-                return "---";
-            case "п":
-                return ".--.";
-            case "р":
-                return ".-.";
-            case "с":
-                return "...";
-            case "т":
-                return "-";
-            case "у":
-                return "..-";
-            case "ф":
-                return "..-.";
-            case "х":
-                return "....";
-            case "ц":
-                return "-.-.";
-            case "ч":
-                return "---.";
-            case "ш":
-                return "----";
-            case "щ":
-                return "--.-";
-            case "ъ":
-                return "--.--";
-            case "ы":
-                return "-.--";
-            case "ь":
-                return "-..-";
-            case "э":
-                return "..-..";
-            case "ю":
-                return "..--";
-            case "я":
-                return ".-.-";
-            case "ñ":
-                return "--.--";
-            case ",": 
-                return "--..--";
-            case ".": 
-                return ".-.-.-";
-            case "?": 
-                return "..--..";
-            case "'": 
-                return ".----.";
-            case "!": 
-                return "-.-.--";
-            case "/": 
-                return "-..-.";
-            case "(": 
-                return "-.--.";
-            case ")": 
-                return "-.--.-";
-            case "&": 
-                return ".-...";
-            case ":": 
-                return "---...";
-            case ";": 
-                return "-.-.-.";
-            case "=": 
-                return "-...-";
-            case "+": 
-                return ".-.-.";
-            case "-": 
-                return "-....-";
-            case "_": 
-                return "..--.-";
-            case '"': 
-                return ".-..-.";
-            case "$": 
-                return "...-..-";
-            case "@": 
-                return ".--.-.";
-            default:
-                return "";
+        // Normalize input
+        String ch = x.toLowerCase(Locale.getDefault());
+
+        switch (ch) {
+            // ===== Latin (A–Z, 0–9, punctuation) =====
+            case "a": return ".-";
+            case "b": return "-...";
+            case "c": return "-.-.";
+            case "d": return "-..";
+            case "e": return ".";
+            case "f": return "..-.";
+            case "g": return "--.";
+            case "h": return "....";
+            case "i": return "..";
+            case "j": return ".---";
+            case "k": return "-.-";
+            case "l": return ".-..";
+            case "m": return "--";
+            case "n": return "-.";
+            case "o": return "---";
+            case "p": return ".--.";
+            case "q": return "--.-";
+            case "r": return ".-.";
+            case "s": return "...";
+            case "t": return "-";
+            case "u": return "..-";
+            case "v": return "...-";
+            case "w": return ".--";
+            case "x": return "-..-";
+            case "y": return "-.--";
+            case "z": return "--..";
+            case " ": return "/ ";
+            case "0": return "-----";
+            case "1": return ".----";
+            case "2": return "..---";
+            case "3": return "...--";
+            case "4": return "....-";
+            case "5": return ".....";
+            case "6": return "-....";
+            case "7": return "--...";
+            case "8": return "---..";
+            case "9": return "----.";
+
+            // ===== Cyrillic (already present in your code) =====
+            case "а": return ".-";
+            case "б": return "-...";
+            case "в": return ".--";
+            case "г": return "--.";
+            case "д": return "-..";
+            case "е": return ".";
+            case "ё": return ".";
+            case "ж": return "...-";
+            case "з": return "--..";
+            case "и": return "..";
+            case "й": return ".---";
+            case "к": return "-.-";
+            case "л": return ".-..";
+            case "м": return "--";
+            case "н": return "-.";
+            case "о": return "---";
+            case "п": return ".--.";
+            case "р": return ".-.";
+            case "с": return "...";
+            case "т": return "-";
+            case "у": return "..-";
+            case "ф": return "..-.";
+            case "х": return "....";
+            case "ц": return "-.-.";
+            case "ч": return "---.";
+            case "ш": return "----";
+            case "щ": return "--.-";
+            case "ъ": return "--.--";
+            case "ы": return "-.--";
+            case "ь": return "-..-";
+            case "э": return "..-..";
+            case "ю": return "..--";
+            case "я": return ".-.-";
+
+            // ===== Greek =====
+            case "α": case "ά": return ".-";
+            case "β": return "-...";
+            case "γ": return "--.";
+            case "δ": return "-..";     // Δ
+            case "ε": case "έ": return ".";
+            case "ζ": return "--..";
+            case "η": return "....";
+            case "θ": return "-.-.";
+            case "ι": case "ί": return "..";
+            case "κ": return "-.-";
+            case "λ": return ".-..";
+            case "μ": return "--";
+            case "ν": return "-.";
+            case "ξ": return "-..-";
+            case "ο": case "ό": return "---";
+            case "π": return ".--.";
+            case "ρ": return ".-.";
+            case "σ": case "ς": return "...";
+            case "τ": return "-";
+            case "υ": case "ύ": return "..-";
+            case "φ": return "..-.";
+            case "χ": return "----";
+            case "ψ": return "--.-";
+            case "ω": case "ώ": return ".--";
+
+            // ===== Hebrew =====
+            case "ק": return "--.-";   // QOF
+            case "ש": return "----";   // SHIN
+            case "ד": return "-..";
+            case "ל": return ".-..";
+            case "ע": return "---";
+
+            // ===== Arabic / Urdu =====
+            case "ا": return ".-";     // Alif
+            case "ب": return "-...";
+            case "ت": return "-";
+            case "ث": return "-.-.";
+            case "ج": return ".---";   // Arabic/Urdu JEEM
+            case "ح": return "....";
+            case "خ": return "---.";
+            case "ر": return ".-.";
+            case "ز": return "--..";
+            case "س": return "...";
+            case "ش": return "----";
+            case "ع": return ".-.-";
+            case "غ": return "--.";
+            case "ف": return "..-.";
+            case "ق": return "--.-";
+            case "ك": case "ک": return "-.-"; // Urdu KAF
+            case "ل": return ".-..";
+            case "م": return "--";
+            case "ن": return "-.";
+            case "ه": case "ہ": return "....";
+            case "و": return ".--";
+            case "ي": case "ی": return "..";
+
+            // ===== Hindi / Devanagari (via transliteration) =====
+            // "मैं" → main
+            case "म": return "--";     // m
+            case "ै": return ".-..";   // ai ~ l (approx)
+            case "न": return "-.";     // n
+            case "मैं": return "-- .- .. -."; // full word "main"
+
+            // ===== Punctuation =====
+            case "ñ": return "--.--";
+            case ",": return "--..--";
+            case ".": return ".-.-.-";
+            case "?": return "..--..";
+            case "'": return ".----.";
+            case "!": return "-.-.--";
+            case "/": return "-..-.";
+            case "(": return "-.--.";
+            case ")": return "-.--.-";
+            case "&": return ".-...";
+            case ":": return "---...";
+            case ";": return "-.-.-.";
+            case "=": return "-...-";
+            case "+": return ".-.-.";
+            case "-": return "-....-";
+            case "_": return "..--.-";
+            case "\"": return ".-..-.";
+            case "$": return "...-..-";
+            case "@": return ".--.-.";
+
+            default: return "";
         }
     }
 
+
     static String morseDecode(String morse) {
-        // refer to the Morse table
-        // image attached in the article
         switch (morse) {
-            case ".-":
-                return "a";
-            case "-...":
-                return "b";
-            case "-.-.":
-                return "c";
-            case "-..":
-                return "d";
-            case ".":
-                return "e";
-            case "..-.":
-                return "f";
-            case "--.":
-                return "g";
-            case "....":
-                return "h";
-            case "..":
-                return "i";
-            case ".---":
-                return "j";
-            case "-.-":
-                return "k";
-            case ".-..":
-                return "l";
-            case "--":
-                return "m";
-            case "-.":
-                return "n";
-            case "---":
-                return "o";
-            case ".--.":
-                return "p";
-            case "--.-":
-                return "q";
-            case ".-.":
-                return "r";
-            case "...":
-                return "s";
-            case "-":
-                return "t";
-            case "..-":
-                return "u";
-            case "...-":
-                return "v";
-            case ".--":
-                return "w";
-            case "-..-":
-                return "x";
-            case "-.--":
-                return "y";
-            case "--..":
-                return "z";
-            case "   ":
-                return " ";
-            case "/ ":
-                return " ";
-            case "-----":
-                return "0";
-            case ".----":
-                return "1";
-            case "..---":
-                return "2";
-            case "...--":
-                return "3";
-            case "....-":
-                return "4";
-            case ".....":
-                return "5";
-            case "-....":
-                return "6";
-            case "--...":
-                return "7";
-            case "---..":
-                return "8";
-            case "----.":
-                return "9";
-            case "--.--":
-                return "ñ";
-            case "--..--": 
-                return ",";
-            case ".-.-.-": 
-                return ".";
-            case "..--..": 
-                return "?";
-            case ".----.": 
-                return "'";
-            case "-.-.--": 
-                return "!";
-            case "-..-.": 
-                return "/";
-            case "-.--.": 
-                return "(";
-            case "-.--.-": 
-                return ")";
-            case ".-...": 
-                return "&";
-            case "---...": 
-                return ":";
-            case "-.-.-.": 
-                return ";";
-            case "-...-": 
-                return "=";
-            case ".-.-.": 
-                return "+";
-            case "-....-": 
-                return "-";
-            case "..--.-": 
-                return "_";
-            case ".-..-.": 
-                return '"';
-            case "...-..-": 
-                return "$";
-            case ".--.-.": 
-                return "@";
+            // ===== Latin (default output) =====
+            case ".-":    return "a";   // also α (Greek), ا (Arabic)
+            case "-...":  return "b";   // also β (Greek), ב (Hebrew)
+            case "-.-.":  return "c";   // also θ/ξ (Greek), ث (Arabic), צ (Hebrew)
+            case "-..":   return "d";   // also δ (Greek), ד (Hebrew)
+            case ".":     return "e";   // also ε (Greek), ה (Hebrew)
+            case "..-.":  return "f";   // also φ (Greek), ف (Arabic)
+            case "--.":   return "g";   // also γ (Greek), ג (Hebrew), غ (Arabic)
+            case "....":  return "h";   // also η (Greek), ח (Hebrew), ح (Arabic)
+            case "..":    return "i";   // also ι (Greek), י (Hebrew), ي (Arabic)
+            case ".---":  return "j";   // also ج (Arabic/Urdu)
+            case "-.-":   return "k";   // also κ (Greek), כ (Hebrew), ك/ک (Arabic/Urdu)
+            case ".-..":  return "l";   // also λ (Greek), ל (Hebrew)
+            case "--":    return "m";   // also μ (Greek), מ (Hebrew), م (Arabic/Urdu)
+            case "-.":    return "n";   // also ν (Greek), נ (Hebrew), ن (Arabic/Urdu)
+            case "---":   return "o";   // also ο/ω (Greek), ע (Hebrew)
+            case ".--.":  return "p";   // also π (Greek), פ (Hebrew)
+            case "--.-":  return "q";   // also ψ (Greek), ק (Hebrew), ق (Arabic)
+            case ".-.":   return "r";   // also ρ (Greek), ר (Hebrew)
+            case "...":   return "s";   // also σ/ς (Greek), ס (Hebrew), س (Arabic)
+            case "-":     return "t";   // also τ (Greek), ת (Hebrew), ط/ت (Arabic)
+            case "..-":   return "u";   // also υ (Greek)
+            case "...-":  return "v";   // also ض (Arabic)
+            case ".--":   return "w";   // also ω (Greek), و (Arabic/Urdu)
+            case "-..-":  return "x";   // also ξ (Greek), ظ (Arabic), ь (Cyrillic)
+            case "-.--":  return "y";   // also ы (Cyrillic)
+            case "--..":  return "z";   // also ζ (Greek), ז (Hebrew), ز (Arabic)
+
+            // ===== Hindi (मैं → main) =====
+            case "-- .- .. -.": return "मैं"; // "main"
+
+            // ===== Numbers =====
+            case "-----": return "0";
+            case ".----": return "1";
+            case "..---": return "2";
+            case "...--": return "3";
+            case "....-": return "4";
+            case ".....": return "5";
+            case "-....": return "6";
+            case "--...": return "7";
+            case "---..": return "8";
+            case "----.": return "9";
+
+            // ===== Punctuation =====
+            case "--.--":  return "ñ";    // also щ (Cyrillic)
+            case "--..--": return ",";
+            case ".-.-.-": return ".";
+            case "..--..": return "?";
+            case ".----.": return "'";
+            case "-.-.--": return "!";
+            case "-..-.":  return "/";
+            case "-.--.":  return "(";
+            case "-.--.-": return ")";
+            case ".-...":  return "&";
+            case "---...": return ":";
+            case "-.-.-.": return ";";
+            case "-...-":  return "=";
+            case ".-.-.":  return "+";    // also я (Cyrillic)
+            case "-....-": return "-";
+            case "..--.-": return "_";
+            case ".-..-.": return "\"";
+            case "...-..-": return "$";
+            case ".--.-.": return "@";
+
+            // ===== Spacing =====
+            case "   ": return " ";
+            case "/ ": return " ";
+
+            default: return "";
         }
-        
-        return "";
     }
+
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        container = findViewById(R.id.container);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
 
+        // Apply insets padding to avoid notch / status bar / nav bar overlap
+        ViewCompat.setOnApplyWindowInsetsListener(container, (view, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
         settings = findViewById(R.id.settings);
         mic = findViewById(R.id.input_mic_container);
         fullscreen = findViewById(R.id.input_fullscreen_container);
@@ -647,7 +591,6 @@ public class MainActivity extends AppCompatActivity implements Camera.AutoFocusC
         history.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, PhraseBookActivity.class)));
         mic.setOnClickListener(view ->  Toast.makeText(this, getString(R.string.future_release), Toast.LENGTH_SHORT).show());
         settings.setOnClickListener(v ->  Toast.makeText(this, getString(R.string.future_release), Toast.LENGTH_SHORT).show());
-        container = findViewById(R.id.container);
         bottomNavigation = findViewById(R.id.bottomLayout);
         morseInputContainer = findViewById(R.id.morseInputContainer);
 

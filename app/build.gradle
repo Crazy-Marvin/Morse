@@ -4,7 +4,7 @@ android {
     compileSdkVersion 36
     defaultConfig {
         applicationId "rocks.poopjournal.morse"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 36
         versionCode 13
         versionName "2.2"
