@@ -1,6 +1,7 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Crazy-Marvin/Morse/ci)
 ![License](https://img.shields.io/github/license/Crazy-Marvin/Morse.svg)
 [![Last commit](https://img.shields.io/github/last-commit/Crazy-Marvin/Morse.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/commits)
+[![Figma Mockups](https://img.shields.io/badge/Figma-black?logo=figma)](https://www.figma.com/file/d537SuWRIZpQocFBCxpOlR/'Morse%E2%80%98-Mock-Ups?node-id=0%3A1)
 [![Releases](https://img.shields.io/github/downloads/Crazy-Marvin/Morse/total.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/releases)
 [![Latest tag](https://img.shields.io/github/tag/Crazy-Marvin/Morse.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/tags)
 [![Issues](https://img.shields.io/github/issues/Crazy-Marvin/Morse.svg?style=flat)](https://github.com/Crazy-Marvin/Morse/issues)
