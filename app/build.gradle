@@ -8,6 +8,8 @@ android {
         targetSdkVersion 36
         versionCode 13
         versionName "2.2"
+        setProperty("archivesBaseName", "Morse-$versionName")
+
     }
 
     buildTypes {
