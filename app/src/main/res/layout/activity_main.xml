@@ -29,15 +29,16 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
             android:contentDescription="Open Phrasebook"
-            android:src="@drawable/ic_history" />
+            android:src="@drawable/phrasebook" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:fontFamily="@font/overpassmono_regular"
+            android:fontFamily="@font/ibmplexsans_regular"
             android:text="Morse"
-            android:textColor="@color/colorAccent"
+            android:textColor="#ffff"
+            android:textStyle="bold"
             android:textSize="20sp" />
 
         <ImageView
@@ -82,9 +83,10 @@
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="10dp"
                         android:layout_toStartOf="@id/switchImageContainer"
-                        android:fontFamily="@font/overpassmono_regular"
+                        android:fontFamily="@font/ibmplexsans_regular"
                         android:text="TEXT"
-                        android:textColor="@color/colorSecondaryText"
+                        android:textStyle="bold"
+                        android:textColor="#ffff"
                         android:textSize="14sp" />
 
                     <RelativeLayout
@@ -110,9 +112,10 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/switchImageContainer"
-                        android:fontFamily="@font/overpassmono_regular"
+                        android:fontFamily="@font/ibmplexsans_regular"
                         android:text="MORSE"
-                        android:textColor="@color/colorSecondaryText"
+                        android:textColor="#ffff"
+                        android:textStyle="bold"
                         android:textSize="14sp" />
                 </RelativeLayout>
 
@@ -126,13 +129,13 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/et_morse"
-                    android:fontFamily="@font/overpass_regular"
+                    android:fontFamily="@font/ibmplexsans_regular"
                     android:gravity="top"
                     android:paddingStart="20dp"
                     android:paddingTop="10dp"
                     android:paddingEnd="20dp"
                     android:paddingBottom="10dp"
-                    android:textColor="@color/colorSecondaryText"
+                    android:textColor="#ffff"
                     android:textSize="20sp" />
 
                 <RelativeLayout
@@ -145,7 +148,7 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/bg_bottom_suggestion"
-                    android:fontFamily="@font/overpass_regular"
+                    android:fontFamily="@font/ibmplexsans_regular"
                     android:gravity="top"
                     android:paddingStart="20dp"
                     android:paddingTop="10dp"
@@ -163,9 +166,9 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/overpassmono_regular"
+                        android:fontFamily="@font/ibmplexsans_regular"
                         android:scrollbars="vertical"
-                        android:textColor="@color/colorSecondaryText"
+                        android:textColor="#ffff"
                         android:textSize="14sp" />
 
                     <TextView
@@ -175,9 +178,9 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginEnd="10dp"
                         android:layout_toStartOf="@id/replace_suggestion"
-                        android:fontFamily="@font/overpassmono_regular"
+                        android:fontFamily="@font/ibmplexsans_regular"
                         android:text="IGNORE"
-                        android:textColor="@color/colorSecondaryText"
+                        android:textColor="#ffff"
                         android:textSize="14sp" />
 
                     <TextView
@@ -188,10 +191,10 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="10dp"
-                        android:fontFamily="@font/overpassmono_regular"
+                        android:fontFamily="@font/ibmplexsans_regular"
                         android:paddingEnd="-3dp"
                         android:text="REPLACE"
-                        android:textColor="@color/colorMorse"
+                        android:textColor="#ffff"
                         android:textSize="14sp" />
                 </RelativeLayout>
 
@@ -212,9 +215,9 @@
                     android:layout_height="80dp"
                     android:layout_marginStart="40dp"
                     android:layout_marginEnd="40dp"
-                    android:fontFamily="@font/overpass_regular"
+                    android:fontFamily="@font/ibmplexsans_regular"
                     android:scrollbars="vertical"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="#ffff"
                     android:textSize="20sp" />
 
                 <RelativeLayout
@@ -233,8 +236,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="10dp"
                         android:contentDescription="Save to phrasebook"
-                        android:src="@drawable/ic_star_border_black_24dp"
-                        app:tint="@color/colorMorse" />
+                        android:src="@drawable/star"/>
 
                     <RelativeLayout
                         android:id="@+id/containerIcons"
@@ -253,7 +255,7 @@
                             android:layout_marginEnd="10dp"
                             android:contentDescription="Use flash as morse code"
                             android:src="@drawable/ic_torch"
-                            app:tint="@color/colorMorse" />
+                            app:tint="#ffff" />
 
                         <ImageView
                             android:id="@+id/flare"
@@ -264,7 +266,7 @@
                             android:layout_toEndOf="@+id/flash"
                             android:contentDescription="Use screen as morse code"
                             android:src="@drawable/ic_flare_24px"
-                            app:tint="@color/colorMorse" />
+                            app:tint="#ffff" />
 
                         <ImageView
                             android:id="@+id/playAudio"
@@ -373,7 +375,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:fontFamily="@font/overpass_regular"
+                android:fontFamily="@font/ibmplexsans_regular"
                 android:gravity="center"
                 android:text="Tap for dit, hold for dah"
                 android:textColor="@color/colorSecondaryText"

@@ -1,5 +1,6 @@
 package rocks.poopjournal.morse;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -54,6 +55,14 @@ public class PhraseBookActivity extends AppCompatActivity {
 
 
         phrasebookAdapter.setPhrasebookList(arrayList);
+
+        phrasebookAdapter.setOnPhraseClickListener(model -> {
+
+            Intent intent = new Intent(PhraseBookActivity.this, MainActivity.class);
+            intent.putExtra("phrase_text", model.text);
+            intent.putExtra("phrase_morse", model.morse);
+            startActivity(intent);
+        });
 
         ItemTouchHelper itemTouchHelper = new
                 ItemTouchHelper(new SwipeToDeleteCallback(phrasebookAdapter));

@@ -20,7 +20,15 @@ public class PhrasebookAdapter extends RecyclerView.Adapter<PhrasebookAdapter.Cl
     DBHelper helper;
     private Context context;
     private ArrayList<PhrasebookModel> list = new ArrayList<>();
+    public interface OnPhraseClickListener {
+        void onPhraseClick(PhrasebookModel model);
+    }
 
+    private OnPhraseClickListener listener;
+
+    public void setOnPhraseClickListener(OnPhraseClickListener listener) {
+        this.listener = listener;
+    }
     public PhrasebookAdapter(Context context, DBHelper helper) {
         this.context = context;
         this.helper = helper;
@@ -45,9 +53,17 @@ public class PhrasebookAdapter extends RecyclerView.Adapter<PhrasebookAdapter.Cl
     @Override
     public void onBindViewHolder(@NonNull final PhrasebookAdapter.ClientViewHolder holder, final int position) {
 
+        PhrasebookModel model = list.get(position);
 
         holder.text.setText(list.get(position).text);
         holder.morse.setText(list.get(position).morse);
+        holder.text.setOnClickListener(v -> {
+            if (listener != null) listener.onPhraseClick(model);
+        });
+
+        holder.morse.setOnClickListener(v -> {
+            if (listener != null) listener.onPhraseClick(model);
+        });
 
     }
 
