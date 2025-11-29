@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
@@ -19,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AboutActivity extends AppCompatActivity {
 
-    ImageView marvin_email, marvin_github, marvin_gmail, mubeen_github, fahad_github, fredrik_github, backIcon;
+    ImageView marvin_email, marvin_github, marvin_mastodon, mubeen_github, fahad_github, fredrik_github, backIcon;
     LinearLayout translate, report, source, material_icons, android_jetpack;
     ConstraintLayout main;
     TextView version_number;
@@ -39,7 +38,7 @@ public class AboutActivity extends AppCompatActivity {
 
         marvin_email = findViewById(R.id.marvin_email);
         marvin_github = findViewById(R.id.marvin_github);
-        marvin_gmail = findViewById(R.id.marvin_gmail);
+        marvin_mastodon = findViewById(R.id.marvin_gmail);
         mubeen_github = findViewById(R.id.mubeen_github);
         fahad_github = findViewById(R.id.fahad_github);
         fredrik_github = findViewById(R.id.fredrik_github);
@@ -69,7 +68,7 @@ public class AboutActivity extends AppCompatActivity {
     private void setClickListeners() {
 
         marvin_email.setOnClickListener(v -> openEmail("mailto:marvin@poopjournal.rocks?subject=Morse"));
-        marvin_gmail.setOnClickListener(v -> openLink("https://fosstodon.org/@CrazyMarvinApps"));
+        marvin_mastodon.setOnClickListener(v -> openLink("https://fosstodon.org/@CrazyMarvinApps"));
 
         marvin_github.setOnClickListener(v -> openLink("https://github.com/CrazyMarvin"));
         mubeen_github.setOnClickListener(v -> openLink("https://github.com/mubeen1519"));

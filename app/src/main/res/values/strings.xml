@@ -15,7 +15,7 @@
     <string name="mubeen" translatable="false">Mubeen Ali</string>
     <string name="fahad" translatable="false">Fahad Saleem</string>
     <string name="fredrik" translatable="false">Fredrik Henriccson</string>
-    <string name="developer">Developer</string>
+    <string name="developer" translatable="false">Developer</string>
     <string name="translate" translatable="false">Translate</string>
     <string name="report" translatable="false">Report a problem</string>
     <string name="view_source" translatable="false">View source</string>
