@@ -1,11 +1,48 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="CircularImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="RoundedAlertDialog" parent="Theme.MaterialComponents.DayNight.Dialog.Alert">
+        <item name="materialAlertDialogBodyTextStyle">@style/DialogTextStyle</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/DialogTitleStyle</item>
+        <item name="shapeAppearanceMediumComponent">@style/RoundedDialogShape</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButtonStyle</item>
+        <item name="colorSurface">@color/textGrey3</item>
+        <item name="android:windowBackground">@drawable/dialog_rounded_background</item>
+    </style>
+
+    <style name="DialogTextStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontFamily">@font/ibmplexsans_regular</item>
+    </style>
+
+    <style name="DialogTitleStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontFamily">@font/ibmplexsans_regular</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RoundedDialogShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="DialogButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontFamily">@font/ibmplexsans_regular</item>
+    </style>
+
 
 </resources>

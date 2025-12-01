@@ -12,10 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="25dp"
-        android:fontFamily="@font/overpass_regular"
+        android:fontFamily="@font/ibmplexsans_regular"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:textIsSelectable="true"/>
 
     <TextView
         android:id="@+id/morse"
@@ -25,7 +26,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="25dp"
-        android:fontFamily="@font/overpass_regular"
+        android:fontFamily="@font/ibmplexsans_regular"
         android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textIsSelectable="true"/>
 </RelativeLayout>

@@ -6,4 +6,32 @@
     <string name="settings">Settings</string>
     <string name="dit_dah">Tap for dit, hold for dah</string>
     <string name="future_release">To be implemented in a future release</string>
+    <string name="back">Back</string>
+    <string name="source_morse_alphabet">Source Morse Alphabet</string>
+    <string name="output">Output speed</string>
+    <string name="method">Method</string>
+    <string name="about">About</string>
+    <string name="marvin" translatable="false">Crazy Marvin</string>
+    <string name="mubeen" translatable="false">Mubeen Ali</string>
+    <string name="fahad" translatable="false">Fahad Saleem</string>
+    <string name="fredrik" translatable="false">Fredrik Henriccson</string>
+    <string name="developer">Developer</string>
+    <string name="translate">Translate</string>
+    <string name="report">Report a problem</string>
+    <string name="view_source">View source</string>
+    <string name="contribute">Contribute</string>
+    <string name="material_icons">Material Icons</string>
+    <string name="android_jetpack">Android Jetpack</string>
+    <string name="opensource">Open-source licenses</string>
+    <string name="arabic">Arabic</string>
+    <string name="chinese">Chinese</string>
+    <string name="cyrilic">Cyrillic</string>
+    <string name="devanagari">Devanagari</string>
+    <string name="greek">Greek</string>
+    <string name="hebrew">Hebrew</string>
+    <string name="korean">Korean</string>
+    <string name="kurdish">Kurdish</string>
+    <string name="latin">Latin</string>
+    <string name="persian">Persian</string>
+    <string name="thai">Thai</string>
 </resources>
