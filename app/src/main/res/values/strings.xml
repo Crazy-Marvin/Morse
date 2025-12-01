@@ -15,14 +15,14 @@
     <string name="mubeen" translatable="false">Mubeen Ali</string>
     <string name="fahad" translatable="false">Fahad Saleem</string>
     <string name="fredrik" translatable="false">Fredrik Henriccson</string>
-    <string name="developer" translatable="false">Developer</string>
-    <string name="translate" translatable="false">Translate</string>
-    <string name="report" translatable="false">Report a problem</string>
-    <string name="view_source" translatable="false">View source</string>
-    <string name="contribute" translatable="false">Contribute</string>
-    <string name="material_icons" translatable="false">Material Icons</string>
-    <string name="android_jetpack" translatable="false">Android Jetpack</string>
-    <string name="opensource" translatable="false">Open-source licenses</string>
+    <string name="developer">Developer</string>
+    <string name="translate">Translate</string>
+    <string name="report">Report a problem</string>
+    <string name="view_source">View source</string>
+    <string name="contribute">Contribute</string>
+    <string name="material_icons">Material Icons</string>
+    <string name="android_jetpack">Android Jetpack</string>
+    <string name="opensource">Open-source licenses</string>
     <string name="arabic">Arabic</string>
     <string name="chinese">Chinese</string>
     <string name="cyrilic">Cyrillic</string>
