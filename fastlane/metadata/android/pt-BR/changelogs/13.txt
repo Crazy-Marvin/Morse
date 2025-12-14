@@ -1,0 +1,6 @@
+- 🛁 Manutenção
+- ⚙️ Atualizações de Dependências
+- 🗺️ Atualizações de Tradução
+
+Um enorme agradecimento a todos os colaboradores e tradutores. 😘
+Sintam-se à vontade para relatar problemas e enviar correções em https://github.com/Crazy-Marvin/Morse/ ou traduções em https://hosted.weblate.org/engage/morse/. 🚀
