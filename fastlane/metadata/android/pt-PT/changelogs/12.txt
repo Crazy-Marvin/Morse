@@ -1,0 +1,8 @@
+- Corrigido #110: problema de espaço
+- Corrigido #76: agora é possível colar código Morse na caixa de entrada Morse
+- Corrigido #131: NullPointerException
+- Atualização de dependências
+- Atualização de traduções
+
+Um grande obrigado a todos os colaboradores e tradutores. 😘
+Sinta-se à vontade para relatar problemas e enviar correções em https://github.com/Crazy-Marvin/Morse/ ou traduções em https://hosted.weblate.org/engage/morse/.🚀
