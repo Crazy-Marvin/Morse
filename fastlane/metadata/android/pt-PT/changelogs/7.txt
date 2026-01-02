@@ -1,3 +1,4 @@
-Add option to modify the audio output speed (Standard, Farnsworth or custom)
-Fix Bugs & Crashes
-Target Android 11
+- Novo modo de entrada: Tecla Telégrafo
+- Melhorias internas
+- Correção de bugs e falhas
+- Compatível com Android 11
