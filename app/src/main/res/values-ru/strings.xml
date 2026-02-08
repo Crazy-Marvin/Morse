@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Морзянка</string>
-    <string name="morse">Морс</string>
+    <string name="morse">Азбука Морзе</string>
     <string name="text">Текст</string>
     <string name="phrasebook">Разговорник</string>
     <string name="settings">Настройки</string>
-    <string name="dit_dah">Спасибо за вашу команду за этот день</string>
-    <string name="future_release">Будет реализовано в будущем выпуске</string>
+    <string name="dit_dah">Короткое нажатие — точка, долгое — тире</string>
+    <string name="future_release">Будет реализовано в будущих версиях</string>
+    <string name="back">Назад</string>
+    <string name="source_morse_alphabet">Источник: Алфавит Морзе</string>
+    <string name="output">Скорость вывода</string>
+    <string name="method">Метод</string>
+    <string name="about">О программе</string>
+    <string name="developer">Разработчик</string>
+    <string name="translate">Перевести</string>
+    <string name="report">Сообщить о проблеме</string>
+    <string name="view_source">Исходный код</string>
+    <string name="contribute">Участвовать</string>
+    <string name="material_icons">Material Icons</string>
+    <string name="android_jetpack">Android Jetpack</string>
+    <string name="opensource">Open-source лицензии</string>
+    <string name="arabic">Арабский</string>
+    <string name="chinese">Китайский</string>
+    <string name="cyrilic">Кириллица</string>
+    <string name="devanagari">Деванагари</string>
+    <string name="greek">Греческий</string>
+    <string name="hebrew">Иврит</string>
+    <string name="korean">Корейский</string>
+    <string name="kurdish">Курдский</string>
+    <string name="latin">Латиница</string>
+    <string name="persian">Персидский</string>
+    <string name="thai">Тайский</string>
 </resources>
