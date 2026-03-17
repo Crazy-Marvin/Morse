@@ -1,2 +1,2 @@
-Support digits
-Under the hood improvements
+支持数字输入
+底层改进与优化

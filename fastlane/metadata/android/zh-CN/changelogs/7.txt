@@ -1,3 +1,4 @@
-Add option to modify the audio output speed (Standard, Farnsworth or custom)
-Fix Bugs & Crashes
-Target Android 11
+- 新的输入模式：电键
+- 底层改进
+- 修复错误和崩溃
+- 适配 Android 11

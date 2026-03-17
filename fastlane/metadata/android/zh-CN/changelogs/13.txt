@@ -1,0 +1,6 @@
+- 🛁 代码整理
+- ⚙️ 依赖项更新
+- 🗺️ 翻译更新
+
+非常感谢所有贡献者和翻译人员。😘
+欢迎在 https://github.com/Crazy-Marvin/Morse/ 报告问题或提交修复，或在 https://hosted.weblate.org/engage/morse/ 上进行翻译。🚀

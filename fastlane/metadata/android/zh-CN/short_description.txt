@@ -1,1 +1,1 @@
-Translate text to Morse code or vice versa in real time
+将文本实时转换为莫尔斯电码，或将莫尔斯电码实时转换为文本

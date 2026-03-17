@@ -1,2 +1,2 @@
-The app now offers intelligent suggestions
-It is now possible to use the flashlight for Morse signals
+应用现已提供智能提示 
+现在可以使用手电筒发送摩尔斯信号

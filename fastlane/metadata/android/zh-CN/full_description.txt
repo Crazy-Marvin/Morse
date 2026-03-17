@@ -1,26 +1,39 @@
-Translate text to Morse code or decipher Morse code by translating them to text! It’s a simple, user friendly, but useful app that can help you in a lot of ways. You can decipher or decode Morse codes, you can create secret number or learn to be a cipher or learn cryptography, and many more! If you think of yourself as a codebreaker, download and try our Morse code cypher tool! Don’t let the special characters or dots and dashes befuddle you. 
+将摩尔斯电码解码为文本或将文本转换为摩尔斯电码 
 
-FEATURES OF MORSE CODE CIPHER TOOL:
-•	Clean, modern app design and interface.
-•	Super easy to use. 
-•	Realtime translation: type in the word or code and we will translate it to you immediately.  
-•	Decode from Morse to text or text to Morse.
-•	Press the speaker button to hear the code in sound.
-•	Copy the text by pressing copy button.
-•	Type in dot and dash using our built-in Morse keyboard. 
-•	Open Source (https://github.com/Crazy-Marvin/Morse)
-•	More features coming up later! 
-What is Morse code? Morse code is a system to encode letters and numbers to dash and dot signs. The duration of the dash is three times the duration of a dot. Each dot or dash is followed by period of signal absence, called a space, equal to the dot duration. Morse code was first used for communicating via telegraph. The most well-known Morse code is SOS, which is used to signal an emergency. Aside from typing dots and dash, you can also signal Morse code by turning light on and off, sounding a horn or tapping, and many more.  You can use Morse code to transmit messages easily via various means if the recipient understands Morse code. If they don’t, they can use our cipher tool to find out the password, secret number, or any info you want to relay. 
-Since people rarely communicate via telegraph, nowadays there are very few people who can memorize Morse codes. Instead, it has become a way to encode something or special characters for special purposes. Of course, these special characters are still widely used in many situations, you don’t know when you are going to really need it. It’s a useful language to know even if you just want to learn cryptography or cryptogram for fun. 
-How Morse is useful for you:
-1.	Tell others when you are in a dangerous situation (SOS).
-2.	Hide your secret number or password via dots and dashes. 
-3.	Cipher/ Decipher hidden clues in games. 
-4.	Learn cryptography or cryptogram through learning Morse codes. 
-5.	Become a codebreaker by breaking secret codes in real time translation. 
-6.	And many more! 
+将任何文本转换为摩尔斯电码，或将摩尔斯电码翻译为文本并听到结果。
 
-So, what are you waiting for? Use our Morse code cipher tool to decipher Morse code to text or text to Morse code now! As a codebreaker & cryptogram enthusiast, our cipher tool is a must have! It is useful for all of you. Just try it out.
+•	简洁、现代化的应用设计和界面。
+•	简单易用，适合所有人。
+•	实时翻译：输入单词或电码即可立即翻译。
+•	从摩尔斯电码解码为文本，或将文本转换为摩尔斯电码。
+•	点击扬声器按钮收听电码。
+•	点击“复制”按钮复制文本。
+•	使用内置的摩尔斯键盘输入点与划。
+•	自由软件（https://github.com/Crazy-Marvin/Morse）
++	计划添加更多功能。
+
+不要让特殊字符或点与划让你困惑。
+
+摩尔斯电码是一种将字母和数字编码为点与划符号的系统。
+划的时长是点的三倍。
+每个点或划后面都会有一个信号不存在的间隔，称为空格，其时长等于一个点的时长。
+
+摩尔斯电码最初用于通过电报进行通信。
+最著名的摩尔斯电码是SOS，用于发出紧急信号。
+除了输入点和划之外，您还可以通过打开和关闭灯光、按喇叭或敲击等方式发出摩尔斯电码信号。
+所有传输摩尔斯电码的方式都要求接收者能够理解它。
+如果不能，我们的应用程序可以用来找出消息、密码、秘密号码或您想要传达的任何信息。
+尽管如今电报的使用已被其他通信技术广泛取代，但摩尔斯电码仍在许多人的生活中占有一席之地。由于其存在于流行文化中，摩尔斯电码已在电影、游戏和其他媒体中出现，作为一种简单编码消息的方式，激发了粉丝研究和探索该语言作为趣味解谜活动的一部分。这使得它在密码学或密码谜题活动中成为便捷的编码工具，即使是在密码学或密码学事件中也是如此。
+
+1.	告诉他人您处于危险情况（SOS）。
+2.	通过点和划隐藏您的秘密号码或密码。
+3.	在游戏中对隐藏的线索进行加密或解密。
+4.	通过学习摩尔斯电码学习密码学或密码。
+5.	通过实时翻译破解密码，成为一名密码破译者。
+6.  创建一个密码。
++   更多功能
+
 ---
-We hope that you enjoy using our cipher tool to decode, to learn cryptography, or other purposes. If you do, please support our Morse decoder app by giving a rating and review on our Google Play store page and/or a star on GitHub. It will only take a minute and it will mean the world for us!
-If you have problems in using Morse app, please write us an email or open an issue on GitHub. We will respond immediately and fix the bug as soon as we can.
+在源代码仓库中为项目加星标或留下评价，对我们而言意义非凡，也是对我们莫大的鼓励。
+如果您在使用应用程序时遇到问题，请发送电子邮件或在 GitHub 上提出问题。
+回复通常非常及时，问题也会尽快得到解决。
