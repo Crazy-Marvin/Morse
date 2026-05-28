@@ -1,0 +1,6 @@
+- 🛁 Ménage
+- ⚙️ Mise à jour des dépendances
+- 🗺️ Mise à jour des traductions
+
+Un énorme merci à tous nos contributeurs et traducteurs. 😘
+N'hésitez pas à signaler des problèmes et proposer des corrections sur https://github.com/Crazy-Marvin/Morse/ ou des traductions sur https://hosted.weblate.org/engage/morse/. 🚀
