@@ -1,2 +1,2 @@
-Support digits
-Under the hood improvements
+Ondersteun syfers
+Nie-sigbare verbeteringe

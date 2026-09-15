@@ -1,1 +1,1 @@
-Translate text to Morse code or vice versa in real time
+Vertaal teks na Morse kode of andersom intyds
